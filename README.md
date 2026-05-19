@@ -5,14 +5,14 @@ https://drive.google.com/drive/folders/1GpP4klppKGoYbqhqrQkzlKAAgduqDHBe?usp=sha
 
 
 ## Gồm cái quyển:
-### Các quyển sách 
-### Đại Việt Sử Ký Toàn Thư 
-### Khâm Định Việt Sử Thông Giám Cương Mục 
-### Việt Sử Toàn Thư 
-### Việt Nam sử lược 
-### Vương Triều Trần (1226-1400)	
+ Đại Việt Sử Ký Toàn Thư 
+ Khâm Định Việt Sử Thông Giám Cương Mục 
+ Việt Sử Toàn Thư 
+ Vương Triều Trần (1226-1400)	
 
 ## Luồng xử lí
+
+```
 PDF
  ↓
 Text extraction
@@ -42,8 +42,9 @@ Cross-encoder reranker
 LLM verification
  ↓
 Fact-check result
+```
 
-
+```
 ## Cấu trúc thư mục: 
 history_social_project/
 ├── history_social_backend/      # Source code của ứng dụng Backend (Spring boot)
@@ -72,11 +73,12 @@ history_social_project/
 │   ├── requirements.txt         # Các thư viện cần thiết (underthesea, qdrant-client...)
 │   └── main.py                  # File chạy chính để thực thi luồng AI
 └── .env                         # Lưu API Key (Gemini, Qdrant, ...)
-
+```
 
 ## Link google colab 
 ### Chuyển các file pdf thành json 
 https://colab.research.google.com/drive/1e41enm-Mn0APjCz99GFWckTyziuFpdpW?usp=sharing
 
 ### Gọi api của gemini để chunking
+https://colab.research.google.com/drive/1lgQ7cwXBN0cFrIYMMRCD9E3uHI9KD7Z6?usp=sharing
 
