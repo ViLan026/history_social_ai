@@ -36,8 +36,7 @@ temp/
 
 data/NhaTran/raw/
 # data/NhaTran/extracted/
-data/NhaTran/segmented/
-data/NhaTran/chunks/
+# data/NhaTran/chunks/
 
 # data/final/
 
