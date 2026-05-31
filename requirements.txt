@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+python-dotenv
+sentence-transformers
+transformers
+torch
+numpy
+scikit-learn
+qdrant-client
+requests
+
+
+# python -m pip install -r requirements.txt
+# pip freeze > requirements.lock.txt
