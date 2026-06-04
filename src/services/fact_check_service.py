@@ -1,15 +1,3 @@
-"""
-Core fact-checking orchestrator.
-
-Pipeline:
-  1. Extract historical claims from post content (via Qwen).
-  2. For each claim:
-     a. Embed the claim (sentence-transformers).
-     b. Retrieve top-k evidence from Qdrant.
-     c. Send claim + evidence to Qwen for label + explanation.
-     d. Compute per-claim penalty_score.
-  3. Aggregate into quality_score and post_label.
-"""
 
 from __future__ import annotations
 
@@ -34,17 +22,13 @@ from src.services.qdrant_service import QdrantService
 
 logger = logging.getLogger(__name__)
 
-# ---------------------------------------------------------------------------
-# Constants
-# ---------------------------------------------------------------------------
-
 VALID_LABELS = {"SUPPORTED", "REFUTED", "NOT_ENOUGH_EVIDENCE"}
 
-PENALTY_MAP: dict[str, float] = {
-    "SUPPORTED": 0.0,
-    "NOT_ENOUGH_EVIDENCE": 0.25,
-    "REFUTED": 1.0,
-}
+# PENALTY_MAP: dict[str, float] = {
+#     "SUPPORTED": 0.0,
+#     "NOT_ENOUGH_EVIDENCE": 0.25,
+#     "REFUTED": 1.0,
+# }
 
 
 class FactCheckService:
@@ -58,25 +42,9 @@ class FactCheckService:
         self._emb = embedding_service
         self._qdrant = qdrant_service
 
-    # ------------------------------------------------------------------
-    # Internal: Ollama call
-    # ------------------------------------------------------------------
 
     def _call_ollama(self, prompt: str) -> dict:
-        """
-        Send *prompt* to the Ollama /api/generate endpoint and return the
-        parsed JSON response from the model.
 
-        Args:
-            prompt: The full prompt string.
-
-        Returns:
-            Parsed dict from the model's JSON output.
-
-        Raises:
-            ValueError: If the response cannot be parsed as JSON after recovery.
-            requests.RequestException: On network / timeout errors.
-        """
         url = f"{settings.OLLAMA_URL.rstrip('/')}/api/generate"
         payload = {
             "model": settings.OLLAMA_MODEL,
@@ -116,17 +84,9 @@ class FactCheckService:
             f"{model_output[:300]!r}"
         )
 
-    # ------------------------------------------------------------------
-    # Step 1: Claim extraction
-    # ------------------------------------------------------------------
-
+# gọi ollama để trích xuất claim từ nội dung bài post. Nếu có lỗi, trả về list rỗng.
     def extract_claims(self, content: str) -> list[str]:
-        """
-        Use Qwen to split *content* into independent historical claims.
 
-        Returns:
-            A deduplicated, stripped list of claim strings (max MAX_CLAIMS_PER_POST).
-        """
         prompt = build_claim_extraction_prompt(content)
 
         try:
@@ -136,19 +96,19 @@ class FactCheckService:
             return []
 
         raw_claims: list = result.get("claims", [])
-        if not isinstance(raw_claims, list):
+        if not isinstance(raw_claims, list):   # nếu không phải list thì return []
             logger.warning("'claims' field is not a list: %r", raw_claims)
             return []
 
         seen: set[str] = set()
         claims: list[str] = []
         for item in raw_claims:
-            if not isinstance(item, str):
+            if not isinstance(item, str):     # nếu không phải str thì bỏ qua
                 continue
             item = item.strip()
-            if not item:
+            if not item:                      # str rỗng thì bỏ qua 
                 continue
-            if item in seen:
+            if item in seen:                  # nếu trùng lặp thì bỏ qua
                 continue
             seen.add(item)
             claims.append(item)
@@ -158,20 +118,9 @@ class FactCheckService:
         logger.info("Extracted %d claim(s) from post.", len(claims))
         return claims
 
-    # ------------------------------------------------------------------
-    # Step 2: Evidence retrieval
-    # ------------------------------------------------------------------
-
+# truy vấn Qdrant để lấy bằng chứng cho claim. Áp dụng threshold nếu cần. Trả về list EvidenceItem.
     def retrieve_evidence(self, claim: str) -> list[EvidenceItem]:
-        """
-        Embed *claim* and retrieve matching evidence chunks from Qdrant.
 
-        Evidence items with score < MIN_EVIDENCE_SCORE are filtered out
-        when the threshold is greater than 0.
-
-        Returns:
-            List of EvidenceItem objects.
-        """
         vector = self._emb.embed_text(claim)
         items = self._qdrant.search(vector, top_k=settings.TOP_K)
 
@@ -181,19 +130,10 @@ class FactCheckService:
 
         return items
 
-    # ------------------------------------------------------------------
-    # Internal: Evidence formatting
-    # ------------------------------------------------------------------
 
+# Định dạng evidence thành một chuỗi có cấu trúc để chèn vào prompt fact-checking.
     def _format_evidence_for_prompt(self, evidence: list[EvidenceItem]) -> str:
-        """
-        Render *evidence* as a compact numbered list suitable for injection
-        into a Qwen prompt.  Each item's text is capped at MAX_EVIDENCE_CHARS.
-        Footnotes are omitted to keep the prompt short.
 
-        Returns:
-            A formatted string, or an empty string if *evidence* is empty.
-        """
         if not evidence:
             return ""
 
@@ -210,17 +150,9 @@ class FactCheckService:
 
         return "\n\n".join(parts)
 
-    # ------------------------------------------------------------------
-    # Step 3: Check a single claim
-    # ------------------------------------------------------------------
-
+# Check a single claim: retrieve evidence, call Qwen, and build a ClaimResult.
     def check_claim(self, claim: str) -> ClaimResult:
-        """
-        Fact-check one *claim* through the full RAG pipeline.
 
-        Returns:
-            A ClaimResult with label, penalty_score, explanation, and evidence.
-        """
         evidence = self.retrieve_evidence(claim)
 
         # --- No evidence: skip Qwen ---
@@ -228,13 +160,16 @@ class FactCheckService:
             return ClaimResult(
                 claim=claim,
                 label="NOT_ENOUGH_EVIDENCE",
-                penalty_score=PENALTY_MAP["NOT_ENOUGH_EVIDENCE"],
+                # penalty_score=PENALTY_MAP["NOT_ENOUGH_EVIDENCE"],
                 explanation="Không tìm thấy bằng chứng phù hợp trong cơ sở tri thức.",
                 evidence=[],
             )
 
         # --- Fact-check with Qwen ---
         evidence_text = self._format_evidence_for_prompt(evidence)
+        print("DEBUG: Evidence text for claim:", claim)
+        print("\n\n\n")
+        print("DEBUG: Formatted evidence text:", evidence_text)
         prompt = build_fact_check_prompt(claim, evidence_text)
 
         label = "NOT_ENOUGH_EVIDENCE"
@@ -260,42 +195,30 @@ class FactCheckService:
             logger.error("Fact-check Qwen call failed for claim %r: %s", claim, exc)
             # Keep safe defaults set above
 
-        penalty_score = PENALTY_MAP.get(label, PENALTY_MAP["NOT_ENOUGH_EVIDENCE"])
+        # penalty_score = PENALTY_MAP.get(label, PENALTY_MAP["NOT_ENOUGH_EVIDENCE"])
 
         return ClaimResult(
             claim=claim,
             label=label,
-            penalty_score=penalty_score,
+            # penalty_score=penalty_score,
             explanation=explanation,
             evidence=evidence,
         )
 
-    # ------------------------------------------------------------------
-    # Step 4: Check a full post
-    # ------------------------------------------------------------------
-
+# Full pipeline: extract claims → check each claim → aggregate scores.
     def check_post(
         self,
         post_id: str | None,
         content: str,
     ) -> FactCheckResponse:
-        """
-        Full pipeline: extract claims → check each claim → aggregate scores.
 
-        Args:
-            post_id: Optional identifier echoed back in the response.
-            content: Full text of the post.
-
-        Returns:
-            A FactCheckResponse with quality_score, post_label, and per-claim results.
-        """
         claims = self.extract_claims(content)
 
         # No claims found
         if not claims:
             return FactCheckResponse(
                 post_id=post_id,
-                quality_score=0.5,
+                # quality_score=0.5,
                 post_label="NOT_ENOUGH_EVIDENCE",
                 claims=[],
             )
@@ -308,8 +231,8 @@ class FactCheckService:
             results.append(result)
 
         # Aggregate
-        avg_penalty = sum(r.penalty_score for r in results) / len(results)
-        quality_score = max(0.0, min(1.0, 1.0 - avg_penalty))
+        # avg_penalty = sum(r.penalty_score for r in results) / len(results)
+        # quality_score = max(0.0, min(1.0, 1.0 - avg_penalty))
 
         # Determine post-level label
         labels = {r.label for r in results}
@@ -322,7 +245,7 @@ class FactCheckService:
 
         return FactCheckResponse(
             post_id=post_id,
-            quality_score=round(quality_score, 4),
+            # quality_score=round(quality_score, 4),
             post_label=post_label,
             claims=results,
         )

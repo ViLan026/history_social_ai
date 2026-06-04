@@ -1,18 +1,16 @@
-"""
-Application configuration loaded from environment variables via pydantic-settings.
-"""
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    """All application settings, read from .env file or environment variables."""
 
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
         case_sensitive=False,
     )
+
+    HF_TOKEN: str | None = None
 
     # App
     APP_NAME: str = "history_social"
@@ -30,7 +28,7 @@ class Settings(BaseSettings):
 
     # Ollama / Qwen
     OLLAMA_URL: str = "http://localhost:11434"
-    OLLAMA_MODEL: str 
+    OLLAMA_MODEL: str = "qwen2.5:3b-instruct"
 
     # Retrieval & processing knobs
     TOP_K: int = 5

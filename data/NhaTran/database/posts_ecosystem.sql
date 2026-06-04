@@ -6733,7 +6733,7 @@ VALUES (
     'Những bước chuyển mình trong việc trọng dụng nhân tài dưới thời Trần Thánh Tông',
     'Nhìn lại lịch sử thời Trần, đặc biệt là giai đoạn trị vì của vua Trần Thánh Tông, chúng ta thấy một bước chuyển mình quan trọng trong tư duy quản lý đất nước và sử dụng hiền tài. Không chỉ dừng lại ở việc dựa vào tầng lớp tôn thất như trước, nhà vua đã mở rộng cánh cửa cho các nho sĩ văn học tham gia vào bộ máy chính quyền. Sự kiện năm 1267 là một minh chứng rõ nét khi các nho sĩ tài năng như Đặng Kế hay Đỗ Quốc Tá được trọng dụng vào Hàn lâm Viện và Trung thư sảnh, phá vỡ tiền lệ cũ vốn chỉ dành vị trí hành khiển cho nội nhân. Bên cạnh đó, việc mở các khoa thi lấy Trạng nguyên, Bảng nhãn, Thám hoa và Thái học sinh vào các năm 1266, 1275 cho thấy một sự đầu tư bài bản cho việc đào tạo và tuyển chọn nhân tài thông qua con đường học vấn. Vua không chỉ chú trọng chọn người giỏi mà còn quan tâm đến việc giáo dục cho thế hệ kế thừa, bằng chứng là việc đặt chức Trừ cung giáo thụ để dạy dỗ Thái tử. Chính sự kết hợp giữa sức mạnh quân sự được tổ chức quy củ qua các kỳ duyệt binh trên sông Bạch Hạc và một đội ngũ quan lại trí thức, trung quân đã tạo nên một nền móng vững chắc cho Đại Việt. Đây không chỉ là thắng lợi của vũ khí, mà là thắng lợi của một chính sách đối nội nhân văn, coi trọng hiền tài và sự đoàn kết trong nội bộ dòng tộc, thể hiện qua hành động đốt hòm biểu xin hàng của những kẻ phản trắc sau chiến tranh để yên lòng người, một cử chỉ bao dung hiếm thấy của một bậc quân vương.',
     'PUBLISHED',
-    0.9262,
+    0.9262, 
     0,
     0,
     0,

@@ -4,13 +4,14 @@
 https://drive.google.com/drive/folders/1GpP4klppKGoYbqhqrQkzlKAAgduqDHBe?usp=sharing
 
 
-## Gồm cái quyển:
+## Gồm các quyển:
+```
  Đại Việt Sử Ký Toàn Thư 
  Khâm Định Việt Sử Thông Giám Cương Mục 
  Việt Sử Toàn Thư 
  Vương Triều Trần (1226-1400)	
-
-## Luồng xử lí
+```
+## Luồng xử lí 
 
 ```
 PDF
@@ -19,29 +20,12 @@ Text extraction
  ↓
 Chunking
  ↓
-Word segmentation
- ↓
 Metadata extraction
  ↓
 Embedding
  ↓
 Qdrant
 
---------------------------------
-
-Post
- ↓
-Chunking
- ↓
-Embedding
- ↓
-Retrieve top-k evidence
- ↓
-Cross-encoder reranker
- ↓
-LLM verification
- ↓
-Fact-check result
 ```
 
 ```
@@ -73,7 +57,7 @@ history_social_project/
 │       │   └── fact_check_service.py  # Pipeline orchestrator
 │       └── prompts/
 └──         └── fact_check_prompt.py   # Qwen prompt builders
-``
+```
 
 ## Link google colab 
 ### Chuyển các file pdf thành json 
