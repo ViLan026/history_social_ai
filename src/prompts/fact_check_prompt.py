@@ -55,10 +55,17 @@ Ví dụ:
 => Trích xuất:
 "Trần Duệ Tông đi sứ sang nhà Minh."
 
+QUY TẮC BẮT BUỘC KHI CHUẨN HÓA CLAIM:
+- Claim đầu ra KHÔNG được bắt đầu bằng các cụm: "Tôi đọc được", "Nghe nói", "Có người cho rằng", "Theo một số tài liệu", "Theo lời đồn", "Tôi tự hỏi liệu", "Có đúng là", "Phải chăng".
+- Luôn loại bỏ phần dẫn nhập và chỉ giữ mệnh đề lịch sử cốt lõi.
+- Nếu bài viết là một câu khẳng định lịch sử ngắn, rõ ràng, có nhân vật và hành động cụ thể, PHẢI trích xuất claim đó.
+
 Ví dụ:
-"Tôi tự hỏi liệu Trần Duệ Tông có đích thân dẫn đầu đoàn sứ giả sang nhà Minh hay không."
-=> Trích xuất:
-"Trần Duệ Tông đích thân dẫn đầu đoàn sứ giả sang nhà Minh."
+Input: "Tôi đọc được một vài tài liệu cũ nói về việc vua Trần Duệ Tông đi sứ sang nhà Minh."
+Output claim: "Trần Duệ Tông đi sứ sang nhà Minh."
+
+Input: "Trần Hưng Đạo đánh bại quân Nguyên trên sông Bạch Đằng."
+Output claim: "Trần Hưng Đạo đánh bại quân Nguyên trên sông Bạch Đằng."
 
 ƯU TIÊN TRÍCH XUẤT:
 1. Claim có mốc thời gian cụ thể.
@@ -100,7 +107,7 @@ QUY TẮC CHỌN CLAIM:
 - Không cần trích xuất hết mọi thông tin factual.
 - Chỉ chọn các claim có giá trị fact-checking cao nhất.
 - Tối đa {settings.MAX_CLAIMS_PER_POST} claim.
-- Nếu bài viết không có claim đủ tốt, trả về danh sách rỗng.
+- Chỉ trả về danh sách rỗng khi bài viết không có bất kỳ phát biểu lịch sử cụ thể nào có thể kiểm chứng.
 - Không ép phải đủ số lượng claim.
 
 KIỂM TRA TRƯỚC KHI GIỮ CLAIM:
@@ -216,7 +223,9 @@ QUY TẮC QUAN TRỌNG:
 - Nếu phân vân giữa SUPPORTED và NOT_ENOUGH_EVIDENCE, chọn NOT_ENOUGH_EVIDENCE.
 - Explanation phải ngắn, rõ, tối đa 2 câu.
 - Explanation cần cho người đọc biết vì sao claim được hỗ trợ, bị bác bỏ hoặc chưa đủ bằng chứng.
-
+- Không được xem "vua sai sứ", "vua cử sứ đoàn", "vua phái sứ đoàn" là bằng chứng cho claim "vua đích thân đi sứ" hoặc "vua đích thân dẫn đầu sứ đoàn".
+- SUPPORTED chỉ khi bằng chứng xác nhận trực tiếp chủ thể, hành động chính và đối tượng chính của mệnh đề.
+- Nếu bằng chứng chỉ nói người khác được vua sai đi, còn claim nói nhà vua đích thân đi, chọn NOT_ENOUGH_EVIDENCE.
 ĐỊNH DẠNG OUTPUT:
 {{
   "label": "SUPPORTED | REFUTED | NOT_ENOUGH_EVIDENCE",

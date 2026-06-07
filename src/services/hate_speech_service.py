@@ -1,10 +1,7 @@
 from __future__ import annotations
 
 from functools import lru_cache
-from typing import Any, Dict
-
 from transformers import pipeline
-
 
 MODEL_NAME = "tarudesu/ViSoBERT-HSD"
 
@@ -18,33 +15,49 @@ class HateSpeechService:
             return_all_scores=True,
         )
 
-    def detect(self, text: str) -> Dict[str, Any]:
-        if not text or not text.strip():
+    def detect(self, text: str):
+        result = self.classifier(text)
+
+        if isinstance(result, list):
+            if len(result) == 0:
+                results = []
+            elif isinstance(result[0], list):
+                results = result[0]
+            else:
+                results = result
+        else:
+            results = [result]
+
+        scores = [
+            {
+                "label": str(item.get("label", "")),
+                "score": float(item.get("score", 0.0)),
+            }
+            for item in results
+        ]
+
+        print(f"results {results} \n")
+
+        if not scores:
             return {
-                "label": "NONE",
+                "label": "CLEAN",
                 "score": 0.0,
-                "is_hate": False,
+                "hateSpeech": False,
                 "scores": [],
             }
 
-        results = self.classifier(text.strip())[0]
+        best_result = max(scores, key=lambda item: item["score"])
 
-        best_result = max(results, key=lambda item: item["score"])
+        raw_label = best_result["label"].upper()
+        score = best_result["score"]
 
-        label = best_result["label"]
-        score = float(best_result["score"])
+        hateSpeech = raw_label in {"LABEL_1", "HATE", "HATE_SPEECH"}
 
         return {
-            "label": label,
+            "label": "HATE" if hateSpeech else "CLEAN",
             "score": score,
-            "is_hate": label.upper() == "HATE",
-            "scores": [
-                {
-                    "label": item["label"],
-                    "score": float(item["score"]),
-                }
-                for item in results
-            ],
+            "hateSpeech": hateSpeech,
+            "scores": scores,
         }
 
 

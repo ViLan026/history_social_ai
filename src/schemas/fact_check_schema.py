@@ -23,7 +23,7 @@ class FactCheckRequest(BaseModel):
 # Nội dung Qdrant trả về 
 class EvidenceItem(BaseModel):
     chunk_id: str | None = None
-    # score: float | None = None
+    score: float | None = None
     book_name: str | None = None
     pages: list[int] = Field(default_factory=list)
     text: str

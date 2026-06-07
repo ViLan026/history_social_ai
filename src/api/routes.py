@@ -1,12 +1,12 @@
 from fastapi import APIRouter, HTTPException
 
-from history_social_ai.src.schemas.hate_speech_schema import HateSpeechRequest, HateSpeechResponse
+from src.schemas.hate_speech_schema import HateSpeechRequest, HateSpeechResponse
 from src.config import settings
 from src.schemas.fact_check_schema import FactCheckRequest, FactCheckResponse
 from src.services.embedding_service import EmbeddingService
 from src.services.qdrant_service import QdrantService
 from src.services.fact_check_service import FactCheckService
-from src.services.hate_speech_service import HateSpeechService, get_hate_speech_service
+from src.services.hate_speech_service import HateSpeechService
 
 router = APIRouter()
 
@@ -43,8 +43,32 @@ async def fact_check(request: FactCheckRequest):
 
 @router.post("/hate-speech/detect", response_model=HateSpeechResponse)
 def detect_hate_speech(request: HateSpeechRequest):
-    service = get_hate_speech_service()
-    return service.detect(request.text)
+    if _hate_speech_service is None:
+        raise HTTPException(status_code=503, detail="Service not ready.")
+
+    return _hate_speech_service.detect(request.text)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # dữ liệu đầu vào 
@@ -67,10 +91,6 @@ def detect_hate_speech(request: HateSpeechRequest):
 
 
 # kết quả qdran trả về khi truy vấn 
-
-
-
-
 
 
 # kết quả của một claim sau khi gọi qdrant để lấy evidence 

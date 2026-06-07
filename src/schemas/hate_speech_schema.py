@@ -14,5 +14,5 @@ class HateSpeechScore(BaseModel):
 class HateSpeechResponse(BaseModel):
     label: str
     score: float
-    is_hate: bool
+    hateSpeech: bool
     scores: List[HateSpeechScore]

@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     APP_PORT: int = 8000
 
     # Qdrant Cloud
-    QDRANT_URL: str
+    QDRANT_URL: str = "http://localhost:6333"
     QDRANT_API_KEY: str
     QDRANT_COLLECTION_NAME: str = "history_aiteamvn_chunk_256"
 

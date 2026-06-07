@@ -1,7 +1,3 @@
-"""
-Embedding service using sentence-transformers with AITeamVN/Vietnamese_Embedding.
-Ollama is NOT used here – embeddings are generated locally via the HuggingFace model.
-"""
 
 from __future__ import annotations
 

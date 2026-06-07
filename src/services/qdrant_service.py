@@ -119,14 +119,6 @@ class QdrantService:
 
 
 
-
-
-
-
-
-
-
-
 # {
 #   "claim": "string",          // Mệnh đề gốc truyền vào để kiểm chứng
 #   "label": "string",          // Nhãn sau khi đã chuẩn hóa và check VALID_LABELS

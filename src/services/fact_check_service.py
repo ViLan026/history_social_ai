@@ -94,7 +94,7 @@ class FactCheckService:
         except Exception as exc:
             logger.warning("Claim extraction failed: %s", exc)
             return []
-
+        print(f"clams: {result} \n\n")
         raw_claims: list = result.get("claims", [])
         if not isinstance(raw_claims, list):   # nếu không phải list thì return []
             logger.warning("'claims' field is not a list: %r", raw_claims)
