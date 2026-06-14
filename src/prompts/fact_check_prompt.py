@@ -2,126 +2,76 @@ from __future__ import annotations
 
 from src.config import settings
 
-
 def build_claim_extraction_prompt(content: str) -> str:
     return f"""
-Bạn là bộ trích xuất Check-worthy Claims cho hệ thống hỗ trợ kiểm chứng lịch sử Việt Nam.
+Bạn là bộ trích xuất claim lịch sử cho hệ thống hỗ trợ fact-checking.
 
-NHIỆM VỤ:
-Đọc bài viết lịch sử và trích xuất các claim lịch sử quan trọng, rõ ràng, có giá trị kiểm chứng cao.
+Ở bước này, bạn KHÔNG xác định claim đúng hay sai.
+Bạn chỉ trích xuất các phát biểu lịch sử có thể dùng làm đơn vị kiểm chứng ở bước sau.
 
-Mục tiêu KHÔNG phải là chấm điểm bài viết.
-Mục tiêu là tìm ra các claim lịch sử cần được kiểm chứng để hệ thống có thể tìm bằng chứng và giải thích cho người đọc.
-
-CHỈ trả về một JSON hợp lệ duy nhất.
+CHỈ trả về một block JSON hợp lệ duy nhất.
 KHÔNG markdown.
 KHÔNG giải thích ngoài JSON.
+KHÔNG thêm bất kỳ văn bản nào ngoài JSON.
 
-ĐỊNH NGHĨA CLAIM ĐƯỢC CHỌN:
-Một claim được chọn phải thỏa các điều kiện sau:
-1. Là phát biểu lịch sử có thể kiểm chứng bằng sử liệu.
-2. Có thực thể lịch sử cụ thể như tên người, triều đại, địa danh, sự kiện, chức vụ hoặc mốc thời gian.
-3. Chứa một hành động, sự kiện, quan hệ, thời gian, địa điểm, nguyên nhân trực tiếp hoặc kết quả trực tiếp.
-4. Nếu claim sai, nó có thể làm sai lệch một sự kiện, nhân vật, quan hệ hoặc mốc lịch sử cụ thể.
-5. Claim phải được rút ra trực tiếp từ bài viết, không thêm kiến thức ngoài bài viết.
+NHIỆM VỤ:
+Trích xuất các claim lịch sử từ bài viết dưới dạng danh sách các câu khẳng định độc lập trong JSON có key là "claims".
 
-QUY TẮC ATOMIC FACT:
-- Mỗi claim chỉ chứa MỘT thông tin chính.
-- Nếu một câu có nhiều thông tin kiểm chứng được, hãy tách thành nhiều claim độc lập.
-- Không gộp nhiều sự kiện vào một claim.
+ĐỊNH NGHĨA CLAIM:
+Claim là một phát biểu độc lập, tự đủ ngữ cảnh, chỉ chứa một nội dung kiểm chứng chính, và có thể đối chiếu với sử liệu.
 
-QUY TẮC ĐỘC LẬP NGỮ CẢNH:
-- Mỗi claim phải là câu hoàn chỉnh, có thể hiểu khi đứng một mình.
-- Không dùng đại từ hoặc cụm mơ hồ như: ông ấy, bà ấy, nhân vật này, sự kiện này, triều đại này, lúc bấy giờ.
-- Chỉ thay đại từ bằng thực thể cụ thể nếu thực thể đó xuất hiện rõ trong bài viết.
-- Không tự thêm năm, địa điểm, nhân vật, chức vụ hoặc kết quả nếu bài viết không nhắc đến.
+TÍNH CHẤT BẮT BUỘC CỦA CLAIM:
 
-QUY TẮC VỀ CÂU HỎI, LỜI ĐỒN VÀ NGHI VẤN:
-Vẫn trích xuất claim nếu bài viết nêu thông tin dưới dạng:
-- Nghe nói...
-- Có người cho rằng...
-- Theo một số tài liệu...
-- Theo lời đồn...
-- Tôi đọc được rằng...
-- Tôi tự hỏi liệu...
-- Có đúng là...
-- Phải chăng...
+1. Atomic Fact:
+Mỗi claim chỉ chứa MỘT thông tin kiểm chứng chính.
+Nếu một câu trong bài viết chứa nhiều thông tin kiểm chứng, hãy tách thành nhiều claim độc lập.
 
-Miễn là phía sau có một phát biểu lịch sử cụ thể có thể kiểm chứng. nhưng phải loại bỏ phần dẫn nhập và chỉ giữ mệnh đề lịch sử cốt lõi.
+2. Decontextualized & Independent:
+Mỗi claim phải là một câu hoàn chỉnh, có thể hiểu khi đứng một mình.
+Không dùng đại từ hoặc cụm mơ hồ như "ông ấy", "bà ta", "ngài", "sự kiện này", "trận chiến đó", "triều đại này", "lúc bấy giờ".
+Hãy thay bằng tên thực thể cụ thể có sẵn trong bài viết.
+Nếu không xác định được đại từ chỉ ai, bỏ mệnh đề đó.
 
+3. Verifiable:
+Claim phải là phát biểu có thể đối chiếu với bằng chứng lịch sử.
+Sau khi truy xuất sử liệu, claim có thể được hỗ trợ, bị phản bác hoặc chưa đủ bằng chứng.
+Không giữ các câu chỉ thể hiện cảm xúc, nhận xét cá nhân, đánh giá chủ quan hoặc so sánh không có tiêu chí kiểm chứng rõ.
 
-Ví dụ:
-"Nghe nói Trần Duệ Tông đi sứ sang nhà Minh."
-=> Trích xuất:
-"Trần Duệ Tông đi sứ sang nhà Minh."
+4. Faithful:
+Claim phải được rút ra trực tiếp từ bài viết.
+Không dùng kiến thức lịch sử sẵn có để thêm nhân vật, năm, địa điểm, chức vụ, nguyên nhân hoặc kết quả nếu bài viết không nêu.
 
-QUY TẮC BẮT BUỘC KHI CHUẨN HÓA CLAIM:
-- Claim đầu ra KHÔNG được bắt đầu bằng các cụm: "Tôi đọc được", "Nghe nói", "Có người cho rằng", "Theo một số tài liệu", "Theo lời đồn", "Tôi tự hỏi liệu", "Có đúng là", "Phải chăng".
-- Luôn loại bỏ phần dẫn nhập và chỉ giữ mệnh đề lịch sử cốt lõi.
-- Nếu bài viết là một câu khẳng định lịch sử ngắn, rõ ràng, có nhân vật và hành động cụ thể, PHẢI trích xuất claim đó.
-
-Ví dụ:
-Input: "Tôi đọc được một vài tài liệu cũ nói về việc vua Trần Duệ Tông đi sứ sang nhà Minh."
-Output claim: "Trần Duệ Tông đi sứ sang nhà Minh."
-
-Input: "Trần Hưng Đạo đánh bại quân Nguyên trên sông Bạch Đằng."
-Output claim: "Trần Hưng Đạo đánh bại quân Nguyên trên sông Bạch Đằng."
-
-ƯU TIÊN TRÍCH XUẤT:
-1. Claim có mốc thời gian cụ thể.
-2. Claim có nhân vật lịch sử và hành động cụ thể.
-3. Claim có sự kiện lịch sử cụ thể.
-4. Claim có quan hệ giữa các nhân vật, triều đại hoặc lực lượng.
-5. Claim có nguyên nhân trực tiếp hoặc kết quả trực tiếp của một sự kiện.
-6. Claim có địa điểm cụ thể.
-7. Claim có thể đưa trực tiếp vào truy vấn RAG để tìm bằng chứng.
+ƯU TIÊN TRÍCH XUẤT CÁC CLAIM CÓ:
+- Mốc thời gian hoặc địa điểm cụ thể.
+- Nhân vật, triều đại, lực lượng hoặc địa danh rõ ràng.
+- Hành động hoặc sự kiện lịch sử cụ thể.
+- Chức vụ, vai trò, quan hệ giữa các thực thể.
+- Lời nói, quan điểm, ghi chép hoặc mệnh lệnh được quy rõ cho một nhân vật hoặc nguồn tư liệu.
+- Nguyên nhân hoặc kết quả trực tiếp của một sự kiện, nếu bài viết nêu rõ.
 
 KHÔNG TRÍCH XUẤT:
-- Cảm xúc.
-- Câu hỏi tu từ không chứa phát biểu lịch sử cụ thể.
-- Nhận xét chủ quan.
-- Đánh giá đạo đức.
-- Suy luận lịch sử.
-- Kết luận mang tính diễn giải.
-- Xu hướng chung không có sự kiện cụ thể.
-- Claim quá tổng quát.
-- Claim nền.
-- Claim mô tả tình trạng chung nhưng không có thực thể, hành động hoặc mốc kiểm chứng rõ ràng.
+- Cảm xúc cá nhân.
+- Câu hỏi tu từ.
+- Nhận xét chủ quan không có tiêu chí kiểm chứng rõ.
+- Câu đánh giá hoặc xếp hạng như "vĩ đại nhất", "rực rỡ nhất", "hào hùng nhất", "kiệt xuất nhất".
+- Câu diễn giải tổng quát như "đây là bước ngoặt lịch sử", "đây là hệ quả tất yếu", "triều đình suy yếu", "xã hội rối ren" nếu không có sự kiện cụ thể.
+- Claim nền tự chế như "X là nhân vật lịch sử", trừ khi bài viết trực tiếp nêu điều đó.
 
-CẤM TẠO CLAIM DẠNG:
-- "Sự suy yếu của chính quyền trung ương bắt nguồn từ nhiều yếu tố."
-- "Triều đình dần mất ổn định."
-- "Triều đình trở nên rối ren."
-- "Nhà Lý suy yếu."
-- "Một thế lực mới xuất hiện."
-- "Đây là hệ quả tất yếu."
-- "Đây là bước ngoặt lịch sử."
-- "X là nhân vật lịch sử."
-- "X là vua triều Y."
-- "X là người tài giỏi."
-- "X là người xấu."
-
-Chỉ giữ claim nền nếu chính thông tin đó là trọng tâm cần kiểm chứng của bài viết.
-
-QUY TẮC CHỌN CLAIM:
-- Không cần trích xuất hết mọi thông tin factual.
-- Chỉ chọn các claim có giá trị fact-checking cao nhất.
-- Tối đa {settings.MAX_CLAIMS_PER_POST} claim.
-- Chỉ trả về danh sách rỗng khi bài viết không có bất kỳ phát biểu lịch sử cụ thể nào có thể kiểm chứng.
-- Không ép phải đủ số lượng claim.
-
-KIỂM TRA TRƯỚC KHI GIỮ CLAIM:
-Chỉ giữ claim nếu trả lời CÓ cho cả 4 câu sau:
-1. Claim có nhân vật, sự kiện, thời gian, địa điểm, chức vụ, quan hệ hoặc hành động cụ thể không?
-2. Claim có thể được kiểm chứng bằng sử liệu không?
-3. Claim có thể đưa trực tiếp vào truy vấn RAG để tìm bằng chứng không?
-4. Claim có tránh được các cụm mơ hồ như “suy yếu”, “rối ren”, “nhiều yếu tố”, “sự chuyển dịch”, “tất yếu”, “mạnh mẽ”, “huy hoàng” không?
+QUY TẮC XỬ LÝ:
+1. Nếu câu có cả phần kiểm chứng được và phần chủ quan, chỉ giữ phần kiểm chứng được.
+2. Nếu câu có nhiều thông tin kiểm chứng, tách thành nhiều claim.
+3. Nếu câu có cụm dẫn nhập như "nghe nói", "có người cho rằng", "theo tài liệu", "tôi đọc được rằng", hãy bỏ phần dẫn nhập và giữ mệnh đề lịch sử cốt lõi.
+4. Không tự suy diễn, không khái quát hóa.
+5. Giữ thứ tự xuất hiện trong bài.
+6. Không lặp lại claim.
+7. Tối đa {settings.MAX_CLAIMS_PER_POST} claim.
+8. Chỉ trả về {{"claims":[]}} khi bài viết thật sự không có phát biểu lịch sử cụ thể nào có thể kiểm chứng.
 
 VÍ DỤ 1:
-Văn bản:
+Văn bản gốc:
 "Sau khi lên ngôi năm 980, Lê Hoàn đã lãnh đạo đánh bại quân Tống tại Chi Lăng. Ông là một vị vua vô cùng kiệt xuất."
 
-Output:
+Output JSON:
 {{
   "claims": [
     "Lê Hoàn lên ngôi vào năm 980.",
@@ -130,35 +80,25 @@ Output:
 }}
 
 VÍ DỤ 2:
-Văn bản:
-"Khi nghiên cứu về quá trình chuyển giao từ triều Lý sang triều Trần, Lý Chiêu Hoàng nhường ngôi cho Trần Cảnh vào năm 1225. Việc Tô Trung Từ nắm quyền rồi bị sát hại cũng được nhắc đến như một biến động chính trị."
+Văn bản gốc:
+"Nhà Trần là một trong những triều đại phát triển rực rỡ nhất trong lịch sử Việt Nam. Từ năm 1248, vua Trần Thái Tông đặt ra chức quan Hà đê sứ chuyên trách việc đắp đê điều ở các lộ."
 
-Output:
+Output JSON:
 {{
   "claims": [
-    "Lý Chiêu Hoàng nhường ngôi cho Trần Cảnh vào năm 1225.",
-    "Tô Trung Từ từng nắm quyền trong triều đình nhà Lý.",
-    "Tô Trung Từ bị sát hại."
+    "Từ năm 1248, vua Trần Thái Tông đặt ra chức quan Hà đê sứ.",
+    "Chức quan Hà đê sứ chuyên trách việc đắp đê điều ở các lộ."
   ]
 }}
 
 VÍ DỤ 3:
-Văn bản:
-"Triều đình suy yếu, lòng dân bất ổn, và một sự thay thế tất yếu của lịch sử bắt đầu xuất hiện."
+Văn bản gốc:
+"Về quân sự, nhà Trần gắn liền với tên tuổi của Hưng Đạo Vương Trần Quốc Tuấn, người đã lãnh đạo quân dân Đại Việt chống quân Nguyên Mông. Theo tôi, đây là một trong những giai đoạn hào hùng nhất của lịch sử dân tộc."
 
-Output:
-{{
-  "claims": []
-}}
-
-VÍ DỤ 4:
-Văn bản:
-"Nghe nói Trần Duệ Tông đích thân đi sứ sang nhà Minh để bàn việc tiến cống."
-
-Output:
+Output JSON:
 {{
   "claims": [
-    "Trần Duệ Tông đích thân đi sứ sang nhà Minh để bàn việc tiến cống."
+    "Hưng Đạo Vương Trần Quốc Tuấn lãnh đạo quân dân Đại Việt chống quân Nguyên Mông."
   ]
 }}
 
@@ -166,66 +106,121 @@ BÀI VIẾT CẦN XỬ LÝ:
 \"\"\"{content}\"\"\"
 
 Output JSON:
-{{
-  "claims": []
-}}
 """
 
 
 def build_fact_check_prompt(claim: str, evidence_text: str) -> str:
     return f"""
-Bạn là chuyên gia hỗ trợ kiểm chứng lịch sử Việt Nam.
+Bạn là bộ kiểm chứng claim lịch sử bằng evidence được cung cấp.
 
-NHIỆM VỤ:
-Đọc MỆNH ĐỀ và BẰNG CHỨNG được truy xuất từ sử liệu.
-Sau đó xác định mệnh đề thuộc một trong ba nhãn:
-SUPPORTED, REFUTED, NOT_ENOUGH_EVIDENCE.
-
-CHỈ trả về một JSON hợp lệ duy nhất.
+CHỈ dùng evidence bên dưới.
+KHÔNG dùng kiến thức ngoài evidence.
 KHÔNG markdown.
 KHÔNG giải thích ngoài JSON.
+CHỈ trả về một JSON hợp lệ duy nhất.
 
-MỆNH ĐỀ CẦN KIỂM CHỨNG:
+CLAIM:
 {claim}
 
-BẰNG CHỨNG TỪ SỬ LIỆU:
+EVIDENCE:
 {evidence_text}
+
+NHIỆM VỤ:
+Gán đúng một trong ba nhãn:
+SUPPORTED, REFUTED, NOT_ENOUGH_EVIDENCE.
+
+NGUYÊN TẮC QUAN TRỌNG NHẤT:
+Hãy kiểm chứng Ý CHÍNH của claim, không kiểm chứng từng chữ một cách máy móc.
+Explanation bắt buộc viết bằng tiếng Việt.
+Không dịch tên riêng.
+Không thay đổi thực thể trong claim.
+Không dùng tiếng Trung, tiếng Anh hoặc Hán tự.
+
+Ý chính thường gồm:
+- chủ thể chính;
+- hành động chính;
+- đối tượng chính;
+- kết quả chính;
+- thời gian hoặc địa điểm nếu claim nhấn mạnh.
 
 CÁCH CHỌN NHÃN:
 
 1. SUPPORTED
-Chọn SUPPORTED nếu bằng chứng xác nhận nội dung chính của mệnh đề.
-Bằng chứng không cần dùng đúng từng chữ giống mệnh đề, chỉ cần cùng ý nghĩa lịch sử.
+Chọn SUPPORTED nếu evidence xác nhận trực tiếp ý chính của claim.
+Evidence không cần giống từng chữ, nhưng phải cùng ý nghĩa lịch sử với claim.
 
 2. REFUTED
-Chọn REFUTED nếu bằng chứng mâu thuẫn rõ ràng với mệnh đề.
-Ví dụ mâu thuẫn về:
-- nhân vật
-- thời gian
-- địa điểm
-- hành động
-- kết quả sự kiện
-- quan hệ giữa các thực thể
+Chọn REFUTED nếu evidence phản bác ý chính của claim.
+
+Phải chọn REFUTED khi:
+- Claim nói một bên thắng, áp đảo, đầu hàng, chạy trốn, bị đánh bại hoặc đạt kết quả X,
+  nhưng evidence cho thấy kết quả ngược lại.
+- Claim nói một nhân vật/lực lượng làm hành động A,
+  nhưng evidence cho thấy nhân vật/lực lượng đó làm hành động khác không thể cùng đúng với A.
+- Claim gán vai trò sai cho một nhân vật/lực lượng,
+  trong khi evidence mô tả vai trò khác.
+- Claim nói một sự kiện xảy ra ở thời gian hoặc địa điểm cụ thể,
+  nhưng evidence cho thấy thời gian hoặc địa điểm khác.
+
+Evidence KHÔNG cần có từ phủ định như "không", "chưa", "không phải" mới được chọn REFUTED.
+Nếu evidence mô tả diễn biến hoặc kết quả không thể cùng đúng với claim, chọn REFUTED.
 
 3. NOT_ENOUGH_EVIDENCE
-Chọn NOT_ENOUGH_EVIDENCE nếu:
-- Bằng chứng không nhắc đến cùng sự kiện hoặc nhân vật trong mệnh đề.
-- Bằng chứng chỉ liên quan gián tiếp.
-- Bằng chứng thiếu chi tiết quan trọng.
-- Bằng chứng không đủ để xác nhận hoặc bác bỏ mệnh đề.
+Chọn NOT_ENOUGH_EVIDENCE nếu evidence:
+- không nói đến ý chính của claim;
+- chỉ cùng chủ đề nhưng không xác nhận hoặc phản bác claim;
+- chỉ liên quan gián tiếp;
+- thiếu thông tin để kết luận;
+- không đủ để xác nhận hay phản bác ý chính của claim.
 
-QUY TẮC QUAN TRỌNG:
-- Chỉ dựa vào BẰNG CHỨNG được cung cấp.
-- Không dùng kiến thức bên ngoài nếu bằng chứng không nêu.
-- Không suy diễn nhiều bước.
-- Chỉ chọn REFUTED khi bằng chứng bác bỏ rõ ràng.
-- Nếu phân vân giữa REFUTED và NOT_ENOUGH_EVIDENCE, chọn NOT_ENOUGH_EVIDENCE.
-- Nếu phân vân giữa SUPPORTED và NOT_ENOUGH_EVIDENCE, chọn NOT_ENOUGH_EVIDENCE.
-- Explanation phải ngắn, rõ, tối đa 2 câu.
-- Explanation cần cho người đọc biết vì sao claim được hỗ trợ, bị bác bỏ hoặc chưa đủ bằng chứng.
-- Không được xem "vua sai sứ", "vua cử sứ đoàn", "vua phái sứ đoàn" là bằng chứng cho claim "vua đích thân đi sứ" hoặc "vua đích thân dẫn đầu sứ đoàn".
-- SUPPORTED chỉ khi bằng chứng xác nhận trực tiếp chủ thể, hành động chính và đối tượng chính của mệnh đề.
-- Nếu bằng chứng chỉ nói người khác được vua sai đi, còn claim nói nhà vua đích thân đi, chọn NOT_ENOUGH_EVIDENCE.
+QUY TẮC ƯU TIÊN:
+- Nếu evidence phản bác ý chính của claim, chọn REFUTED.
+- Không chọn NOT_ENOUGH_EVIDENCE chỉ vì evidence không nhắc lại mọi chi tiết phụ của claim.
+- Nếu claim có nhiều chi tiết, nhưng evidence phản bác một chi tiết trung tâm làm claim không thể đúng, chọn REFUTED.
+- Nếu evidence chỉ thiếu chi tiết và không phản bác ý chính, chọn NOT_ENOUGH_EVIDENCE.
+- Nếu phân vân giữa REFUTED và NOT_ENOUGH_EVIDENCE, hỏi: "Evidence có mô tả kết quả/hành động ngược với claim không?"
+  Nếu có, chọn REFUTED.
+  Nếu không, chọn NOT_ENOUGH_EVIDENCE.
+
+VÍ DỤ 1:
+Claim:
+"Trương Văn Hổ áp đảo quân Đại Việt trong cuộc kháng chiến lần thứ ba."
+
+Evidence:
+"Trương Văn Hổ đại bại, đổ lương thực xuống biển rồi trốn chạy về Quỳnh Châu. Quân Đại Việt toàn thắng."
+
+Output:
+{{
+  "label": "REFUTED",
+  "explanation": "Bằng chứng cho thấy Trương Văn Hổ đại bại và quân Đại Việt toàn thắng, mâu thuẫn với claim rằng Trương Văn Hổ áp đảo Đại Việt."
+}}
+
+VÍ DỤ 2:
+Claim:
+"Trần Hưng Đạo đầu hàng quân Nguyên trên sông Bạch Đằng."
+
+Evidence:
+"Hưng Đạo vương đánh bại quân Nguyên ở sông Bạch Đằng."
+
+Output:
+{{
+  "label": "REFUTED",
+  "explanation": "Bằng chứng cho thấy Hưng Đạo vương đánh bại quân Nguyên ở sông Bạch Đằng, mâu thuẫn với claim rằng Trần Hưng Đạo đầu hàng quân Nguyên."
+}}
+
+VÍ DỤ 3:
+Claim:
+"Trần Duệ Tông đi sứ sang nhà Minh."
+
+Evidence:
+"Trần Duệ Tông là vua nhà Trần. Nhà Minh được thành lập năm 1368."
+
+Output:
+{{
+  "label": "NOT_ENOUGH_EVIDENCE",
+  "explanation": "Bằng chứng chỉ cung cấp thông tin liên quan đến Trần Duệ Tông và nhà Minh, nhưng không xác nhận hoặc phản bác việc Trần Duệ Tông đi sứ sang nhà Minh."
+}}
+
 ĐỊNH DẠNG OUTPUT:
 {{
   "label": "SUPPORTED | REFUTED | NOT_ENOUGH_EVIDENCE",
