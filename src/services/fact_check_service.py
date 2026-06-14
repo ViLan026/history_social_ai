@@ -51,6 +51,10 @@ class FactCheckService:
             "prompt": prompt,
             "stream": False,
             "format": "json",
+            "options": {
+                "temperature": 0.0,
+                "seed": 42,
+            },
         }
 
         logger.debug("Calling Ollama model=%s", settings.OLLAMA_MODEL)
@@ -219,7 +223,7 @@ class FactCheckService:
             return FactCheckResponse(
                 post_id=post_id,
                 # quality_score=0.5,
-                post_label="NOT_ENOUGH_EVIDENCE",
+                # post_label="NOT_ENOUGH_EVIDENCE",
                 claims=[],
             )
 
@@ -235,17 +239,17 @@ class FactCheckService:
         # quality_score = max(0.0, min(1.0, 1.0 - avg_penalty))
 
         # Determine post-level label
-        labels = {r.label for r in results}
-        if "REFUTED" in labels:
-            post_label = "REFUTED"
-        elif labels == {"SUPPORTED"}:
-            post_label = "SUPPORTED"
-        else:
-            post_label = "NOT_ENOUGH_EVIDENCE"
+        # labels = {r.label for r in results}
+        # if "REFUTED" in labels:
+        #     post_label = "REFUTED"
+        # elif labels == {"SUPPORTED"}:
+        #     post_label = "SUPPORTED"
+        # else:
+        #     post_label = "NOT_ENOUGH_EVIDENCE"
 
         return FactCheckResponse(
             post_id=post_id,
             # quality_score=round(quality_score, 4),
-            post_label=post_label,
+            # post_label=post_label,
             claims=results,
         )

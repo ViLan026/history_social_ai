@@ -109,15 +109,19 @@ Output JSON:
 """
 
 
+
+
+
 def build_fact_check_prompt(claim: str, evidence_text: str) -> str:
     return f"""
 Bạn là bộ kiểm chứng claim lịch sử bằng evidence được cung cấp.
 
 CHỈ dùng evidence bên dưới.
 KHÔNG dùng kiến thức ngoài evidence.
+KHÔNG suy luận xa.
+CHỈ trả về một JSON hợp lệ duy nhất.
 KHÔNG markdown.
 KHÔNG giải thích ngoài JSON.
-CHỈ trả về một JSON hợp lệ duy nhất.
 
 CLAIM:
 {claim}
@@ -129,97 +133,72 @@ NHIỆM VỤ:
 Gán đúng một trong ba nhãn:
 SUPPORTED, REFUTED, NOT_ENOUGH_EVIDENCE.
 
-NGUYÊN TẮC QUAN TRỌNG NHẤT:
-Hãy kiểm chứng Ý CHÍNH của claim, không kiểm chứng từng chữ một cách máy móc.
-Explanation bắt buộc viết bằng tiếng Việt.
-Không dịch tên riêng.
-Không thay đổi thực thể trong claim.
-Không dùng tiếng Trung, tiếng Anh hoặc Hán tự.
-
-Ý chính thường gồm:
-- chủ thể chính;
-- hành động chính;
-- đối tượng chính;
-- kết quả chính;
-- thời gian hoặc địa điểm nếu claim nhấn mạnh.
-
 CÁCH CHỌN NHÃN:
 
 1. SUPPORTED
-Chọn SUPPORTED nếu evidence xác nhận trực tiếp ý chính của claim.
-Evidence không cần giống từng chữ, nhưng phải cùng ý nghĩa lịch sử với claim.
+Chọn SUPPORTED chỉ khi evidence xác nhận trực tiếp nội dung chính của claim.
+Evidence phải khớp với chủ thể chính, hành động hoặc quan hệ chính, và chi tiết quan trọng trong claim.
+Evidence không cần giống từng chữ, nhưng phải cùng ý nghĩa lịch sử.
 
 2. REFUTED
-Chọn REFUTED nếu evidence phản bác ý chính của claim.
-
-Phải chọn REFUTED khi:
-- Claim nói một bên thắng, áp đảo, đầu hàng, chạy trốn, bị đánh bại hoặc đạt kết quả X,
-  nhưng evidence cho thấy kết quả ngược lại.
-- Claim nói một nhân vật/lực lượng làm hành động A,
-  nhưng evidence cho thấy nhân vật/lực lượng đó làm hành động khác không thể cùng đúng với A.
-- Claim gán vai trò sai cho một nhân vật/lực lượng,
-  trong khi evidence mô tả vai trò khác.
-- Claim nói một sự kiện xảy ra ở thời gian hoặc địa điểm cụ thể,
-  nhưng evidence cho thấy thời gian hoặc địa điểm khác.
-
-Evidence KHÔNG cần có từ phủ định như "không", "chưa", "không phải" mới được chọn REFUTED.
-Nếu evidence mô tả diễn biến hoặc kết quả không thể cùng đúng với claim, chọn REFUTED.
+Chọn REFUTED chỉ khi evidence mâu thuẫn trực tiếp với nội dung chính của claim.
+Mâu thuẫn có thể nằm ở nhân vật, thời gian, địa điểm, hành động, kết quả hoặc quan hệ giữa các thực thể.
 
 3. NOT_ENOUGH_EVIDENCE
 Chọn NOT_ENOUGH_EVIDENCE nếu evidence:
-- không nói đến ý chính của claim;
-- chỉ cùng chủ đề nhưng không xác nhận hoặc phản bác claim;
+- không nhắc đến nội dung chính của claim;
+- chỉ cùng chủ đề nhưng không xác nhận claim;
 - chỉ liên quan gián tiếp;
-- thiếu thông tin để kết luận;
-- không đủ để xác nhận hay phản bác ý chính của claim.
+- thiếu chi tiết quan trọng;
+- không đủ để xác nhận hoặc bác bỏ claim;
+- claim chứa đánh giá chủ quan hoặc so sánh không có tiêu chí rõ.
 
-QUY TẮC ƯU TIÊN:
-- Nếu evidence phản bác ý chính của claim, chọn REFUTED.
-- Không chọn NOT_ENOUGH_EVIDENCE chỉ vì evidence không nhắc lại mọi chi tiết phụ của claim.
-- Nếu claim có nhiều chi tiết, nhưng evidence phản bác một chi tiết trung tâm làm claim không thể đúng, chọn REFUTED.
-- Nếu evidence chỉ thiếu chi tiết và không phản bác ý chính, chọn NOT_ENOUGH_EVIDENCE.
-- Nếu phân vân giữa REFUTED và NOT_ENOUGH_EVIDENCE, hỏi: "Evidence có mô tả kết quả/hành động ngược với claim không?"
-  Nếu có, chọn REFUTED.
-  Nếu không, chọn NOT_ENOUGH_EVIDENCE.
+QUY TẮC QUAN TRỌNG:
+- Evidence cùng nhân vật, cùng triều đại hoặc cùng sự kiện chưa đủ để chọn SUPPORTED.
+- Chỉ chọn SUPPORTED khi evidence xác nhận trực tiếp claim.
+- Chỉ chọn REFUTED khi evidence bác bỏ trực tiếp claim.
+- Nếu phân vân, chọn NOT_ENOUGH_EVIDENCE.
+- Không biến thông tin liên quan thành bằng chứng xác nhận.
+- Explanation tối đa 2 câu, nói rõ vì sao evidence hỗ trợ, phản bác hoặc chưa đủ.
 
-VÍ DỤ 1:
-Claim:
-"Trương Văn Hổ áp đảo quân Đại Việt trong cuộc kháng chiến lần thứ ba."
+CÁCH VIẾT EXPLANATION:
 
-Evidence:
-"Trương Văn Hổ đại bại, đổ lương thực xuống biển rồi trốn chạy về Quỳnh Châu. Quân Đại Việt toàn thắng."
+Explanation được hiển thị trực tiếp cho người dùng.
 
-Output:
-{{
-  "label": "REFUTED",
-  "explanation": "Bằng chứng cho thấy Trương Văn Hổ đại bại và quân Đại Việt toàn thắng, mâu thuẫn với claim rằng Trương Văn Hổ áp đảo Đại Việt."
-}}
+BẮT BUỘC:
+- Viết bằng tiếng Việt tự nhiên, tối đa 2 câu.
+- Đi thẳng vào nội dung lịch sử đang được kiểm chứng.
+- Không mô tả quá trình kiểm chứng.
+- Không nói rằng hệ thống đã đọc, tìm thấy, đối chiếu hoặc xác nhận điều gì.
+- Không mở đầu bằng các cụm như:
+  "Evidence cho thấy",
+  "Evidences xác nhận",
+  "Nguồn tư liệu cho biết",
+  "Thông tin được cung cấp",
+  "Các đoạn trích",
+  "Claim này",
+  "Ý chính của claim".
 
-VÍ DỤ 2:
-Claim:
-"Trần Hưng Đạo đầu hàng quân Nguyên trên sông Bạch Đằng."
+CẤM sử dụng trong explanation các từ:
+"claim", "evidence", "evidences", "chunk", "retrieval",
+"nguồn", "tư liệu", "đoạn trích", "dữ liệu được cung cấp".
 
-Evidence:
-"Hưng Đạo vương đánh bại quân Nguyên ở sông Bạch Đằng."
+CÁCH DIỄN ĐẠT:
 
-Output:
-{{
-  "label": "REFUTED",
-  "explanation": "Bằng chứng cho thấy Hưng Đạo vương đánh bại quân Nguyên ở sông Bạch Đằng, mâu thuẫn với claim rằng Trần Hưng Đạo đầu hàng quân Nguyên."
-}}
+- Nếu SUPPORTED:
+  Nêu lại ngắn gọn thông tin lịch sử phù hợp, sau đó kết luận:
+  "Nội dung này phù hợp với bài viết."
 
-VÍ DỤ 3:
-Claim:
-"Trần Duệ Tông đi sứ sang nhà Minh."
+- Nếu REFUTED:
+  Nêu thông tin lịch sử khác với bài viết, sau đó chỉ rõ điểm sai:
+  "Vì vậy, nội dung ... trong bài viết không phù hợp."
 
-Evidence:
-"Trần Duệ Tông là vua nhà Trần. Nhà Minh được thành lập năm 1368."
+- Nếu NOT_ENOUGH_EVIDENCE:
+  Nêu rõ thông tin nào chưa được xác định:
+  "Chưa có đủ thông tin để xác nhận hoặc bác bỏ việc ..."
 
-Output:
-{{
-  "label": "NOT_ENOUGH_EVIDENCE",
-  "explanation": "Bằng chứng chỉ cung cấp thông tin liên quan đến Trần Duệ Tông và nhà Minh, nhưng không xác nhận hoặc phản bác việc Trần Duệ Tông đi sứ sang nhà Minh."
-}}
+Không giải thích bằng thuật ngữ kỹ thuật.
+Không nhắc đến cách hệ thống đưa ra nhãn.
 
 ĐỊNH DẠNG OUTPUT:
 {{

@@ -32,7 +32,7 @@ class Settings(BaseSettings):
 
     # Retrieval & processing knobs
     TOP_K: int = 5
-    MAX_CLAIMS_PER_POST: int = 5
+    MAX_CLAIMS_PER_POST: int = 10
     MAX_EVIDENCE_CHARS: int = 800
     MIN_EVIDENCE_SCORE: float = 0.0
     REQUEST_TIMEOUT: int = 120

@@ -1,13 +1,13 @@
 {
-  "created_at": "2026-06-03T23:13:45",
+  "created_at": "2026-06-14T04:26:03",
   "detail_csv": "D:\\final_project\\history_social_ai\\experiments\\fact_check_eval\\results\\fact_check_eval_details.csv",
   "summary_csv": "D:\\final_project\\history_social_ai\\experiments\\fact_check_eval\\results\\fact_check_eval_summary.csv",
   "summary": [
     {
       "label": "OVERALL",
       "total": 60,
-      "correct": 27,
-      "accuracy": 0.45
+      "correct": 35,
+      "accuracy": 0.5833
     },
     {
       "label": "NOT_ENOUGH_EVIDENCE",
@@ -24,18 +24,19 @@
     {
       "label": "SUPPORTED",
       "total": 20,
-      "correct": 4,
-      "accuracy": 0.2
+      "correct": 12,
+      "accuracy": 0.6
     }
   ],
   "confusion_matrix": {
     "SUPPORTED": {
-      "SUPPORTED": 4,
-      "NOT_ENOUGH_EVIDENCE": 16
+      "SUPPORTED": 12,
+      "NOT_ENOUGH_EVIDENCE": 8
     },
     "REFUTED": {
       "REFUTED": 3,
-      "NOT_ENOUGH_EVIDENCE": 17
+      "NOT_ENOUGH_EVIDENCE": 15,
+      "SUPPORTED": 2
     },
     "NOT_ENOUGH_EVIDENCE": {
       "NOT_ENOUGH_EVIDENCE": 20
@@ -48,18 +49,18 @@
       "gold_label": "SUPPORTED",
       "pred_label": "SUPPORTED",
       "is_correct": true,
-      "explanation": "Bằng chứng liên quan đến việc đặt chức Hà đê sứ từ năm 1248 trong sách Vương Triều Trần xác nhận thông tin chính của mệnh đề.",
+      "explanation": "Thông tin về chức Hà đê sứ được đặt vào năm 1248 phù hợp với thông tin trong sách Vương Triều Trần.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         587
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.649438,
       "top_evidence_text": "Triều Trần cũng rất chăm lo đến công việc khẩn hoang, đê, làm thủy lợi.\nNăm 1248 nhà Trần đặt chức Hà đê sứ ở các lộ chuyên trách việc xây đắp, tu bổ và bảo vệ đê. Nhiệm vụ của đê sứ được xác định rõ ràng:\n\"Mỗi năm vào tháng Giêng, đê sứ đốc thúc dân chúng trong vùng, không phân biệt sang hèn, già trẻ, đều đi đắp đê.",
       "evidence": [
         {
           "chunk_id": "019e566b-b492-7753-8b13-287baf162983",
-          "score": null,
+          "score": 0.649438,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             587
@@ -69,7 +70,7 @@
         },
         {
           "chunk_id": "019e5662-20f0-7d32-b535-00bd0ab1f276",
-          "score": null,
+          "score": 0.6135907,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             62,
@@ -80,7 +81,7 @@
         },
         {
           "chunk_id": "019e5664-3507-7ac4-a617-b877d2669a20",
-          "score": null,
+          "score": 0.6041368,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             205
@@ -92,7 +93,7 @@
         },
         {
           "chunk_id": "019e566c-5b68-709e-ba60-e414e806d25a",
-          "score": null,
+          "score": 0.5876583,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             613
@@ -102,7 +103,7 @@
         },
         {
           "chunk_id": "019e566e-b8fb-72fd-b634-7c1cb996dc08",
-          "score": null,
+          "score": 0.5740245,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             730
@@ -119,18 +120,18 @@
       "gold_label": "SUPPORTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng không cung cấp thông tin chi tiết về việc nhà Trần áp dụng phép in dấu ngón tay lên văn khế để hạn chế gian lận.",
+      "explanation": "Chưa có thông tin cụ thể về việc nhà Trần áp dụng phép in dấu ngón tay lên văn khế để hạn chế gian lận.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         312
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.48900518,
       "top_evidence_text": " Nội dung các quy định cho thấy, nhà Trần chú trọng trước hết đến công cuộc kiện toàn bộ máy quản lý hành chính và hoàn thiện chế độ quan lại, với tổng số 56 quy định được ban hành. Thứ đến, là các quy định liên quan đến lĩnh vực hình sự - tố tụng, nhằm tăng cường quản lý và ổn định xã hội. Đến thời Trần, thể thức tố tụng đã tiến một bước dài. Theo quy định thời kỳ này, tất cả đơn từ, thư khế,",
       "evidence": [
         {
           "chunk_id": "019e5666-4448-7235-8881-d811f564d9b8",
-          "score": null,
+          "score": 0.48900518,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             312
@@ -140,7 +141,7 @@
         },
         {
           "chunk_id": "019e566c-f8ea-7d32-8d8f-a0894d42ece5",
-          "score": null,
+          "score": 0.47623602,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             639
@@ -150,7 +151,7 @@
         },
         {
           "chunk_id": "019e565d-7503-7004-85e8-075ca9d6162b",
-          "score": null,
+          "score": 0.46233064,
           "book_name": "Khâm Định Việt Sử Thông Giám Cương Mục",
           "pages": [
             326
@@ -160,7 +161,7 @@
         },
         {
           "chunk_id": "019e5664-34ea-7838-8f26-19edd3edc393",
-          "score": null,
+          "score": 0.45431286,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             204
@@ -170,7 +171,7 @@
         },
         {
           "chunk_id": "019e5666-7f0a-72de-85ab-98f8829b0714",
-          "score": null,
+          "score": 0.4539542,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             320
@@ -187,20 +188,20 @@
       "claim_id": "eval_0003",
       "claim": "Nhà Trần biên soạn bộ Quốc triều thông chế.",
       "gold_label": "SUPPORTED",
-      "pred_label": "NOT_ENOUGH_EVIDENCE",
-      "is_correct": false,
-      "explanation": "Bằng chứng không cung cấp thông tin cụ thể về việc Nhà Trần biên soạn bộ Quốc triều thông chế.",
+      "pred_label": "SUPPORTED",
+      "is_correct": true,
+      "explanation": "Thông tin về Quốc triều thông chế được ghi rõ trong các trang sách, phù hợp với nội dung của claim.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         586
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.61108935,
       "top_evidence_text": "Quy chế về chức năng, hoạt động của nhà nước đời Trần đã được thể chế hoá trong bộ luật mang tên Jỳnh luật thư (1 quyền) và trong các sách điển lệ mang tên Quốc triều thông chế (20 quyền), Quốc triều thường lệ hay Kiến trung thường lệ (10 quyền), Hoàng triều đại điển (10 quyển).\n",
       "evidence": [
         {
           "chunk_id": "019e566b-b474-7668-b0b9-69e71e2798d2",
-          "score": null,
+          "score": 0.61108935,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             586
@@ -210,7 +211,7 @@
         },
         {
           "chunk_id": "019e5666-3828-7e94-ab49-2db31f1b84a4",
-          "score": null,
+          "score": 0.608278,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             309
@@ -220,7 +221,7 @@
         },
         {
           "chunk_id": "019e5666-3831-72fb-a9c1-b1a7db5c932f",
-          "score": null,
+          "score": 0.5985458,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             310
@@ -230,7 +231,7 @@
         },
         {
           "chunk_id": "019e566e-b92f-7239-8de6-1df837f6e95e",
-          "score": null,
+          "score": 0.56846017,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             731,
@@ -243,7 +244,7 @@
         },
         {
           "chunk_id": "019e566e-b925-7e43-a46d-184ad2730d1d",
-          "score": null,
+          "score": 0.56298286,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             731
@@ -258,20 +259,20 @@
       "claim_id": "eval_0004",
       "claim": "Nhà Trần biên soạn bộ Quốc triều thường lễ.",
       "gold_label": "SUPPORTED",
-      "pred_label": "NOT_ENOUGH_EVIDENCE",
-      "is_correct": false,
-      "explanation": "Những bằng chứng chỉ đề cập đến việc biên soạn các quy chế và hình thư, nhưng không cụ thể xác nhận việc Nhà Trần biên soạn Quốc triều thường lễ.",
+      "pred_label": "SUPPORTED",
+      "is_correct": true,
+      "explanation": "Thông tin về Quốc triều thông chế và Quốc triều thường lệ trong sách Vương Triều Trần xác nhận việc nhà Trần biên soạn bộ quy tắc chính trị, cho thấy nội dung của claim là đúng.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         309
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.588066,
       "top_evidence_text": "1- Quốc triều thông chế, gồỒm 290 quyển, ban hành năm 1230 trên cơ sở “khảo xét các luật lệ của triều trước” và “sửa đối hình luật lễ nghĩ”.\n2- Quốc triều thường lễ, 10 quyền, năm 1230, thực tế là ghi chép lại các “công việc của quốc triều” (triều Trần).\n3- Công uốn cách thức, năm 1299, thời vua Trần Anh Tông.\n4- Hoàng triều đại điển, năm 1341, do Truơng Hán Siêu, Lang trung Hữu ty Môn hạ sảnh và Kinh đô đại doãn Nguyễn Trung Ngạn biên soạn.",
       "evidence": [
         {
           "chunk_id": "019e5666-3828-7e94-ab49-2db31f1b84a4",
-          "score": null,
+          "score": 0.588066,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             309
@@ -281,7 +282,7 @@
         },
         {
           "chunk_id": "019e566b-b474-7668-b0b9-69e71e2798d2",
-          "score": null,
+          "score": 0.5493821,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             586
@@ -291,7 +292,7 @@
         },
         {
           "chunk_id": "019e5666-3831-72fb-a9c1-b1a7db5c932f",
-          "score": null,
+          "score": 0.54696506,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             310
@@ -301,7 +302,7 @@
         },
         {
           "chunk_id": "019e5665-0c8e-7990-9a75-e331a9c03e78",
-          "score": null,
+          "score": 0.5381264,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             244,
@@ -312,7 +313,7 @@
         },
         {
           "chunk_id": "019e565c-83db-7231-baf8-c70ea8b2ed98",
-          "score": null,
+          "score": 0.5291456,
           "book_name": "Khâm Định Việt Sử Thông Giám Cương Mục",
           "pages": [
             278
@@ -329,18 +330,18 @@
       "gold_label": "SUPPORTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng chỉ đề cập đến việc ban hành các quy định và thông chế về quân sự, chính trị, hình luật, tư hữu ruộng đất và lương bổng. Không có thông tin cụ thể về việc nhà Trần đã ban hành các quy định về luật lệ trong năm 1226.",
+      "explanation": "Chưa có thông tin cụ thể về việc nhà Trần ban hành các quy định về luật lệ vào năm 1226.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         731
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.581642,
       "top_evidence_text": "Có thể nói vai trò quân sự của nhà vua ở thời kỳ này rất nổi bật.\nVề quyền hành chính trị, nhà vua cũng là người thâu tóm toàn bộ. Vua là người vừa đặt ra nghi lễ trong triều, vua là người cắt đặt quan chức, vua lại là người trông coi về hình luật.",
       "evidence": [
         {
           "chunk_id": "019e566e-b925-7e43-a46d-184ad2730d1d",
-          "score": null,
+          "score": 0.581642,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             731
@@ -350,7 +351,7 @@
         },
         {
           "chunk_id": "019e566e-b92f-7239-8de6-1df837f6e95e",
-          "score": null,
+          "score": 0.58005816,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             731,
@@ -363,7 +364,7 @@
         },
         {
           "chunk_id": "019e5666-3877-7096-814d-dc65969d8ee4",
-          "score": null,
+          "score": 0.5699318,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             312
@@ -373,7 +374,7 @@
         },
         {
           "chunk_id": "019e5666-7f02-73df-a62c-0c126be6a1ad",
-          "score": null,
+          "score": 0.55958414,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             320
@@ -383,7 +384,7 @@
         },
         {
           "chunk_id": "019e5666-206a-7f65-a733-c39677085a22",
-          "score": null,
+          "score": 0.5492625,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             298
@@ -398,20 +399,20 @@
       "claim_id": "eval_0006",
       "claim": "Năm 1242, triều đình nhà Trần chia cả nước thành 12 lộ.",
       "gold_label": "SUPPORTED",
-      "pred_label": "NOT_ENOUGH_EVIDENCE",
-      "is_correct": false,
-      "explanation": "Bằng chứng không đề cập đến tên và số lượng cụ thể của các lộ thời nhà Trần.",
+      "pred_label": "SUPPORTED",
+      "is_correct": true,
+      "explanation": "Thông tin về việc chia nước thành 12 lộ vào năm 1242 trong sách Vương Triều Trần và Khâm Định Việt Sử Thông Giám Cương Mục phù hợp với nội dung của claim.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         294
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.62260103,
       "top_evidence_text": "Ö cấp địa phương, nhà Trần đã cố gắng sắp xếp lại và thống nhất các đơn vị hành chính, cả về tên gọi, cơ cấu tổ chức và cách thức quản lý. Một hệ thống mới xuất hiện, gồm chủ yếu các lộ hay phủ, dưới có huyện, châu, cấp cơ sở là hương, xã.\nTrên cơ sở các lộ, phủ, châu, trại thời Lý, năm 1242 nhà Trần đổi lập thành 12 lộ, tuy rằng khó có thể biết tên đầy đủ và chính xác của các lộ này. Căn cứ theo Đại Việt sử bý toàn thư và Khâm định Việt sử thông giám cương mục có thể tạm xác định tên gọi và vị trí của 12 lộ thời Trần như sau:\n",
       "evidence": [
         {
           "chunk_id": "019e5666-05ef-74c2-9f4e-3bfb84e7436b",
-          "score": null,
+          "score": 0.62260103,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             294
@@ -421,7 +422,7 @@
         },
         {
           "chunk_id": "019e565e-0aa1-7925-9f60-cf4010848b28",
-          "score": null,
+          "score": 0.55865085,
           "book_name": "Việt Sử Toàn Thư",
           "pages": [
             164
@@ -431,7 +432,7 @@
         },
         {
           "chunk_id": "019e565a-298c-787b-b920-d1852d55891a",
-          "score": null,
+          "score": 0.5586466,
           "book_name": "Khâm Định Việt Sử Thông Giám Cương Mục",
           "pages": [
             199
@@ -441,7 +442,7 @@
         },
         {
           "chunk_id": "019e566c-ad05-76e8-a0db-7b1ff2780b45",
-          "score": null,
+          "score": 0.55345273,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             625
@@ -451,7 +452,7 @@
         },
         {
           "chunk_id": "019e5661-fe8b-77c7-807b-67daf06309db",
-          "score": null,
+          "score": 0.5517645,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             58
@@ -468,18 +469,18 @@
       "gold_label": "SUPPORTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng chỉ đề cập đến việc tái cấu trúc và quản lý các đơn vị hành chính, nhưng không có thông tin trực tiếp về việc đặt chức An phủ trong năm 1242.",
+      "explanation": "Chưa có thông tin xác nhận việc nhà Trần đặt chức An phủ vào năm 1242.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         54
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.6369159,
       "top_evidence_text": "Năm 1236, định quan hàm cho các đại thân; phàm người tôn thất vào chính phủ, hoặc ba chức thái, Thái uý, Tư đồ, tả hữu Tướng quốc, đều cho kiêm chức Kiểm hiệu Đặc tiến khai phủ nghiỉ đồng Tam ty Bình chương sự.\n",
       "evidence": [
         {
           "chunk_id": "019e5661-e09e-7136-a45c-73bd4c0c6ac9",
-          "score": null,
+          "score": 0.6369159,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             54
@@ -489,7 +490,7 @@
         },
         {
           "chunk_id": "019e566b-b464-7ad0-9803-39f140de3911",
-          "score": null,
+          "score": 0.6354471,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             586
@@ -499,7 +500,7 @@
         },
         {
           "chunk_id": "019e5668-4fc9-74bf-8991-75be35fbaabf",
-          "score": null,
+          "score": 0.634593,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             375
@@ -509,7 +510,7 @@
         },
         {
           "chunk_id": "019e5666-061f-7ae8-b4a4-9464fd5add07",
-          "score": null,
+          "score": 0.63445514,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             296
@@ -519,7 +520,7 @@
         },
         {
           "chunk_id": "019e566e-b925-7e43-a46d-184ad2730d1d",
-          "score": null,
+          "score": 0.60838294,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             731
@@ -536,18 +537,18 @@
       "gold_label": "SUPPORTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng chỉ đề cập đến tái cấu trúc các đơn vị hành chính và quản lý kinh thành, nhưng không trực tiếp xác nhận việc đặt chức Trấn phủ năm 1242.",
+      "explanation": "Chưa có thông tin xác nhận việc nhà Trần đặt chức Trấn phủ vào năm 1242.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         54
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.6605639,
       "top_evidence_text": "Năm 1236, định quan hàm cho các đại thân; phàm người tôn thất vào chính phủ, hoặc ba chức thái, Thái uý, Tư đồ, tả hữu Tướng quốc, đều cho kiêm chức Kiểm hiệu Đặc tiến khai phủ nghiỉ đồng Tam ty Bình chương sự.\n",
       "evidence": [
         {
           "chunk_id": "019e5661-e09e-7136-a45c-73bd4c0c6ac9",
-          "score": null,
+          "score": 0.6605639,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             54
@@ -557,7 +558,7 @@
         },
         {
           "chunk_id": "019e566b-b464-7ad0-9803-39f140de3911",
-          "score": null,
+          "score": 0.6541611,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             586
@@ -567,7 +568,7 @@
         },
         {
           "chunk_id": "019e5668-4fc9-74bf-8991-75be35fbaabf",
-          "score": null,
+          "score": 0.6186193,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             375
@@ -577,7 +578,7 @@
         },
         {
           "chunk_id": "019e5666-0617-7cb7-bc81-5b6fb70bbfbf",
-          "score": null,
+          "score": 0.6138048,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             296
@@ -587,7 +588,7 @@
         },
         {
           "chunk_id": "019e5666-061f-7ae8-b4a4-9464fd5add07",
-          "score": null,
+          "score": 0.6097118,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             296
@@ -604,18 +605,18 @@
       "gold_label": "SUPPORTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng không đề cập trực tiếp đến việc sử dụng văn thần làm Tri phủ và Tri châu, cũng như không có thông tin chi tiết về mức độ phổ biến hơn trước.",
+      "explanation": "Chưa có đủ thông tin để xác nhận hoặc bác bỏ việc văn thần được sử dụng làm Tri phủ và Tri châu trong thời nhà Trần.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         169
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.5449489,
       "top_evidence_text": "Vua Trần Anh Tông rất chú ý giữ gìn sự tôn nghiêm của hoàng tộc và triều đình. Ngay sau khi lên ngôi vua, vào ngày mồng 7 tháng 2 năm Giáp Ngọ (năm 1294), triều đình Anh Tông ban bố các chữ quốc húy: chữ húy của vua là Thuyên, chữ húy của Thượng hoàng Nhân Tông là Khâm, chữ húy của Thánh Tông là Hoảng, chữ húy của Thái Tông là Cảnh,",
       "evidence": [
         {
           "chunk_id": "019e5663-ac9d-7eb2-a622-39fd82ae8842",
-          "score": null,
+          "score": 0.5449489,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             169
@@ -625,7 +626,7 @@
         },
         {
           "chunk_id": "019e5666-206a-7f65-a733-c39677085a22",
-          "score": null,
+          "score": 0.5381373,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             298
@@ -635,7 +636,7 @@
         },
         {
           "chunk_id": "019e5668-4fc9-74bf-8991-75be35fbaabf",
-          "score": null,
+          "score": 0.53563976,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             375
@@ -645,7 +646,7 @@
         },
         {
           "chunk_id": "019e5665-b453-7032-941f-2eaa7b2660a4",
-          "score": null,
+          "score": 0.53196335,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             286
@@ -655,7 +656,7 @@
         },
         {
           "chunk_id": "019e5659-e68d-7877-a6e6-07f3932b47b1",
-          "score": null,
+          "score": 0.5258865,
           "book_name": "Khâm Định Việt Sử Thông Giám Cương Mục",
           "pages": [
             190,
@@ -675,18 +676,18 @@
       "gold_label": "SUPPORTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng không đề cập trực tiếp đến việc hương được gọi là giáp trước năm 1297, mà chỉ nói về quá trình đổi tên từ giáp thành hương.",
+      "explanation": "Chưa có đủ thông tin để xác nhận hoặc bác bỏ việc trước năm 1297, hương được gọi là giáp.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         586
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.6172931,
       "top_evidence_text": " Chức quan đứng đầu kinh thành được tuyển chọn chặt chẽ, phải trải qua chức An phủ sứ các lộ, pồi An phủ sứ phủ Thiên Trường và kinh qua Thẩm hình viện, sau đó mới được xết bổ nhiệm.\nDưới lộ có phủ, châu, rồi đến hương hay huyện, cuối cùng là xã.\nMiền núi còn có trại, sách. Tuy trước đây Khúc Thừa Hạo đã đổi bương làm giápl, nhưng trên thực tế cho đến đời Trần các hương vẫn còn tồn tại. Vào đầu đời Trần, sử biên niên còn nhắc đến những tên hương như Tức Mặc (1231), Ba Điểm, Bàng Hà, Ma Lôi (1287). Năm 1297 nhà Trần đổi giáp thành hương. Như vậy hương là một cấp hành chính còn tồn tại phổ biến dưới triều Trần, gần tương đương như huyện.\n",
       "evidence": [
         {
           "chunk_id": "019e566b-b458-794d-8ab6-7c50a05c587b",
-          "score": null,
+          "score": 0.6172931,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             586
@@ -696,7 +697,7 @@
         },
         {
           "chunk_id": "019e5661-feb3-79c9-a3c8-c53317e81dd2",
-          "score": null,
+          "score": 0.59576535,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             60
@@ -708,7 +709,7 @@
         },
         {
           "chunk_id": "019e566c-3eba-7810-a51c-0ef08b4501b5",
-          "score": null,
+          "score": 0.5578425,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             603
@@ -721,7 +722,7 @@
         },
         {
           "chunk_id": "019e5666-05ef-74c2-9f4e-3bfb84e7436b",
-          "score": null,
+          "score": 0.5480718,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             294
@@ -731,7 +732,7 @@
         },
         {
           "chunk_id": "019e566b-b464-7ad0-9803-39f140de3911",
-          "score": null,
+          "score": 0.53961235,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             586
@@ -748,18 +749,18 @@
       "gold_label": "SUPPORTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng chỉ cung cấp thông tin về lịch sử của hương và giáp nhưng không xác nhận rõ ràng khi nào đã đổi từ giáp thành hương.",
+      "explanation": "Chưa có đủ thông tin để xác nhận hoặc bác bỏ việc sau năm 1297, đơn vị hành chính giáp được đổi tên thành hương.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         586
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.6187942,
       "top_evidence_text": " Chức quan đứng đầu kinh thành được tuyển chọn chặt chẽ, phải trải qua chức An phủ sứ các lộ, pồi An phủ sứ phủ Thiên Trường và kinh qua Thẩm hình viện, sau đó mới được xết bổ nhiệm.\nDưới lộ có phủ, châu, rồi đến hương hay huyện, cuối cùng là xã.\nMiền núi còn có trại, sách. Tuy trước đây Khúc Thừa Hạo đã đổi bương làm giápl, nhưng trên thực tế cho đến đời Trần các hương vẫn còn tồn tại. Vào đầu đời Trần, sử biên niên còn nhắc đến những tên hương như Tức Mặc (1231), Ba Điểm, Bàng Hà, Ma Lôi (1287). Năm 1297 nhà Trần đổi giáp thành hương. Như vậy hương là một cấp hành chính còn tồn tại phổ biến dưới triều Trần, gần tương đương như huyện.\n",
       "evidence": [
         {
           "chunk_id": "019e566b-b458-794d-8ab6-7c50a05c587b",
-          "score": null,
+          "score": 0.6187942,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             586
@@ -769,7 +770,7 @@
         },
         {
           "chunk_id": "019e566c-3eba-7810-a51c-0ef08b4501b5",
-          "score": null,
+          "score": 0.5947063,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             603
@@ -782,7 +783,7 @@
         },
         {
           "chunk_id": "019e5661-feb3-79c9-a3c8-c53317e81dd2",
-          "score": null,
+          "score": 0.5684052,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             60
@@ -794,7 +795,7 @@
         },
         {
           "chunk_id": "019e5666-05ef-74c2-9f4e-3bfb84e7436b",
-          "score": null,
+          "score": 0.5517807,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             294
@@ -804,7 +805,7 @@
         },
         {
           "chunk_id": "019e5662-92e8-705d-a435-d123747a250a",
-          "score": null,
+          "score": 0.54695004,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             96,
@@ -820,21 +821,21 @@
       "claim_id": "eval_0012",
       "claim": "Nhà Trần mở khoa thi lấy Trạng nguyên vào năm 1266.",
       "gold_label": "SUPPORTED",
-      "pred_label": "NOT_ENOUGH_EVIDENCE",
-      "is_correct": false,
-      "explanation": "Những tài liệu chỉ đề cập đến việc mở các khoa thi và số lượng trạng nguyên, nhưng không có thông tin cụ thể về năm 1266 và việc lấy Trạng Nguyên.",
+      "pred_label": "SUPPORTED",
+      "is_correct": true,
+      "explanation": "Thông tin về khoa thi mở năm 1266 và việc Nguyễn Hiền đỗ Trạng nguyên phù hợp với nội dung bài viết.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         383,
         384
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.6323153,
       "top_evidence_text": " Trong khoa thi này, Nguyễn Hiền (lúc đó mới 12 tuổi) đỗ Trạngnguyên, Đặng Ma La (lúc đó mới 14 tuổi) đỗ Thám hoa, Lê Văn Hưu (lúc đó 17 tuổi) đỗ Bảng nhãn!. Từ đây, nhà nước cũng định lệ cứ 7 năm tổ chức một khoa thi Thái học sinh, lấy người có học vị cao nhất.\nNhằm khuyến khích việc học, năm 1255 và 1266, nhà Trần còn cho mở khoa thi đặt lệ lấy 2 trạng nguyên: 1 Kinh trạng nguyên dành cho các lộ phía bắc và 1 Trại trạng nguyên dành cho châu Hoan, châu Ái. Tuy nhiên, đến năm 1275, triều đình đã quyết định bãi bỏ lệ này vì nhận thấy không cần thiết nữa^.\n",
       "evidence": [
         {
           "chunk_id": "019e5668-80f0-7e24-86ef-ecd3362ba674",
-          "score": null,
+          "score": 0.6323153,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             383,
@@ -845,7 +846,7 @@
         },
         {
           "chunk_id": "019e5668-80ea-702d-b4ad-94fbdba033bb",
-          "score": null,
+          "score": 0.6260582,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             383
@@ -855,7 +856,7 @@
         },
         {
           "chunk_id": "019e5662-2141-7515-8884-e0464bbd737d",
-          "score": null,
+          "score": 0.60332274,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             65
@@ -867,7 +868,7 @@
         },
         {
           "chunk_id": "019e5662-6007-7bff-874e-626bb1764e2c",
-          "score": null,
+          "score": 0.5868933,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             82,
@@ -878,7 +879,7 @@
         },
         {
           "chunk_id": "019e5666-208d-7c76-9844-c0abfe90a763",
-          "score": null,
+          "score": 0.5860094,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             298,
@@ -896,18 +897,18 @@
       "gold_label": "SUPPORTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng không đề cập trực tiếp đến việc mở khoa thi lấy Trạng Nguyên vào năm 1275.",
+      "explanation": "Chưa có đủ thông tin để xác nhận hoặc bác bỏ việc Nhà Trần mở khoa thi lấy Trạng nguyên vào năm 1275.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         383
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.6261854,
       "top_evidence_text": "Khoa thi Nho học đầu tiên được tổ chức dưới thời Trần vào năm 1232 dưới triều vua Trần Thái Tông.\nĐến năm 1247, vua Trần Thái Tông cho mở khoa thi 7hái học sirth, lấy đậu theo Tam giáp (Nhất giáp, Nhị giáp, Tam giáp), trong đó, bậc Nhất giáp có Tam Khôi (gồm Trang nguyên, Bảng nhãn, Thám hoa).",
       "evidence": [
         {
           "chunk_id": "019e5668-80ea-702d-b4ad-94fbdba033bb",
-          "score": null,
+          "score": 0.6261854,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             383
@@ -917,7 +918,7 @@
         },
         {
           "chunk_id": "019e5668-80f0-7e24-86ef-ecd3362ba674",
-          "score": null,
+          "score": 0.6232198,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             383,
@@ -928,7 +929,7 @@
         },
         {
           "chunk_id": "019e5666-208d-7c76-9844-c0abfe90a763",
-          "score": null,
+          "score": 0.58901936,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             298,
@@ -939,7 +940,7 @@
         },
         {
           "chunk_id": "019e566b-304a-71a8-a35e-a983fb1b1eef",
-          "score": null,
+          "score": 0.5844696,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             571
@@ -949,7 +950,7 @@
         },
         {
           "chunk_id": "019e5662-2141-7515-8884-e0464bbd737d",
-          "score": null,
+          "score": 0.56810814,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             65
@@ -966,20 +967,20 @@
       "claim_id": "eval_0014",
       "claim": "Nhà Trần đặt chức Trừ cung giáo thụ để dạy dỗ Thái tử.",
       "gold_label": "SUPPORTED",
-      "pred_label": "NOT_ENOUGH_EVIDENCE",
-      "is_correct": false,
-      "explanation": "Bằng chứng chỉ ra chức Trừ cung giáo thụ, nhưng không xác định việc dạy dỗ Thái tử theo nghĩa trực tiếp.",
+      "pred_label": "SUPPORTED",
+      "is_correct": true,
+      "explanation": "Thông tin về việc cử Lê Phụ Trần làm Thiếu sư và kiêm chức Trừ cung giáo thụ để dạy dỗ Thái tử Khâm trong các nguồn được trích dẫn phù hợp với nội dung của claim.",
       "evidence_count": 5,
       "top_evidence_book": "Khâm Định Việt Sử Thông Giám Cương Mục",
       "top_evidence_pages": [
         219
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.5995209,
       "top_evidence_text": "Tháng 12, mùa đông. Lập con trưởng là Khâm làm Hoàng thái tử.\nTuyển học trò người có đức hạnh vào hầu đông cung [5], cử Lê Phụ Trần làm Thiếu sư kiêm chức Trừ cung giáo thụ; Nguyễn Thánh Huấn, Nguyễn Sĩ Cố sung chức Nội thị học sĩ. Nhà vua thân thủ viết thơ để dạy Thái tử, lại làm hai quyển Di hậu lục ban cho.",
       "evidence": [
         {
           "chunk_id": "019e565a-e4ec-762d-a14c-0882be618f76",
-          "score": null,
+          "score": 0.5995209,
           "book_name": "Khâm Định Việt Sử Thông Giám Cương Mục",
           "pages": [
             219
@@ -991,7 +992,7 @@
         },
         {
           "chunk_id": "019e5662-601f-7a1f-83ad-8192381c5635",
-          "score": null,
+          "score": 0.5758499,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             83,
@@ -1005,7 +1006,7 @@
         },
         {
           "chunk_id": "019e5662-e2ed-75fa-adaa-f9a6a227e92f",
-          "score": null,
+          "score": 0.5639323,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             118
@@ -1015,7 +1016,7 @@
         },
         {
           "chunk_id": "019e5662-e2e1-74b0-a3b9-f1a6ca3424f9",
-          "score": null,
+          "score": 0.54261345,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             118
@@ -1025,7 +1026,7 @@
         },
         {
           "chunk_id": "019e5655-a65a-7109-9d90-d63c9ad42e20",
-          "score": null,
+          "score": 0.5351641,
           "book_name": "Đại Việt Sử Ký Toàn Thư",
           "pages": [
             182
@@ -1043,20 +1044,20 @@
       "claim_id": "eval_0015",
       "claim": "Triều đình nhà Trần đốt hòm biểu xin hàng của những người từng có ý định đầu hàng sau chiến tranh.",
       "gold_label": "SUPPORTED",
-      "pred_label": "NOT_ENOUGH_EVIDENCE",
-      "is_correct": false,
-      "explanation": "Bằng chứng không cung cấp thông tin cụ thể về việc triều đình Trần đốt hòm biểu xin hàng sau khi đánh bại giặc Nguyên.",
+      "pred_label": "SUPPORTED",
+      "is_correct": true,
+      "explanation": "Nội dung này phù hợp với bài viết.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         84
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.5120196,
       "top_evidence_text": " Song sau khi đánh thắng giặc Mông - Nguyên thì Trần Thánh Tông lại hết sức nhân nhượng tha tội cho những kẻ phản trắc có tên trong hòm biểu. Sử chép: “Trước kia, người Nguyên vào cướp, vương hầu, quan lại nhiều người đến doanh trại giặc xin hàng. Đến khi giặc thua bắt được cả một hòm biểu xin hàng. Thượng hoàng sai đốt hết đi để yên lòng những kẻ phản trắc”4.\n",
       "evidence": [
         {
           "chunk_id": "019e5662-602d-732d-a627-8effec3a21ec",
-          "score": null,
+          "score": 0.5120196,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             84
@@ -1066,7 +1067,7 @@
         },
         {
           "chunk_id": "019e5660-b8b4-7c65-a01a-d8fd2cc18874",
-          "score": null,
+          "score": 0.48512074,
           "book_name": "Việt Sử Toàn Thư",
           "pages": [
             243
@@ -1076,7 +1077,7 @@
         },
         {
           "chunk_id": "019e565b-b24d-7a5a-8c10-21f9d82b71bd",
-          "score": null,
+          "score": 0.48422188,
           "book_name": "Khâm Định Việt Sử Thông Giám Cương Mục",
           "pages": [
             239
@@ -1086,7 +1087,7 @@
         },
         {
           "chunk_id": "019e5656-4570-7d26-9e82-57c4fd62a60d",
-          "score": null,
+          "score": 0.47010916,
           "book_name": "Đại Việt Sử Ký Toàn Thư",
           "pages": [
             200
@@ -1096,7 +1097,7 @@
         },
         {
           "chunk_id": "019e5665-0217-7cae-a9b4-add7d4d0b00b",
-          "score": null,
+          "score": 0.4436691,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             240,
@@ -1114,18 +1115,18 @@
       "gold_label": "SUPPORTED",
       "pred_label": "SUPPORTED",
       "is_correct": true,
-      "explanation": "Bằng chứng cho thấy nhà Trần đã sử dụng thi cử và các cơ chế tuyển chọn khác để tuyển chọn quan lại, xác nhận việc Nhà Trần có hệ thống khoa cử như mệnh đề.",
+      "explanation": "Thông tin về việc nhà Trần mở rộng và sử dụng hệ thống thi cử để tuyển chọn quan lại phù hợp với nội dung bài viết.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         755
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.55177397,
       "top_evidence_text": " Các vua Lý Trần đã cố gắng đảm bảo cho tiêu chuẩn dòng họ chiếm một ưu thế tuyệt đối, nhằm duy trì một thứ chính quyền đồng tộc, mang tính chất một nền chuyên chính quý tộc. Nhưng cuộc sống khách quan đã không cho phép thực hiện khá năng ấy. Con đường khoa cử được mở ra để giải quyết đào tạo quan liệêu đã nhanh chóng chiếm ưu thế.",
       "evidence": [
         {
           "chunk_id": "019e566f-29db-7388-8929-36f38199d122",
-          "score": null,
+          "score": 0.55177397,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             755
@@ -1135,7 +1136,7 @@
         },
         {
           "chunk_id": "019e5664-4882-75c9-8e39-ee132838c531",
-          "score": null,
+          "score": 0.53074104,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             208
@@ -1145,7 +1146,7 @@
         },
         {
           "chunk_id": "019e5662-6000-7933-9fc3-ccefabc2284f",
-          "score": null,
+          "score": 0.52562225,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             82
@@ -1155,7 +1156,7 @@
         },
         {
           "chunk_id": "019e566b-e1d8-7717-8c76-8ced5a9ad433",
-          "score": null,
+          "score": 0.51808196,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             589
@@ -1165,7 +1166,7 @@
         },
         {
           "chunk_id": "019e566b-3066-71f0-a716-f90518898dd2",
-          "score": null,
+          "score": 0.51794803,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             571,
@@ -1183,18 +1184,18 @@
       "gold_label": "SUPPORTED",
       "pred_label": "SUPPORTED",
       "is_correct": true,
-      "explanation": "Bằng chứng chỉ ra việc nhà Trần đã đặt chức Hà đê sứ để quản lý công việc liên quan đến xây dựng, sửa chữa và bảo vệ đê, ủng hộ quan điểm về sự liên quan của chức vụ này với công tác quản lý đê điều.",
+      "explanation": "Thông tin về chức Hà đê sứ và nhiệm vụ của họ trong sách Vương Triều Trần phù hợp với nội dung chính của claim.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         587
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.5939493,
       "top_evidence_text": "Triều Trần cũng rất chăm lo đến công việc khẩn hoang, đê, làm thủy lợi.\nNăm 1248 nhà Trần đặt chức Hà đê sứ ở các lộ chuyên trách việc xây đắp, tu bổ và bảo vệ đê. Nhiệm vụ của đê sứ được xác định rõ ràng:\n\"Mỗi năm vào tháng Giêng, đê sứ đốc thúc dân chúng trong vùng, không phân biệt sang hèn, già trẻ, đều đi đắp đê.",
       "evidence": [
         {
           "chunk_id": "019e566b-b492-7753-8b13-287baf162983",
-          "score": null,
+          "score": 0.5939493,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             587
@@ -1204,7 +1205,7 @@
         },
         {
           "chunk_id": "019e5664-3507-7ac4-a617-b877d2669a20",
-          "score": null,
+          "score": 0.55641377,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             205
@@ -1216,7 +1217,7 @@
         },
         {
           "chunk_id": "019e5662-20f0-7d32-b535-00bd0ab1f276",
-          "score": null,
+          "score": 0.52005863,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             62,
@@ -1227,7 +1228,7 @@
         },
         {
           "chunk_id": "019e5667-1abf-7b84-94ea-58bdce2db3bd",
-          "score": null,
+          "score": 0.4990403,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             340
@@ -1237,7 +1238,7 @@
         },
         {
           "chunk_id": "019e5666-44a0-7e85-b84a-1b43254fc789",
-          "score": null,
+          "score": 0.46985066,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             315
@@ -1252,21 +1253,21 @@
       "claim_id": "eval_0018",
       "claim": "Triều đình nhà Trần thực hiện cải cách tổ chức hành chính vào năm 1242.",
       "gold_label": "SUPPORTED",
-      "pred_label": "NOT_ENOUGH_EVIDENCE",
-      "is_correct": false,
-      "explanation": "Bằng chứng không đề cập trực tiếp đến các cải cách tổ chức hành chính của nhà Trần vào năm 1242.",
+      "pred_label": "SUPPORTED",
+      "is_correct": true,
+      "explanation": "Thông tin về tổ chức hành chính và cải cách của nhà Trần trong sách xác nhận nội dung của claim.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         297,
         298
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.52480084,
       "top_evidence_text": "Vua U C F Các chức đại thần ap U trung ương Các cơ quan trung ương | Lộ/ phủ U Cấp địa Huyện/ châu pỉương U l Hương/ xã Sơ đồ 1: Tổ chức bộ máy nhà nước thời Trần (1226 - 1400)Theo ghi chép của sử cũ, nhà Trần là triều đại đầu tiên pháp điển hóa những quy định về tổ chức và hoạt động của bộ máy chính quyền trong các văn bán pháp luật.",
       "evidence": [
         {
           "chunk_id": "019e5666-2061-779d-8cb7-23167d3343b5",
-          "score": null,
+          "score": 0.52480084,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             297,
@@ -1277,7 +1278,7 @@
         },
         {
           "chunk_id": "019e566e-f447-7727-b35d-ce4645b08aef",
-          "score": null,
+          "score": 0.51670873,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             735
@@ -1287,7 +1288,7 @@
         },
         {
           "chunk_id": "019e5668-4fc9-74bf-8991-75be35fbaabf",
-          "score": null,
+          "score": 0.51611215,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             375
@@ -1297,7 +1298,7 @@
         },
         {
           "chunk_id": "019e566e-43c4-765f-88ed-a7a047591632",
-          "score": null,
+          "score": 0.51327825,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             710
@@ -1307,7 +1308,7 @@
         },
         {
           "chunk_id": "019e566e-b925-7e43-a46d-184ad2730d1d",
-          "score": null,
+          "score": 0.4926454,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             731
@@ -1324,18 +1325,18 @@
       "gold_label": "SUPPORTED",
       "pred_label": "SUPPORTED",
       "is_correct": true,
-      "explanation": "Bằng chứng liên quan đến việc nhà Trần ban hành các quy định về thể chế và lễ nghi triều đình, như Quốc triều thông chế và Quỳnh luật thư.",
+      "explanation": "Thông tin về các quy định thể chế và lễ nghi triều đình trong sách Vương Triều Trần phù hợp với nội dung của claim.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         310
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.5964267,
       "top_evidence_text": "Có thể thấy, nhà Trần hết sức chú trọng hoạt động lập pháp, liên tiếp ban hành các bộ luật và văn bản điển chế trong suốt hai thế kỷ XIL và XIV. Ngoài bộ luật hình (H?r.b :hưy không ngừng được tu soạn, hoàn chính hơn so với nhà Lý, triều Trần còn ban hành các bộ luật thuộc nhiều lĩnh vực hay ngành luật cơ bản khác. Từ những chế định về tổ chức hệ thống hành chính (Quốc triều thông chế), bộ máy chính quyền (Quốc triều đạợi điển), các nghì thức của vương triều (Quốc triều thường lỗ), tôi các quy định về thể thức tố tụng, mẫu viết công văn, đơn từ, thư khế (Công uăn cách thức).\n",
       "evidence": [
         {
           "chunk_id": "019e5666-3839-7399-8676-70e494b6568f",
-          "score": null,
+          "score": 0.5964267,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             310
@@ -1345,7 +1346,7 @@
         },
         {
           "chunk_id": "019e566b-b474-7668-b0b9-69e71e2798d2",
-          "score": null,
+          "score": 0.59087735,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             586
@@ -1355,7 +1356,7 @@
         },
         {
           "chunk_id": "019e5666-2061-779d-8cb7-23167d3343b5",
-          "score": null,
+          "score": 0.574495,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             297,
@@ -1366,7 +1367,7 @@
         },
         {
           "chunk_id": "019e566b-e1d8-7717-8c76-8ced5a9ad433",
-          "score": null,
+          "score": 0.5564382,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             589
@@ -1376,7 +1377,7 @@
         },
         {
           "chunk_id": "019e5666-4472-74b2-9caf-36d47442dd34",
-          "score": null,
+          "score": 0.5332414,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             313,
@@ -1392,20 +1393,20 @@
       "claim_id": "eval_0020",
       "claim": "Việc đổi tên từ giáp sang hương diễn ra dưới thời nhà Trần.",
       "gold_label": "SUPPORTED",
-      "pred_label": "NOT_ENOUGH_EVIDENCE",
-      "is_correct": false,
-      "explanation": "Bằng chứng không đề cập đến việc đổi tên từ giáp sang hương dưới thời Trần, mà chỉ tập trung vào lịch sử và tổ chức hành chính của các cấp hương/giáp trong thời gian khác.",
+      "pred_label": "SUPPORTED",
+      "is_correct": true,
+      "explanation": "Thông tin về việc đổi tên từ giáp thành hương dưới thời nhà Trần trong sách Vương Triều Trần phù hợp với nội dung của claim.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         60
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.54210997,
       "top_evidence_text": "- Chính quyền cấp hương. Cấp hương tồn tại khá phổ biến ở thời Trần. Đầu thời Trần cấp này được gọi là giáp, đến năm 1297, nhà Trần mới đổi giáp làm hương [1] (Quắc hương, Bạch Hạc hương, hương Tinh Cương, hương Tức Mặc...). Sách Cương mục cũng chép rằng sau kháng chiến chống Mông - Nguyên thắng lợi, nhà Trần cho đduyệt định dân binh trong cả nước: “Các châu chỗ nào trước là giáp, nay đổi thành hương\"2. Dưới thời Trần, hương là một đơn vị hành chính khá lớn.\n",
       "evidence": [
         {
           "chunk_id": "019e5661-feb3-79c9-a3c8-c53317e81dd2",
-          "score": null,
+          "score": 0.54210997,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             60
@@ -1417,7 +1418,7 @@
         },
         {
           "chunk_id": "019e566c-3eba-7810-a51c-0ef08b4501b5",
-          "score": null,
+          "score": 0.53575975,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             603
@@ -1430,7 +1431,7 @@
         },
         {
           "chunk_id": "019e566b-b458-794d-8ab6-7c50a05c587b",
-          "score": null,
+          "score": 0.5007336,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             586
@@ -1440,7 +1441,7 @@
         },
         {
           "chunk_id": "019e5661-ae13-7ab9-bf9e-c5ff11236a55",
-          "score": null,
+          "score": 0.5000264,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             39
@@ -1450,7 +1451,7 @@
         },
         {
           "chunk_id": "019e5662-92e8-705d-a435-d123747a250a",
-          "score": null,
+          "score": 0.47927022,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             96,
@@ -1468,19 +1469,19 @@
       "gold_label": "REFUTED",
       "pred_label": "REFUTED",
       "is_correct": true,
-      "explanation": "Bằng chứng chỉ ra rằng Trần Duệ Tông và quân đội của ông đã thất bại trong chiến dịch đánh Chiêm Thành, không giành được chiến thắng như mệnh đề声称。",
+      "explanation": "Chưa có thông tin xác nhận Trần Duệ Tông giành chiến thắng, chỉ nói rằng ông bị quân Chiêm Thành đánh bại và tử trận.",
       "evidence_count": 5,
       "top_evidence_book": "Việt Sử Toàn Thư",
       "top_evidence_pages": [
         216,
         217
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.5572045,
       "top_evidence_text": " Chế Bồng Nga lập kế trá hàng cho nói dối rằng toàn thể quân Chiêm đã rút hết, thành bỏ không. Đại Tướng Đỗ Lễ can Duệ Tông đừng đem quân vào thành. Duệ Tông không nghe rồi quân ta tiến vào chiếm thành liền bị bao vây đánh bốn mặt. Mặc dầu quân ta đông đảo nhưng địch bố trí sẵn, nắm trước được thế hiểm nên ta thua to. Duệ Tông tử trận, binh đội tổn hại mười phần đến bảy tám.\nĐỗ Tử Bình điều khiển hậu quân không dám tiếp cứu. Quý Ly cũng bỏ chạy. Sau trận này Đỗ Tử Bình bị giáng xuống làm lính.X.",
       "evidence": [
         {
           "chunk_id": "019e565f-d7e6-72e7-9151-1d67cd62cafb",
-          "score": null,
+          "score": 0.5572045,
           "book_name": "Việt Sử Toàn Thư",
           "pages": [
             216,
@@ -1491,7 +1492,7 @@
         },
         {
           "chunk_id": "019e566a-757a-7396-b855-633389e04534",
-          "score": null,
+          "score": 0.5324148,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             535,
@@ -1502,7 +1503,7 @@
         },
         {
           "chunk_id": "019e5658-c5f8-7150-9219-0386f081de06",
-          "score": null,
+          "score": 0.52259135,
           "book_name": "Đại Việt Sử Ký Toàn Thư",
           "pages": [
             282
@@ -1512,7 +1513,7 @@
         },
         {
           "chunk_id": "019e5665-4bdd-76d6-8c1e-fbf4c785975e",
-          "score": null,
+          "score": 0.5222889,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             254
@@ -1522,7 +1523,7 @@
         },
         {
           "chunk_id": "019e5665-4bc5-710a-b030-3538fc3a6851",
-          "score": null,
+          "score": 0.5203192,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             254
@@ -1539,18 +1540,18 @@
       "gold_label": "REFUTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Những bằng chứng cung cấp không đề cập trực tiếp đến trận đánh chiếm thành Đồ Bàn trong cuộc nam chinh của vua Trần Duệ Tông.",
+      "explanation": "Chưa có đủ thông tin để xác nhận hoặc bác bỏ việc quân Trần chiếm được thành Đồ Bàn.",
       "evidence_count": 5,
       "top_evidence_book": "Việt Sử Toàn Thư",
       "top_evidence_pages": [
         218
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.50566924,
       "top_evidence_text": "2- Chiêm Thành Đả Phá Thăng Long Năm Đinh Tỵ (1377) vua Duệ Tông ngã gục trước thành Đồ Bàn, Việt quân đại bại.\nViệc này làm tổn hại vô cùng uy thế của nước ta. Thắng được quân ta tại nội địa, người Chiêm không bỏ lỡ cơ hội ta đang suy bĩ, ngay tháng sau đem đại quân ra đánh Thăng Long.",
       "evidence": [
         {
           "chunk_id": "019e565f-d829-7b33-a050-ef06ef27c4c0",
-          "score": null,
+          "score": 0.50566924,
           "book_name": "Việt Sử Toàn Thư",
           "pages": [
             218
@@ -1560,7 +1561,7 @@
         },
         {
           "chunk_id": "019e5665-4ba3-7cb2-b1d3-141efc07e82b",
-          "score": null,
+          "score": 0.49635136,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             253
@@ -1570,7 +1571,7 @@
         },
         {
           "chunk_id": "019e565c-d20a-7350-912a-5517c253e4bd",
-          "score": null,
+          "score": 0.48730707,
           "book_name": "Khâm Định Việt Sử Thông Giám Cương Mục",
           "pages": [
             294
@@ -1580,7 +1581,7 @@
         },
         {
           "chunk_id": "019e566e-b91c-74b5-ad9f-e83bf9f273c5",
-          "score": null,
+          "score": 0.47115692,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             731
@@ -1590,7 +1591,7 @@
         },
         {
           "chunk_id": "019e5664-0225-74e8-988d-c6b919721f2c",
-          "score": null,
+          "score": 0.466051,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             185
@@ -1605,21 +1606,21 @@
       "claim_id": "eval_0023",
       "claim": "Quân Chiêm Thành quy phục hoàn toàn sau cuộc nam chinh của Trần Duệ Tông.",
       "gold_label": "REFUTED",
-      "pred_label": "REFUTED",
-      "is_correct": true,
-      "explanation": "Bằng chứng chỉ ra cuộc tấn công của Trần Duệ Tông vào Chiêm Thành năm 1376-1377 thất bại nặng nề, không thể coi là quy phục hoàn toàn như mệnh đề đề cập.",
+      "pred_label": "NOT_ENOUGH_EVIDENCE",
+      "is_correct": false,
+      "explanation": "Chưa có đủ thông tin để xác nhận hoặc bác bỏ nội dung chính của claim.",
       "evidence_count": 5,
       "top_evidence_book": "Việt Sử Toàn Thư",
       "top_evidence_pages": [
         216,
         217
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.6032346,
       "top_evidence_text": " Chế Bồng Nga lập kế trá hàng cho nói dối rằng toàn thể quân Chiêm đã rút hết, thành bỏ không. Đại Tướng Đỗ Lễ can Duệ Tông đừng đem quân vào thành. Duệ Tông không nghe rồi quân ta tiến vào chiếm thành liền bị bao vây đánh bốn mặt. Mặc dầu quân ta đông đảo nhưng địch bố trí sẵn, nắm trước được thế hiểm nên ta thua to. Duệ Tông tử trận, binh đội tổn hại mười phần đến bảy tám.\nĐỗ Tử Bình điều khiển hậu quân không dám tiếp cứu. Quý Ly cũng bỏ chạy. Sau trận này Đỗ Tử Bình bị giáng xuống làm lính.X.",
       "evidence": [
         {
           "chunk_id": "019e565f-d7e6-72e7-9151-1d67cd62cafb",
-          "score": null,
+          "score": 0.6032346,
           "book_name": "Việt Sử Toàn Thư",
           "pages": [
             216,
@@ -1630,7 +1631,7 @@
         },
         {
           "chunk_id": "019e5665-4bfc-71e5-b7a5-bbc186204b5e",
-          "score": null,
+          "score": 0.58196986,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             255
@@ -1640,7 +1641,7 @@
         },
         {
           "chunk_id": "019e5665-4b9c-7976-8500-422d5a7e447f",
-          "score": null,
+          "score": 0.57864773,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             252,
@@ -1651,7 +1652,7 @@
         },
         {
           "chunk_id": "019e5664-0248-7f53-a809-3e2bcc7f0cb1",
-          "score": null,
+          "score": 0.5765592,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             186
@@ -1661,7 +1662,7 @@
         },
         {
           "chunk_id": "019e5665-4bc5-710a-b030-3538fc3a6851",
-          "score": null,
+          "score": 0.57184714,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             254
@@ -1678,18 +1679,18 @@
       "gold_label": "REFUTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng không đề cập đến việc Trần Tông đi sứ sang nhà Minh để đàm phán về tiến cống và phong vương.",
+      "explanation": "Chưa có thông tin xác nhận hoặc bác bỏ việc Trần Duệ Tông đi sứ sang nhà Minh để đàm phán về việc tiến cống và phong vương.",
       "evidence_count": 5,
       "top_evidence_book": "Khâm Định Việt Sử Thông Giám Cương Mục",
       "top_evidence_pages": [
         192
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.5797758,
       "top_evidence_text": "Nhà vua đã được nhà Lý truyền ngôi cho, nên mới sai sứ sang báo cáo với nhà Tống và xin phong tước.\nCanh Dần, năm thứ 6 (1230). (Tống, năm Thiệu Định thứ 3).\n",
       "evidence": [
         {
           "chunk_id": "019e5659-e6e5-7e50-888d-e85da298bf1e",
-          "score": null,
+          "score": 0.5797758,
           "book_name": "Khâm Định Việt Sử Thông Giám Cương Mục",
           "pages": [
             192
@@ -1699,7 +1700,7 @@
         },
         {
           "chunk_id": "019e566a-593a-7479-9cd0-e1d23bbdec08",
-          "score": null,
+          "score": 0.5789579,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             523
@@ -1709,7 +1710,7 @@
         },
         {
           "chunk_id": "019e565d-823a-7d7e-a356-af419ea67252",
-          "score": null,
+          "score": 0.5653287,
           "book_name": "Khâm Định Việt Sử Thông Giám Cương Mục",
           "pages": [
             330
@@ -1723,7 +1724,7 @@
         },
         {
           "chunk_id": "019e566a-5a2f-7597-b1da-3f89fb39b46d",
-          "score": null,
+          "score": 0.56219864,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             527
@@ -1733,7 +1734,7 @@
         },
         {
           "chunk_id": "019e566a-5a3e-7e72-8458-b7a75c41a679",
-          "score": null,
+          "score": 0.55951124,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             527
@@ -1750,18 +1751,18 @@
       "gold_label": "REFUTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Những bằng chứng chỉ đề cập đến các sự kiện lịch sử khác nhau, không trực tiếp liên quan đến vấn đề Trần Huệ Tông dẫn đầu đoàn sứ giả sang kinh đô nhà Minh.",
+      "explanation": "Chưa có thông tin xác nhận về việc Trần Duệ Tông đích thân dẫn đầu đoàn sứ giả sang kinh đô nhà Minh.",
       "evidence_count": 5,
       "top_evidence_book": "Đại Việt Sử Ký Toàn Thư",
       "top_evidence_pages": [
         304
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.5556387,
       "top_evidence_text": " (Tư Thiện đường vốn là tên nhà học của thái tử triều Trần).\nNhà Minh sai bọn nội quan Nguyễn Tông Đạo sang.\n",
       "evidence": [
         {
           "chunk_id": "019e5659-a5ad-7f47-b927-cccd4b8e0ebc",
-          "score": null,
+          "score": 0.5556387,
           "book_name": "Đại Việt Sử Ký Toàn Thư",
           "pages": [
             304
@@ -1771,7 +1772,7 @@
         },
         {
           "chunk_id": "019e566a-595c-752e-8a6d-a32dec94caa9",
-          "score": null,
+          "score": 0.54478705,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             523
@@ -1781,7 +1782,7 @@
         },
         {
           "chunk_id": "019e5669-29ec-765a-9cae-52cfe1ad3e68",
-          "score": null,
+          "score": 0.5165067,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             451
@@ -1791,7 +1792,7 @@
         },
         {
           "chunk_id": "019e5660-c3ab-7062-aa7e-e55d44d58fec",
-          "score": null,
+          "score": 0.5159231,
           "book_name": "Việt Sử Toàn Thư",
           "pages": [
             247
@@ -1801,7 +1802,7 @@
         },
         {
           "chunk_id": "019e5661-a140-7411-a857-c329355f8446",
-          "score": null,
+          "score": 0.5061935,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             33
@@ -1818,18 +1819,18 @@
       "gold_label": "REFUTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng chưa đề cập đến việc đặt chức Hà đê sứ vào năm 1348 trong lịch sử nhà Trần.",
+      "explanation": "Chưa có thông tin xác nhận việc nhà Trần đặt chức Hà đê sứ vào năm 1348.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         587
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.6292223,
       "top_evidence_text": "Triều Trần cũng rất chăm lo đến công việc khẩn hoang, đê, làm thủy lợi.\nNăm 1248 nhà Trần đặt chức Hà đê sứ ở các lộ chuyên trách việc xây đắp, tu bổ và bảo vệ đê. Nhiệm vụ của đê sứ được xác định rõ ràng:\n\"Mỗi năm vào tháng Giêng, đê sứ đốc thúc dân chúng trong vùng, không phân biệt sang hèn, già trẻ, đều đi đắp đê.",
       "evidence": [
         {
           "chunk_id": "019e566b-b492-7753-8b13-287baf162983",
-          "score": null,
+          "score": 0.6292223,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             587
@@ -1839,7 +1840,7 @@
         },
         {
           "chunk_id": "019e5662-20f0-7d32-b535-00bd0ab1f276",
-          "score": null,
+          "score": 0.6008693,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             62,
@@ -1850,7 +1851,7 @@
         },
         {
           "chunk_id": "019e5664-3507-7ac4-a617-b877d2669a20",
-          "score": null,
+          "score": 0.5908427,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             205
@@ -1862,7 +1863,7 @@
         },
         {
           "chunk_id": "019e566c-5b68-709e-ba60-e414e806d25a",
-          "score": null,
+          "score": 0.58000904,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             613
@@ -1872,7 +1873,7 @@
         },
         {
           "chunk_id": "019e5668-4fc9-74bf-8991-75be35fbaabf",
-          "score": null,
+          "score": 0.5461232,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             375
@@ -1887,21 +1888,21 @@
       "claim_id": "eval_0027",
       "claim": "Nhà Trần bãi bỏ chức Hà đê sứ ngay sau khi thành lập triều đại.",
       "gold_label": "REFUTED",
-      "pred_label": "NOT_ENOUGH_EVIDENCE",
-      "is_correct": false,
-      "explanation": "Bằng chứng không liên quan trực tiếp đến việc Nhà Trần bãi bỏ chức Hà đê sứ sau khi thành lập triều đại.",
+      "pred_label": "REFUTED",
+      "is_correct": true,
+      "explanation": "Bài viết chỉ đề cập đến việc đặt chức Hà đê sứ từ năm 1248, không nói về việc bãi bỏ chức này sau khi thành lập triều đại.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         62,
         63
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.561401,
       "top_evidence_text": " Trần Thái Tông là vị vua khai mở công trình đắp đê lớn này. “Đắp đê quai vạc bắt đầu từ đó”4. Nếu đắp vào ruộng của dân thì phải đền bù bằng tiền. Ông cũng là vị vua đặt ra chức Hà đê sứ (năm 1255). Hà đê sứ gồm chánh và phó chuyên trách trông coi đê. “Các lộ có đê điều đều đặt hai chức chánh sứ và phó sứ, lấy các quan giữ chức nhàn tản sung bổi hằng năm cứ khi nào làm ruộngxong, các viên ấy đốc quân đắp sườn đê và khơi các khe cừ, để đề phòng khi thuỷ tai hoặc đại hạn”1.",
       "evidence": [
         {
           "chunk_id": "019e5662-20f0-7d32-b535-00bd0ab1f276",
-          "score": null,
+          "score": 0.561401,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             62,
@@ -1912,7 +1913,7 @@
         },
         {
           "chunk_id": "019e566b-b492-7753-8b13-287baf162983",
-          "score": null,
+          "score": 0.5439945,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             587
@@ -1922,7 +1923,7 @@
         },
         {
           "chunk_id": "019e5664-3507-7ac4-a617-b877d2669a20",
-          "score": null,
+          "score": 0.5133002,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             205
@@ -1934,7 +1935,7 @@
         },
         {
           "chunk_id": "019e566e-b8fb-72fd-b634-7c1cb996dc08",
-          "score": null,
+          "score": 0.5003598,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             730
@@ -1944,7 +1945,7 @@
         },
         {
           "chunk_id": "019e566a-5a3e-7e72-8458-b7a75c41a679",
-          "score": null,
+          "score": 0.49259984,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             527
@@ -1961,18 +1962,18 @@
       "gold_label": "REFUTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng không đề cập trực tiếp đến việc nhà Trần cấm sử dụng dấu ngón tay trên văn khế.",
+      "explanation": "Chưa có thông tin cụ thể về việc nhà Trần cấm sử dụng dấu ngón tay trên văn khế.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         312
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.50602305,
       "top_evidence_text": " Nội dung các quy định cho thấy, nhà Trần chú trọng trước hết đến công cuộc kiện toàn bộ máy quản lý hành chính và hoàn thiện chế độ quan lại, với tổng số 56 quy định được ban hành. Thứ đến, là các quy định liên quan đến lĩnh vực hình sự - tố tụng, nhằm tăng cường quản lý và ổn định xã hội. Đến thời Trần, thể thức tố tụng đã tiến một bước dài. Theo quy định thời kỳ này, tất cả đơn từ, thư khế,",
       "evidence": [
         {
           "chunk_id": "019e5666-4448-7235-8881-d811f564d9b8",
-          "score": null,
+          "score": 0.50602305,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             312
@@ -1982,7 +1983,7 @@
         },
         {
           "chunk_id": "019e5663-acac-7c0a-bb73-f802b28a946f",
-          "score": null,
+          "score": 0.5026089,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             170
@@ -1992,7 +1993,7 @@
         },
         {
           "chunk_id": "019e5666-4479-7ae8-be88-d585945132c9",
-          "score": null,
+          "score": 0.46481502,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             314
@@ -2004,7 +2005,7 @@
         },
         {
           "chunk_id": "019e5656-dcb9-79ff-a07b-37342a165e82",
-          "score": null,
+          "score": 0.4588777,
           "book_name": "Đại Việt Sử Ký Toàn Thư",
           "pages": [
             217,
@@ -2017,7 +2018,7 @@
         },
         {
           "chunk_id": "019e5663-aca4-78a0-a6d5-55dc839a5508",
-          "score": null,
+          "score": 0.45314705,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             169,
@@ -2035,20 +2036,20 @@
       "claim_id": "eval_0029",
       "claim": "Nhà Trần không biên soạn bộ Quốc triều thông chế.",
       "gold_label": "REFUTED",
-      "pred_label": "NOT_ENOUGH_EVIDENCE",
-      "is_correct": false,
-      "explanation": "Bằng chứng chưa cung cấp đủ thông tin về việc nhà Trần có biên soạn bộ Quốc triều thông chế hay không.",
+      "pred_label": "REFUTED",
+      "is_correct": true,
+      "explanation": "Thông tin về Quốc triều thông chế chỉ được đề cập đến trong các quyển sách, nhưng không có chi tiết cụ thể về nội dung của nó. Điều này cho thấy rằng không có đủ bằng chứng để xác nhận việc nhà Trần đã biên soạn bộ Quốc triều thông chế.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         586
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.5719984,
       "top_evidence_text": "Quy chế về chức năng, hoạt động của nhà nước đời Trần đã được thể chế hoá trong bộ luật mang tên Jỳnh luật thư (1 quyền) và trong các sách điển lệ mang tên Quốc triều thông chế (20 quyền), Quốc triều thường lệ hay Kiến trung thường lệ (10 quyền), Hoàng triều đại điển (10 quyển).\n",
       "evidence": [
         {
           "chunk_id": "019e566b-b474-7668-b0b9-69e71e2798d2",
-          "score": null,
+          "score": 0.5719984,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             586
@@ -2058,7 +2059,7 @@
         },
         {
           "chunk_id": "019e5666-3828-7e94-ab49-2db31f1b84a4",
-          "score": null,
+          "score": 0.5675805,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             309
@@ -2068,7 +2069,7 @@
         },
         {
           "chunk_id": "019e565e-4e2e-717f-af40-dabc31887560",
-          "score": null,
+          "score": 0.55475295,
           "book_name": "Việt Sử Toàn Thư",
           "pages": [
             170
@@ -2078,7 +2079,7 @@
         },
         {
           "chunk_id": "019e5666-3839-7399-8676-70e494b6568f",
-          "score": null,
+          "score": 0.55208933,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             310
@@ -2088,7 +2089,7 @@
         },
         {
           "chunk_id": "019e5666-3831-72fb-a9c1-b1a7db5c932f",
-          "score": null,
+          "score": 0.5456623,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             310
@@ -2105,18 +2106,18 @@
       "gold_label": "REFUTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng không đề cập trực tiếp đến việc Nhà Trần biên soạn Quốc triều thường lễ, chỉ liên quan gián tiếp thông qua các hoạt động lập pháp và văn bản điển chế.",
+      "explanation": "Chưa có đủ thông tin để xác nhận hoặc bác bỏ việc nhà Trần biên soạn bộ Quốc triều thường lễ.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         309
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.55285984,
       "top_evidence_text": "1- Quốc triều thông chế, gồỒm 290 quyển, ban hành năm 1230 trên cơ sở “khảo xét các luật lệ của triều trước” và “sửa đối hình luật lễ nghĩ”.\n2- Quốc triều thường lễ, 10 quyền, năm 1230, thực tế là ghi chép lại các “công việc của quốc triều” (triều Trần).\n3- Công uốn cách thức, năm 1299, thời vua Trần Anh Tông.\n4- Hoàng triều đại điển, năm 1341, do Truơng Hán Siêu, Lang trung Hữu ty Môn hạ sảnh và Kinh đô đại doãn Nguyễn Trung Ngạn biên soạn.",
       "evidence": [
         {
           "chunk_id": "019e5666-3828-7e94-ab49-2db31f1b84a4",
-          "score": null,
+          "score": 0.55285984,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             309
@@ -2126,7 +2127,7 @@
         },
         {
           "chunk_id": "019e565e-4e2e-717f-af40-dabc31887560",
-          "score": null,
+          "score": 0.5457406,
           "book_name": "Việt Sử Toàn Thư",
           "pages": [
             170
@@ -2136,7 +2137,7 @@
         },
         {
           "chunk_id": "019e5669-2963-79d4-9522-0c0f22711f2c",
-          "score": null,
+          "score": 0.5264736,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             448
@@ -2146,7 +2147,7 @@
         },
         {
           "chunk_id": "019e565c-83db-7231-baf8-c70ea8b2ed98",
-          "score": null,
+          "score": 0.5231782,
           "book_name": "Khâm Định Việt Sử Thông Giám Cương Mục",
           "pages": [
             278
@@ -2156,7 +2157,7 @@
         },
         {
           "chunk_id": "019e5666-3839-7399-8676-70e494b6568f",
-          "score": null,
+          "score": 0.52190983,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             310
@@ -2171,20 +2172,20 @@
       "claim_id": "eval_0031",
       "claim": "Năm 1242, triều đình nhà Trần chia cả nước thành 20 lộ.",
       "gold_label": "REFUTED",
-      "pred_label": "NOT_ENOUGH_EVIDENCE",
+      "pred_label": "SUPPORTED",
       "is_correct": false,
-      "explanation": "Bằng chứng không xác định rõ nhà Trần đã chia đất nước thành bao nhiêu lộ, chỉ cho biết đã có 12 lộ và thời điểm là năm Nhâm Dần thứ 11 (1242). Không đủ thông tin để xác nhận hay bác bỏ mệnh đề về việc chia đất nước thành 20 lộ.",
+      "explanation": "Thông tin về việc chia nước thành 12 lộ vào năm Nhâm Dần thứ 11 (1242) phù hợp với nội dung của sách Vương Triều Trần.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         294
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.61664313,
       "top_evidence_text": "Ö cấp địa phương, nhà Trần đã cố gắng sắp xếp lại và thống nhất các đơn vị hành chính, cả về tên gọi, cơ cấu tổ chức và cách thức quản lý. Một hệ thống mới xuất hiện, gồm chủ yếu các lộ hay phủ, dưới có huyện, châu, cấp cơ sở là hương, xã.\nTrên cơ sở các lộ, phủ, châu, trại thời Lý, năm 1242 nhà Trần đổi lập thành 12 lộ, tuy rằng khó có thể biết tên đầy đủ và chính xác của các lộ này. Căn cứ theo Đại Việt sử bý toàn thư và Khâm định Việt sử thông giám cương mục có thể tạm xác định tên gọi và vị trí của 12 lộ thời Trần như sau:\n",
       "evidence": [
         {
           "chunk_id": "019e5666-05ef-74c2-9f4e-3bfb84e7436b",
-          "score": null,
+          "score": 0.61664313,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             294
@@ -2194,7 +2195,7 @@
         },
         {
           "chunk_id": "019e5661-fe8b-77c7-807b-67daf06309db",
-          "score": null,
+          "score": 0.56138587,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             58
@@ -2204,7 +2205,7 @@
         },
         {
           "chunk_id": "019e565a-298c-787b-b920-d1852d55891a",
-          "score": null,
+          "score": 0.5554826,
           "book_name": "Khâm Định Việt Sử Thông Giám Cương Mục",
           "pages": [
             199
@@ -2214,7 +2215,7 @@
         },
         {
           "chunk_id": "019e565e-0aa1-7925-9f60-cf4010848b28",
-          "score": null,
+          "score": 0.54957306,
           "book_name": "Việt Sử Toàn Thư",
           "pages": [
             164
@@ -2224,7 +2225,7 @@
         },
         {
           "chunk_id": "019e5661-fe99-72ec-8533-275ced42ac8c",
-          "score": null,
+          "score": 0.52973694,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             59
@@ -2243,18 +2244,18 @@
       "gold_label": "REFUTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Không có bằng chứng cụ thể về việc nhà Trần bãi bỏ chức An phủ trong năm 1242.",
+      "explanation": "Chưa có thông tin xác nhận việc nhà Trần bãi bỏ chức An phủ.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         586
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.5837582,
       "top_evidence_text": "Mỗi đơn vị hành chính đều có cấp chính quyền tương ứng: phủ có chức Trấn phủ sứ, châu có chức Thông phán, Thiêm phần, huyện có chức Lệnh uý, Chủ bạa. Chính quyền cơ sở là xã được nhà Trần quản lý chặt chẽ hơn trước. Năm 1242 nhà Trần đặt chức Đại tư xã hàm ngũ phẩm và Tiểu tư xã hàm lục phẩm, quản lý từng xã hoặc từng cụm gồm hai, ba, bốn xã.",
       "evidence": [
         {
           "chunk_id": "019e566b-b464-7ad0-9803-39f140de3911",
-          "score": null,
+          "score": 0.5837582,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             586
@@ -2264,7 +2265,7 @@
         },
         {
           "chunk_id": "019e5666-061f-7ae8-b4a4-9464fd5add07",
-          "score": null,
+          "score": 0.5704754,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             296
@@ -2274,7 +2275,7 @@
         },
         {
           "chunk_id": "019e5668-4fc9-74bf-8991-75be35fbaabf",
-          "score": null,
+          "score": 0.5698965,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             375
@@ -2284,7 +2285,7 @@
         },
         {
           "chunk_id": "019e5661-e09e-7136-a45c-73bd4c0c6ac9",
-          "score": null,
+          "score": 0.5623628,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             54
@@ -2294,7 +2295,7 @@
         },
         {
           "chunk_id": "019e566e-b925-7e43-a46d-184ad2730d1d",
-          "score": null,
+          "score": 0.54308593,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             731
@@ -2311,18 +2312,18 @@
       "gold_label": "REFUTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng không đề cập đến việc bãi bỏ chức Trấn phủ, chỉ liên quan đến tái cấu trúc và quản lý các đơn vị hành chính.",
+      "explanation": "Chưa có thông tin xác nhận việc nhà Trần bãi bỏ chức Trấn phủ trong năm 1242.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         586
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.6001816,
       "top_evidence_text": "Mỗi đơn vị hành chính đều có cấp chính quyền tương ứng: phủ có chức Trấn phủ sứ, châu có chức Thông phán, Thiêm phần, huyện có chức Lệnh uý, Chủ bạa. Chính quyền cơ sở là xã được nhà Trần quản lý chặt chẽ hơn trước. Năm 1242 nhà Trần đặt chức Đại tư xã hàm ngũ phẩm và Tiểu tư xã hàm lục phẩm, quản lý từng xã hoặc từng cụm gồm hai, ba, bốn xã.",
       "evidence": [
         {
           "chunk_id": "019e566b-b464-7ad0-9803-39f140de3911",
-          "score": null,
+          "score": 0.6001816,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             586
@@ -2332,7 +2333,7 @@
         },
         {
           "chunk_id": "019e5661-e09e-7136-a45c-73bd4c0c6ac9",
-          "score": null,
+          "score": 0.59444034,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             54
@@ -2342,7 +2343,7 @@
         },
         {
           "chunk_id": "019e5668-4fc9-74bf-8991-75be35fbaabf",
-          "score": null,
+          "score": 0.5605742,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             375
@@ -2352,7 +2353,7 @@
         },
         {
           "chunk_id": "019e5661-e096-79c9-84f7-16d66cfee6ae",
-          "score": null,
+          "score": 0.5590879,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             53,
@@ -2363,7 +2364,7 @@
         },
         {
           "chunk_id": "019e5666-061f-7ae8-b4a4-9464fd5add07",
-          "score": null,
+          "score": 0.5514411,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             296
@@ -2380,18 +2381,18 @@
       "gold_label": "REFUTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng chỉ liên quan đến việc sử dụng chữ quốc húy và không đề cập đến việc nhà Trần sử dụng văn thần làm Tri phủ và Tri châu.",
+      "explanation": "Chưa có đủ thông tin để xác nhận hoặc bác bỏ việc sau năm 1244, triều đình nhà Trần không sử dụng văn thần làm Tri phủ và Tri châu.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         375
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.53893185,
       "top_evidence_text": "Không chỉ tái cấu trúc lại các đơn vị hành chính, nhà Trần còn rất chú trọng công tác quản lý kinh thành. Nhà Trần đã đặt ty Bình bạc chuyên trông coi quản lý hành chính và tư pháp Thăng Long. Vào năm 1265, ty Bình bạc được nhà Trần đổi làm Kinh sư An phủ sứ, năm 1341 đổi thành Kinh sư Đại doãn và đến năm 1394 đổi thành Trung đô doãn.",
       "evidence": [
         {
           "chunk_id": "019e5668-4fc9-74bf-8991-75be35fbaabf",
-          "score": null,
+          "score": 0.53893185,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             375
@@ -2401,7 +2402,7 @@
         },
         {
           "chunk_id": "019e5656-63ab-75a6-a78a-070df14e32a3",
-          "score": null,
+          "score": 0.53458095,
           "book_name": "Đại Việt Sử Ký Toàn Thư",
           "pages": [
             208
@@ -2411,7 +2412,7 @@
         },
         {
           "chunk_id": "019e5666-0617-7cb7-bc81-5b6fb70bbfbf",
-          "score": null,
+          "score": 0.5168171,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             296
@@ -2421,7 +2422,7 @@
         },
         {
           "chunk_id": "019e5666-3839-7399-8676-70e494b6568f",
-          "score": null,
+          "score": 0.51503974,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             310
@@ -2431,7 +2432,7 @@
         },
         {
           "chunk_id": "019e5663-ac9d-7eb2-a622-39fd82ae8842",
-          "score": null,
+          "score": 0.5144408,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             169
@@ -2448,18 +2449,18 @@
       "gold_label": "REFUTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng không trực tiếp liên quan đến việc hương được đổi thành giáp năm 1297, mà chỉ đề cập tới lịch sử của các đơn vị hành chính thời Trần.",
+      "explanation": "Chưa có đủ thông tin để xác nhận hoặc bác bỏ việc sau năm 1297 hương được đổi thành giáp.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         586
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.60854745,
       "top_evidence_text": " Chức quan đứng đầu kinh thành được tuyển chọn chặt chẽ, phải trải qua chức An phủ sứ các lộ, pồi An phủ sứ phủ Thiên Trường và kinh qua Thẩm hình viện, sau đó mới được xết bổ nhiệm.\nDưới lộ có phủ, châu, rồi đến hương hay huyện, cuối cùng là xã.\nMiền núi còn có trại, sách. Tuy trước đây Khúc Thừa Hạo đã đổi bương làm giápl, nhưng trên thực tế cho đến đời Trần các hương vẫn còn tồn tại. Vào đầu đời Trần, sử biên niên còn nhắc đến những tên hương như Tức Mặc (1231), Ba Điểm, Bàng Hà, Ma Lôi (1287). Năm 1297 nhà Trần đổi giáp thành hương. Như vậy hương là một cấp hành chính còn tồn tại phổ biến dưới triều Trần, gần tương đương như huyện.\n",
       "evidence": [
         {
           "chunk_id": "019e566b-b458-794d-8ab6-7c50a05c587b",
-          "score": null,
+          "score": 0.60854745,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             586
@@ -2469,7 +2470,7 @@
         },
         {
           "chunk_id": "019e566c-3eba-7810-a51c-0ef08b4501b5",
-          "score": null,
+          "score": 0.5891469,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             603
@@ -2482,7 +2483,7 @@
         },
         {
           "chunk_id": "019e5661-feb3-79c9-a3c8-c53317e81dd2",
-          "score": null,
+          "score": 0.5802807,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             60
@@ -2494,7 +2495,7 @@
         },
         {
           "chunk_id": "019e5666-05ef-74c2-9f4e-3bfb84e7436b",
-          "score": null,
+          "score": 0.54398274,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             294
@@ -2504,7 +2505,7 @@
         },
         {
           "chunk_id": "019e566b-b451-7b30-8f6d-7852dbbe7be8",
-          "score": null,
+          "score": 0.5330132,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             585,
@@ -2522,18 +2523,18 @@
       "gold_label": "REFUTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng chỉ đề cập đến việc tổ chức các khoa thi, nhưng không có thông tin cụ thể về việc mở khoa thi lấy Trạng nguyên lần đầu vào năm 1300.",
+      "explanation": "Chưa có thông tin xác nhận việc nhà Trần mở khoa thi lấy Trạng Nguyên vào năm 1300.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         383
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.5974211,
       "top_evidence_text": "Khoa thi Nho học đầu tiên được tổ chức dưới thời Trần vào năm 1232 dưới triều vua Trần Thái Tông.\nĐến năm 1247, vua Trần Thái Tông cho mở khoa thi 7hái học sirth, lấy đậu theo Tam giáp (Nhất giáp, Nhị giáp, Tam giáp), trong đó, bậc Nhất giáp có Tam Khôi (gồm Trang nguyên, Bảng nhãn, Thám hoa).",
       "evidence": [
         {
           "chunk_id": "019e5668-80ea-702d-b4ad-94fbdba033bb",
-          "score": null,
+          "score": 0.5974211,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             383
@@ -2543,7 +2544,7 @@
         },
         {
           "chunk_id": "019e5668-80f0-7e24-86ef-ecd3362ba674",
-          "score": null,
+          "score": 0.5965247,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             383,
@@ -2554,7 +2555,7 @@
         },
         {
           "chunk_id": "019e5666-208d-7c76-9844-c0abfe90a763",
-          "score": null,
+          "score": 0.5783272,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             298,
@@ -2565,7 +2566,7 @@
         },
         {
           "chunk_id": "019e5668-80fb-7e3e-a8e9-baaa41e1cde2",
-          "score": null,
+          "score": 0.57337433,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             384
@@ -2575,7 +2576,7 @@
         },
         {
           "chunk_id": "019e5664-352f-7d7d-8c88-1754d19b3bc1",
-          "score": null,
+          "score": 0.56951207,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             207
@@ -2590,20 +2591,20 @@
       "claim_id": "eval_0037",
       "claim": "Nhà Trần chưa từng mở khoa thi lấy Trạng nguyên.",
       "gold_label": "REFUTED",
-      "pred_label": "NOT_ENOUGH_EVIDENCE",
+      "pred_label": "SUPPORTED",
       "is_correct": false,
-      "explanation": "Bằng chứng chỉ đề cập đến các kỳ thi và người đạt kết quả cao, nhưng không rõ thời điểm Nhà Trần mở khoa thi lấy Trạng Nguyên.",
+      "explanation": "Thông tin về việc mở khoa thi lấy Trạng nguyên trong thời Trần phù hợp với các chi tiết lịch sử được cung cấp.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         383
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.51480484,
       "top_evidence_text": "Khoa thi Nho học đầu tiên được tổ chức dưới thời Trần vào năm 1232 dưới triều vua Trần Thái Tông.\nĐến năm 1247, vua Trần Thái Tông cho mở khoa thi 7hái học sirth, lấy đậu theo Tam giáp (Nhất giáp, Nhị giáp, Tam giáp), trong đó, bậc Nhất giáp có Tam Khôi (gồm Trang nguyên, Bảng nhãn, Thám hoa).",
       "evidence": [
         {
           "chunk_id": "019e5668-80ea-702d-b4ad-94fbdba033bb",
-          "score": null,
+          "score": 0.51480484,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             383
@@ -2613,7 +2614,7 @@
         },
         {
           "chunk_id": "019e5668-8109-7b32-a71a-b7245094238f",
-          "score": null,
+          "score": 0.5143973,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             384
@@ -2623,7 +2624,7 @@
         },
         {
           "chunk_id": "019e5662-e383-7aed-bc20-8a5cfe70746a",
-          "score": null,
+          "score": 0.51398593,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             121
@@ -2633,7 +2634,7 @@
         },
         {
           "chunk_id": "019e5666-208d-7c76-9844-c0abfe90a763",
-          "score": null,
+          "score": 0.5098562,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             298,
@@ -2644,7 +2645,7 @@
         },
         {
           "chunk_id": "019e5668-80f0-7e24-86ef-ecd3362ba674",
-          "score": null,
+          "score": 0.5076475,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             383,
@@ -2662,18 +2663,18 @@
       "gold_label": "REFUTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng không đề cập trực tiếp đến chức Trừ cung giáo thụ nhà Trần.",
+      "explanation": "Chưa có thông tin xác nhận về việc nhà Trần đặt chức Trừ cung giáo thụ.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         52
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.55316055,
       "top_evidence_text": "Chức Thượng thư: Chức Thượng thư bắt đầu đặt từ thời Lý. Thời Trần, đặt chức Thượng thư hành khiển, Thượng thư hữu bật.\nChức Hòn lâm phụng chỉ: Công việc của Hàn lâm phụng chỉ là soạn tờ chiếu thay vua. Chức này rất quan trọng, thường những người nào là Thái sư, Mật viện mới được làm.\n",
       "evidence": [
         {
           "chunk_id": "019e5661-e056-7252-9bb6-205c1a0675a9",
-          "score": null,
+          "score": 0.55316055,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             52
@@ -2683,7 +2684,7 @@
         },
         {
           "chunk_id": "019e5666-207b-72e9-8829-848d78ec280b",
-          "score": null,
+          "score": 0.54715496,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             298
@@ -2695,7 +2696,7 @@
         },
         {
           "chunk_id": "019e566c-5b68-709e-ba60-e414e806d25a",
-          "score": null,
+          "score": 0.5272914,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             613
@@ -2705,7 +2706,7 @@
         },
         {
           "chunk_id": "019e5657-8006-7ab3-9b6f-97d3da958cea",
-          "score": null,
+          "score": 0.5224996,
           "book_name": "Đại Việt Sử Ký Toàn Thư",
           "pages": [
             242
@@ -2715,7 +2716,7 @@
         },
         {
           "chunk_id": "019e5666-061f-7ae8-b4a4-9464fd5add07",
-          "score": null,
+          "score": 0.52151376,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             296
@@ -2732,18 +2733,18 @@
       "gold_label": "REFUTED",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": false,
-      "explanation": "Bằng chứng không đủ thông tin để xác nhận hoặc bác bỏ hoàn toàn cáo buộc triều đình nhà Trần xử tử toàn bộ người có ý định đầu hàng sau chiến tranh.",
+      "explanation": "Chưa có đủ thông tin để xác nhận hoặc bác bỏ việc nhà Trần xử tử toàn bộ những người từng có ý định đầu hàng sau chiến tranh.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         38
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.47784278,
       "top_evidence_text": "Cuộc thay đổi triều đại, chuyển trao chính quyền từ dòng họ Lý sang họ Trần diễn ra trong triều đình và hoàng cung mà hầu như không gây những xáo trộn, biến động xã hội. Tập đoàn quý tộc họ Trần đã rất khôn khéo, lấn từng bước vững chắc và cuối cùng nắm giữ chính quyền một cách nhanh gọn. ƠCảá họ Lý suy yếu rệu rã, tê liệt hoàn toàn và không có phản ứng đáng kể nào.\n",
       "evidence": [
         {
           "chunk_id": "019e5661-ade9-7164-9e4c-f8932b025f99",
-          "score": null,
+          "score": 0.47784278,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             38
@@ -2753,7 +2754,7 @@
         },
         {
           "chunk_id": "019e5665-0217-7cae-a9b4-add7d4d0b00b",
-          "score": null,
+          "score": 0.4737087,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             240,
@@ -2764,7 +2765,7 @@
         },
         {
           "chunk_id": "019e5665-0245-78cc-8da8-8f4f81eb5e83",
-          "score": null,
+          "score": 0.47362152,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             242
@@ -2774,7 +2775,7 @@
         },
         {
           "chunk_id": "019e5660-b8b4-7c65-a01a-d8fd2cc18874",
-          "score": null,
+          "score": 0.46860862,
           "book_name": "Việt Sử Toàn Thư",
           "pages": [
             243
@@ -2784,7 +2785,7 @@
         },
         {
           "chunk_id": "019e565d-c945-7752-921b-cbe7dae3553d",
-          "score": null,
+          "score": 0.46062008,
           "book_name": "Khâm Định Việt Sử Thông Giám Cương Mục",
           "pages": [
             341
@@ -2799,20 +2800,20 @@
       "claim_id": "eval_0040",
       "claim": "Nhà Trần hoàn toàn không thực hiện cải cách hành chính trong thế kỷ XIII.",
       "gold_label": "REFUTED",
-      "pred_label": "REFUTED",
-      "is_correct": true,
-      "explanation": "Bằng chứng xác nhận sự cải cách hành chính trong triều Trần, bao gồm việc ban hành các bộ luật và tu chỉnh hệ thống hành chính.",
+      "pred_label": "NOT_ENOUGH_EVIDENCE",
+      "is_correct": false,
+      "explanation": "Chưa có đủ thông tin để xác nhận hoặc bác bỏ việc nhà Trần đã thực hiện cải cách hành chính trong thế kỷ XIII.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         584
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.46934104,
       "top_evidence_text": " lập lại trật tự chính trị - xã hội. Sau đó, trong nửa sau thế kỷ XIL, triều Trần đã lãnh đạo quân đân Đại Việt lập nên chiến công hiển hách của ba lần kháng chiến chống Mông - Nguyên (1258, 1285, 1287 - 1288). Đó là một trong những thẳng lợi vĩ đại nhất trong lịch sử giữ nước quang vinh của dân tộc ta.\nTrong thời gian tồn tại, nhất là trong giai đoạn hưng thĩnh của vương triều vào thế ký XILI và nửa đầu thế kỷ XIV,",
       "evidence": [
         {
           "chunk_id": "019e566b-b41c-7093-81e7-3932be314d0a",
-          "score": null,
+          "score": 0.46934104,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             584
@@ -2822,7 +2823,7 @@
         },
         {
           "chunk_id": "019e5666-3839-7399-8676-70e494b6568f",
-          "score": null,
+          "score": 0.4584049,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             310
@@ -2832,7 +2833,7 @@
         },
         {
           "chunk_id": "019e566b-ede4-7cfc-82fb-e03dfed47f92",
-          "score": null,
+          "score": 0.456778,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             595,
@@ -2843,7 +2844,7 @@
         },
         {
           "chunk_id": "019e5661-ade9-7164-9e4c-f8932b025f99",
-          "score": null,
+          "score": 0.45486873,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             38
@@ -2853,7 +2854,7 @@
         },
         {
           "chunk_id": "019e5661-fe8b-77c7-807b-67daf06309db",
-          "score": null,
+          "score": 0.45216757,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             58
@@ -2870,18 +2871,18 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng không đưa ra thông tin cụ thể về việc Trần Hưng Đạo từng đi du học tại nhà Tống.",
+      "explanation": "Chưa có đủ thông tin để xác nhận hoặc bác bỏ việc Trần Hưng Đạo từng đi du học tại nhà Tống.",
       "evidence_count": 5,
       "top_evidence_book": "Đại Việt Sử Ký Toàn Thư",
       "top_evidence_pages": [
         304
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.574398,
       "top_evidence_text": " (Tư Thiện đường vốn là tên nhà học của thái tử triều Trần).\nNhà Minh sai bọn nội quan Nguyễn Tông Đạo sang.\n",
       "evidence": [
         {
           "chunk_id": "019e5659-a5ad-7f47-b927-cccd4b8e0ebc",
-          "score": null,
+          "score": 0.574398,
           "book_name": "Đại Việt Sử Ký Toàn Thư",
           "pages": [
             304
@@ -2891,7 +2892,7 @@
         },
         {
           "chunk_id": "019e565f-25bb-75e2-897f-a5955f7f3bb7",
-          "score": null,
+          "score": 0.48523527,
           "book_name": "Việt Sử Toàn Thư",
           "pages": [
             202,
@@ -2902,7 +2903,7 @@
         },
         {
           "chunk_id": "019e5661-2b20-7925-b883-462e35f18e95",
-          "score": null,
+          "score": 0.48408073,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             25
@@ -2912,7 +2913,7 @@
         },
         {
           "chunk_id": "019e5661-d4bd-7054-b84a-911e8e01ee61",
-          "score": null,
+          "score": 0.48093522,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             49
@@ -2922,7 +2923,7 @@
         },
         {
           "chunk_id": "019e565e-7131-7db6-9503-a2fef09f15e4",
-          "score": null,
+          "score": 0.4756349,
           "book_name": "Việt Sử Toàn Thư",
           "pages": [
             176
@@ -2939,19 +2940,19 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng không cung cấp thông tin trực tiếp về việc Trần Nhân Tông sử dụng kính thiên văn.",
+      "explanation": "Chưa có thông tin cụ thể về việc Trần Nhân Tông sử dụng kính thiên văn để quan sát bầu trời.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         167,
         168
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.48659948,
       "top_evidence_text": "Trần Anh Tông làm vua 21 năm (1293-1314), làm Thái thượng hoàng 7 năm (1314 -1320), thọ 45 tuổi [4]. Các sử gia thời xưa tôn vinh Trần AẢnh Tông là vị vua “khéo thừa kế nghiệp vua, làm cho nướcthịnh trị [1], “thời cuộc đi tối thái bình, chính trị trở nên tốt đẹp, văn vật chế độ ngày càng thịnh vượng, cũng là bậc vua tốt của triều Trần”2.\n",
       "evidence": [
         {
           "chunk_id": "019e5663-ac54-7f1d-bdbd-e02a9c2d93f5",
-          "score": null,
+          "score": 0.48659948,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             167,
@@ -2965,7 +2966,7 @@
         },
         {
           "chunk_id": "019e5668-fef8-78b5-ad34-8f7a6294f388",
-          "score": null,
+          "score": 0.4792715,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             432
@@ -2975,7 +2976,7 @@
         },
         {
           "chunk_id": "019e5663-7808-771c-8a76-ea580338630e",
-          "score": null,
+          "score": 0.46482843,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             160,
@@ -2986,7 +2987,7 @@
         },
         {
           "chunk_id": "019e5668-f47a-76c7-a3db-03d2122e2efc",
-          "score": null,
+          "score": 0.45763603,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             432
@@ -2996,7 +2997,7 @@
         },
         {
           "chunk_id": "019e5664-48af-7bdd-bf56-8293b700a97c",
-          "score": null,
+          "score": 0.4530211,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             210
@@ -3013,18 +3014,18 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng không đề cập đến việc Nhà Trần xây dựng học viện quân sự ở Thăng Long.",
+      "explanation": "Chưa có thông tin cụ thể về việc nhà Trần xây dựng học viện quân sự tại Thăng Long.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         382
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.61556494,
       "top_evidence_text": " Ngũ birh. Cũng trong năm này, Trần Thái Tông cho lập Giảng Võ đường để tạo điều kiện cho các võ quan tập trung đến đây học hỏi biĩnh pháp, rn luyện võ nghệ. Giảng Võ đường được xem là trường cao cấp quân sự đào tạo võ quan. Đây là một bước tiến trong nền giáo dục thời Trần, chứng tỏ sự quan tâm của nhà nước trên ca hai phương diện: văn - võ.",
       "evidence": [
         {
           "chunk_id": "019e5668-5c43-7736-9bed-fd42d23e7fd7",
-          "score": null,
+          "score": 0.61556494,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             382
@@ -3034,7 +3035,7 @@
         },
         {
           "chunk_id": "019e5666-37e1-775a-807a-3cbafa124d95",
-          "score": null,
+          "score": 0.59557414,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             308
@@ -3044,7 +3045,7 @@
         },
         {
           "chunk_id": "019e5668-5c34-704c-a61b-b73f6dd584a9",
-          "score": null,
+          "score": 0.58503354,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             382
@@ -3054,7 +3055,7 @@
         },
         {
           "chunk_id": "019e5662-e38f-749e-993a-fe883f0eeaba",
-          "score": null,
+          "score": 0.5573627,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             121
@@ -3064,7 +3065,7 @@
         },
         {
           "chunk_id": "019e5667-d20c-7fe9-bd83-79863f729660",
-          "score": null,
+          "score": 0.5553771,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             370
@@ -3081,18 +3082,18 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng không đề cập đến số lượng chiến thuyền cụ thể của nhà Trần.",
+      "explanation": "Chưa có thông tin cụ thể về số lượng chiến thuyền trong hạm đội thường trực nhà Trần.",
       "evidence_count": 5,
       "top_evidence_book": "Việt Sử Toàn Thư",
       "top_evidence_pages": [
         165
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.51151794,
       "top_evidence_text": "Các ngạch quân chia làm thân quân, du quân và vương hầu gia đồng.\nThân quân có: 1) Thánh dực đô. 2) Thần dực đô. 3) Long dực đô. 4) Hổ dực đô. 5) Phụng nha quan chức lang. (Từ đây trở lên đều có tả hữu có nghĩa là bốn Đô và mỗI Lang đều có tả hữu. Ví dụ: Tả thánh dực đô, hữu thánh dực đô v.v...) Du quân có: 1) Thiết lâm đô. 2) Thiết hạm đô. 3) Hùng hổ đô. 4) Vũ an đô.\nVương hầu gia đồng có: 1) Toàn hầu đô. 2) Dược đông đô. 3) Sơn liêu đô v.v...\n",
       "evidence": [
         {
           "chunk_id": "019e565e-0b04-730e-8300-0e44dbf7404b",
-          "score": null,
+          "score": 0.51151794,
           "book_name": "Việt Sử Toàn Thư",
           "pages": [
             165
@@ -3102,7 +3103,7 @@
         },
         {
           "chunk_id": "019e565e-0b10-7aa8-979d-5476c7db7239",
-          "score": null,
+          "score": 0.5073488,
           "book_name": "Việt Sử Toàn Thư",
           "pages": [
             165,
@@ -3113,7 +3114,7 @@
         },
         {
           "chunk_id": "019e5666-2bab-7a44-bdd1-49610be6d88d",
-          "score": null,
+          "score": 0.50150526,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             302
@@ -3123,7 +3124,7 @@
         },
         {
           "chunk_id": "019e5665-021d-7237-a210-a2845ce50e92",
-          "score": null,
+          "score": 0.49473524,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             241
@@ -3133,7 +3134,7 @@
         },
         {
           "chunk_id": "019e5666-20a8-7a37-962c-6df105a7e297",
-          "score": null,
+          "score": 0.48533818,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             299
@@ -3150,18 +3151,18 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng chỉ nhắc đến Binh thư yếu lược và không đề cập trực tiếp đến việc Trần Quốc Tuấn viết một bộ binh pháp thất truyền.",
+      "explanation": "Chưa có đủ thông tin để xác nhận hoặc bác bỏ việc Trần Quốc Tuấn viết một bộ binh pháp thất truyền ngoài Binh thư yếu lược.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         430
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.59190845,
       "top_evidence_text": "rh thư yếu lược không chỉ là sự đúc kết kinh nghiệm thực tiễn từ chính cuộc chiến tranh vệ quốc vĩ đại của dân tộc mà còn là sự vận dụng đầy sáng tạo bình pháp của những nhà tư tưởng quân sự kiệt xuất của Trung Hoa cổ đại trong bối cảnh đặc thù của dân tộc, trong đó phải kể đến những bộ binh pháp nổi tiếng như #uỳnh Đế binh pháp thời Ngũ Đế, Olu Công Tư Mã pháp, Thái Công binh pháp, Lục Thœo của Khương Tử Nha thời Chu, 7z Mã brnh pháp của Tựư Mã Điền Nhương thời Chu; 7Tôn Tử binh phép của Tôn Võ Tử (Tôn Tử) - bộ sách đã giúp nước Ngô đánh bại nước Sở và các chư hầu làm bá chủ thiên hạ: Ngô Khởi binh pháp của Ngô Khởi thời Chu, Khổng Minh bình pháp của Không Minh thời Tam Quốc...\n",
       "evidence": [
         {
           "chunk_id": "019e5668-f437-7f5f-b7bb-90e590cf24e5",
-          "score": null,
+          "score": 0.59190845,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             430
@@ -3171,7 +3172,7 @@
         },
         {
           "chunk_id": "019e5668-f431-70f1-bf0b-9a1d700fd62d",
-          "score": null,
+          "score": 0.5721333,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             429,
@@ -3182,7 +3183,7 @@
         },
         {
           "chunk_id": "019e5668-f44c-78ff-81dd-41ef4f5c1e56",
-          "score": null,
+          "score": 0.5647977,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             430
@@ -3192,7 +3193,7 @@
         },
         {
           "chunk_id": "019e5668-f467-7029-817a-efcb0fdb41e1",
-          "score": null,
+          "score": 0.5410602,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             431
@@ -3202,7 +3203,7 @@
         },
         {
           "chunk_id": "019e5668-f427-717f-8c42-e95719555255",
-          "score": null,
+          "score": 0.5159674,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             429
@@ -3219,18 +3220,18 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng không đề cập trực tiếp đến quan hệ thương mại với Nhật Bản của nhà Trần.",
+      "explanation": "Chưa có đủ thông tin để xác nhận hoặc bác bỏ việc Nhà Trần thiết lập tuyến thương mại thường xuyên với Nhật Bản.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         356
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.47102982,
       "top_evidence_text": " Nhờ vậy, việc buôn bán, trao đổi ở trong nước được mở rộng hơn. Các con sông đã nối hền miền ngược và miền xuôi, giữa vùng châu thổ sông Hồng với lưu vực sông Mã, sông Lam... Vì thế, triều Trần luôn luôn quan tâm đến việc đào mới và nạo vét các sông, ngòi cũ.\nNgoài ra, nhà Trần còn coi trong việc bồi đấp đê sông, đào kênh mương lạch ở các lộ, nhất là các lộ ở phía Nam đất nước, phục vụ cho nhu cầu quân sự, giao thông, buôn bán và phát triển nông nghiệp.\n",
       "evidence": [
         {
           "chunk_id": "019e5667-6ae9-7602-9163-6090bc292071",
-          "score": null,
+          "score": 0.47102982,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             356
@@ -3240,7 +3241,7 @@
         },
         {
           "chunk_id": "019e5667-8f50-7166-b0ab-f5fdf1045d85",
-          "score": null,
+          "score": 0.44928506,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             360
@@ -3250,7 +3251,7 @@
         },
         {
           "chunk_id": "019e5667-8f6f-7a76-a37f-087b957c7497",
-          "score": null,
+          "score": 0.44430315,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             361,
@@ -3261,7 +3262,7 @@
         },
         {
           "chunk_id": "019e5667-6af9-7052-801d-c23cb4c7e93a",
-          "score": null,
+          "score": 0.4428961,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             357
@@ -3271,7 +3272,7 @@
         },
         {
           "chunk_id": "019e5662-b91e-73f6-ad80-7798de00003e",
-          "score": null,
+          "score": 0.43875638,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             107
@@ -3288,18 +3289,18 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng chỉ đề cập đến các sứ đoàn cử đi, nhưng không nói rõ họ đi sang châu Âu hay bất kỳ nơi nào khác.",
+      "explanation": "Chưa có thông tin cụ thể về sứ đoàn sang châu Âu.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         108
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.5424621,
       "top_evidence_text": "nhà Trần phải hai lần thành lập hai đoàn đi sứ nước Nguyên, lần thứ nhất vào tháng Giêng, lần thứ hai vào tháng 12.\nTrong quan hệ với một nước lớn đang trong lúc hùng mạnh như Đại Nguyên, Trần Thánh Tông không chỉ chấp nhận những yêu cầu của vua Nguyên Hốt Tất Liệt đề ra mà còn có những yêu cầu đối với nhà Nguyên.",
       "evidence": [
         {
           "chunk_id": "019e5662-b925-7afd-86f2-71a7df800c04",
-          "score": null,
+          "score": 0.5424621,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             108
@@ -3309,7 +3310,7 @@
         },
         {
           "chunk_id": "019e5668-f3e3-7fa7-84b9-fcdfe2a716e9",
-          "score": null,
+          "score": 0.536806,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             428
@@ -3321,7 +3322,7 @@
         },
         {
           "chunk_id": "019e566a-5a3e-7e72-8458-b7a75c41a679",
-          "score": null,
+          "score": 0.5213125,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             527
@@ -3331,7 +3332,7 @@
         },
         {
           "chunk_id": "019e5668-e9bf-77e5-8fa4-de248f6a4397",
-          "score": null,
+          "score": 0.51266646,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             427
@@ -3341,7 +3342,7 @@
         },
         {
           "chunk_id": "019e5662-b91e-73f6-ad80-7798de00003e",
-          "score": null,
+          "score": 0.5006895,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             107
@@ -3358,18 +3359,18 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng không đề cập đến việc xây dựng thư viện hoàng gia của vua Trần Thái Tông.",
+      "explanation": "Chưa có thông tin cụ thể về việc xây dựng thư viện hoàng gia trong các nguồn được cung cấp.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         382
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.46363133,
       "top_evidence_text": "Bấy giờ, nhà Trần đã chú trọng biện toàn, phát triển hệ thống trường học từ trurg ương đến địa phương:\nNăm 1236, nhà Trần đã cho mở rộng cửa Quốc Tử Giám hơn trước, song cũng chíỉ cho các con em các quan văn vào học.\nNăm 1253, vua Trần Thái Tông cho lập Quốc Học viện tại kinh đô Thăng Long cho con em quý tộc, quan lại, về sau mở rộng cho nho sĩ vào nghe giảng T thư,",
       "evidence": [
         {
           "chunk_id": "019e5668-5c34-704c-a61b-b73f6dd584a9",
-          "score": null,
+          "score": 0.46363133,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             382
@@ -3379,7 +3380,7 @@
         },
         {
           "chunk_id": "019e5662-542c-7f5b-a5d5-523910a35d54",
-          "score": null,
+          "score": 0.4617694,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             76,
@@ -3390,7 +3391,7 @@
         },
         {
           "chunk_id": "019e565e-7131-7db6-9503-a2fef09f15e4",
-          "score": null,
+          "score": 0.4485839,
           "book_name": "Việt Sử Toàn Thư",
           "pages": [
             176
@@ -3400,7 +3401,7 @@
         },
         {
           "chunk_id": "019e5668-f3e3-7fa7-84b9-fcdfe2a716e9",
-          "score": null,
+          "score": 0.441833,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             428
@@ -3412,7 +3413,7 @@
         },
         {
           "chunk_id": "019e5666-37e1-775a-807a-3cbafa124d95",
-          "score": null,
+          "score": 0.43478826,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             308
@@ -3429,19 +3430,19 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng không cung cấp thông tin cụ thể về loại hỏa pháo được sử dụng bởi nhà Trần và nhà Nguyên.",
+      "explanation": "Chưa có thông tin cụ thể về loại hỏa pháo mà nhà Trần chế tạo.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         308,
         309
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.51739305,
       "top_evidence_text": "Quân đội thời Trần có nhiều tiến bộ về kỹ thuật quân sự. Các loại vũ khí thông dụng vẫn được sử dụng phổ biến là giáo, mác, dao, kiếm,qua, kích, đinh ba, trượng, lao, câu liêm, các loại chông, bẫy đá, cung nö... Nhưng bên cạnh đó, trong cuộc kháng chiến chống Mông Nguyên, quân nhà Trần đã bắt đầu sử dụng pháo bắn đá, hỏa khí khá mạnh.\nNgười lính còn được trang bị kêm theo các phương tiện hộ thân như áo giáp, khiên mộc, “hộ tâm phiến” (tấm che ngực)...\n",
       "evidence": [
         {
           "chunk_id": "019e5666-3807-79a6-8c10-3b73119f7c45",
-          "score": null,
+          "score": 0.51739305,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             308,
@@ -3452,7 +3453,7 @@
         },
         {
           "chunk_id": "019e5668-e9bf-77e5-8fa4-de248f6a4397",
-          "score": null,
+          "score": 0.49668786,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             427
@@ -3462,7 +3463,7 @@
         },
         {
           "chunk_id": "019e5668-e8a8-7776-9bc2-ff135a9c9b94",
-          "score": null,
+          "score": 0.46247822,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             424
@@ -3472,7 +3473,7 @@
         },
         {
           "chunk_id": "019e5668-e8b4-76fd-a4b3-b746c9c37f63",
-          "score": null,
+          "score": 0.4611917,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             424
@@ -3482,7 +3483,7 @@
         },
         {
           "chunk_id": "019e5661-ae0c-7307-833a-79c3e2af7077",
-          "score": null,
+          "score": 0.4406688,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             39
@@ -3499,18 +3500,18 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Không có bằng chứng xác nhận trực tiếp Trần Anh Tông đã trực tiếp chỉ huy một hạm đội viễn dương.",
+      "explanation": "Chưa có thông tin trực tiếp xác nhận Trần Anh Tông trực tiếp chỉ huy một hạm đội viễn dương.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         309
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.50114286,
       "top_evidence_text": "Quân đội thời Trần đã có sự chuyên biệt khá rõ giữa quân thủy và quân bộ. Trong cuộc kháng chiến bảo vệ Tổ quốc, lực lượng thủy quân đã đảm nhiệm nhiều trận đánh ở ven biển, ven sông lớn. Dưới sự chỉ huy của tướng thủy quân nổi tiếng là Trần Khánh Dư, quân nhà Trần đã giành chiến thắng trong nhiều trận đánh quan trọng, tiêu biểu như chiến thắng Vân Đồn, đặc biệt là trận đại thắng trên sông Bạch Đằng năm 1288.\n",
       "evidence": [
         {
           "chunk_id": "019e5666-3812-75a3-910b-eccb0b8a2911",
-          "score": null,
+          "score": 0.50114286,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             309
@@ -3520,7 +3521,7 @@
         },
         {
           "chunk_id": "019e5664-01c8-70ec-91af-c5a69770ae7b",
-          "score": null,
+          "score": 0.46925852,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             181
@@ -3530,7 +3531,7 @@
         },
         {
           "chunk_id": "019e5669-dd71-7c34-bd12-b65b086a9ac9",
-          "score": null,
+          "score": 0.46093473,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             485
@@ -3540,7 +3541,7 @@
         },
         {
           "chunk_id": "019e566c-b953-7442-b2aa-714f40a993bc",
-          "score": null,
+          "score": 0.45623025,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             631
@@ -3550,7 +3551,7 @@
         },
         {
           "chunk_id": "019e5664-0248-7f53-a809-3e2bcc7f0cb1",
-          "score": null,
+          "score": 0.4525249,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             186
@@ -3567,18 +3568,18 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng không đề cập đến trường đào tạo quan lại dành riêng cho phụ nữ trong nhà Trần.",
+      "explanation": "Chưa có thông tin cụ thể về việc nhà Trần thành lập trường đào tạo quan lại dành riêng cho phụ nữ.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         382
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.53916097,
       "top_evidence_text": "Bấy giờ, nhà Trần đã chú trọng biện toàn, phát triển hệ thống trường học từ trurg ương đến địa phương:\nNăm 1236, nhà Trần đã cho mở rộng cửa Quốc Tử Giám hơn trước, song cũng chíỉ cho các con em các quan văn vào học.\nNăm 1253, vua Trần Thái Tông cho lập Quốc Học viện tại kinh đô Thăng Long cho con em quý tộc, quan lại, về sau mở rộng cho nho sĩ vào nghe giảng T thư,",
       "evidence": [
         {
           "chunk_id": "019e5668-5c34-704c-a61b-b73f6dd584a9",
-          "score": null,
+          "score": 0.53916097,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             382
@@ -3588,7 +3589,7 @@
         },
         {
           "chunk_id": "019e5668-5c43-7736-9bed-fd42d23e7fd7",
-          "score": null,
+          "score": 0.5338636,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             382
@@ -3598,7 +3599,7 @@
         },
         {
           "chunk_id": "019e5662-e38f-749e-993a-fe883f0eeaba",
-          "score": null,
+          "score": 0.50702286,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             121
@@ -3608,7 +3609,7 @@
         },
         {
           "chunk_id": "019e5666-37e1-775a-807a-3cbafa124d95",
-          "score": null,
+          "score": 0.5043659,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             308
@@ -3618,7 +3619,7 @@
         },
         {
           "chunk_id": "019e566e-f406-79b7-a4e4-51bd434ce128",
-          "score": null,
+          "score": 0.496859,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             733,
@@ -3636,18 +3637,18 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng chỉ đề cập đến các sự kiện liên quan nhưng không cung cấp chi tiết về nhật ký ghi chép của Trần Nhân Tông chống Nguyên.",
+      "explanation": "Chưa có đủ thông tin để xác nhận nội dung bài viết.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         466
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.49657795,
       "top_evidence_text": " Quân ta tiến công dữ dội. Quân địch cố sức giữ thành, nhưng khả năng chống cự giảm dần, nguy cơ bị tiêu diệt đến gần. Sử liệu nhà Nguyên phản ánh tình hình chiến đấu của địch ở thành Thăng Long như sau: “Quân thủy và quân bộ đến đánh đại doanh, vây quanh thành mấy vòng, tuy chết nhiều nhưng quân tăng thêm càng đông.",
       "evidence": [
         {
           "chunk_id": "019e5669-8073-7616-aab2-c65c88ef2829",
-          "score": null,
+          "score": 0.49657795,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             466
@@ -3657,7 +3658,7 @@
         },
         {
           "chunk_id": "019e5668-f40c-754a-9e8f-d66f1d14db41",
-          "score": null,
+          "score": 0.49601132,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             429
@@ -3667,7 +3668,7 @@
         },
         {
           "chunk_id": "019e5669-1c50-7ecf-bd74-dd4ae616b23c",
-          "score": null,
+          "score": 0.49349064,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             445
@@ -3677,7 +3678,7 @@
         },
         {
           "chunk_id": "019e566e-b91c-74b5-ad9f-e83bf9f273c5",
-          "score": null,
+          "score": 0.4881191,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             731
@@ -3687,7 +3688,7 @@
         },
         {
           "chunk_id": "019e5662-d7b2-775e-992c-91561c2ce67d",
-          "score": null,
+          "score": 0.48747241,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             116
@@ -3704,18 +3705,18 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng chỉ đề cập đến mối quan hệ giữa nhà Trần và Chiêm Thành, nhưng không đưa ra thông tin cụ thể về việc ký hiệp ước thương mại độc quyền.",
+      "explanation": "Chưa có thông tin cụ thể về việc nhà Trần ký hiệp ước thương mại độc quyền với Chiêm Thành trong các nguồn được cung cấp.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         235
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.49649018,
       "top_evidence_text": "Về thương nghiệp, vua Dụ Tông thắt chặt hoạt động ngoại thương, đặc biệt là quan hệ buôn bán với nước ngoài. Nếu như thời Lý, dòng thương mại ở phía Nam Trung Quốc chủ yếu tập trung ở miền Trung nước ta thì vào thời Trần, vùng biển Đông Bắc càng trở nên nhộn nhịp hơn khi đòng thương mại ở phía nam đã dđịch chuyển lên phía bắc bởi các cửa biển ở miền Trung,",
       "evidence": [
         {
           "chunk_id": "019e5664-f61a-7c3c-a8cb-8c5663e3dc0f",
-          "score": null,
+          "score": 0.49649018,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             235
@@ -3725,7 +3726,7 @@
         },
         {
           "chunk_id": "019e566d-a51d-789b-b7b7-a536664db42e",
-          "score": null,
+          "score": 0.47514576,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             679
@@ -3735,7 +3736,7 @@
         },
         {
           "chunk_id": "019e566d-a53e-71db-82d3-67fa10e446f9",
-          "score": null,
+          "score": 0.46753952,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             680
@@ -3745,7 +3746,7 @@
         },
         {
           "chunk_id": "019e5669-1c9a-7a9c-b628-b1e6579042f1",
-          "score": null,
+          "score": 0.46729282,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             447
@@ -3755,7 +3756,7 @@
         },
         {
           "chunk_id": "019e5660-41da-7894-82ae-29d138720f93",
-          "score": null,
+          "score": 0.46601126,
           "book_name": "Việt Sử Toàn Thư",
           "pages": [
             236
@@ -3772,18 +3773,18 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng không trực tiếp liên quan đến việc nhà Trần phát hành tiền giấy trên phạm vi toàn quốc.",
+      "explanation": "Chưa có thông tin cụ thể về việc nhà Trần phát hành tiền giấy trên phạm vi toàn quốc.",
       "evidence_count": 5,
       "top_evidence_book": "Việt Sử Toàn Thư",
       "top_evidence_pages": [
         227
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.47984326,
       "top_evidence_text": "Để tập trung các tài nguyên quốc gia vào tay chính phủ, Quý Ly cho phát hành tiền giấy vào năm Đinh Sửu (1397) điều chưa hề có ở nước ta từ thượng cổ đến bấy giờ.\nTiền giấy tiện lợi cho việc lưu thông và việc thương mại thế nào ai nấy đều biết và ta cũng nên nhớ rằng các tư gia thuở xưa sợ loạn ly hay có thói ",
       "evidence": [
         {
           "chunk_id": "019e565f-fc2f-7ada-af85-574cfb0767eb",
-          "score": null,
+          "score": 0.47984326,
           "book_name": "Việt Sử Toàn Thư",
           "pages": [
             227
@@ -3793,7 +3794,7 @@
         },
         {
           "chunk_id": "019e566e-b941-7c0c-96d9-512e6fed5129",
-          "score": null,
+          "score": 0.47397304,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             732
@@ -3803,7 +3804,7 @@
         },
         {
           "chunk_id": "019e5667-3f1c-7df5-ad7e-c9fa0c89a281",
-          "score": null,
+          "score": 0.47166017,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             346,
@@ -3814,7 +3815,7 @@
         },
         {
           "chunk_id": "019e5667-6a73-71a8-88e2-29ca48e95d56",
-          "score": null,
+          "score": 0.46723747,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             352,
@@ -3827,7 +3828,7 @@
         },
         {
           "chunk_id": "019e5667-5f52-70cf-baaf-a0a47962de4d",
-          "score": null,
+          "score": 0.4663322,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             352
@@ -3846,18 +3847,18 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Không có bằng chứng cụ thể cho thấy Trần Đệ Tông đã học tập tại một học viện quân sự ở nước ngoài.",
+      "explanation": "Chưa có thông tin cụ thể về việc Trần Duệ Tông học tập tại một trường quân sự nước ngoài.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         382
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.43464544,
       "top_evidence_text": " Ngũ birh. Cũng trong năm này, Trần Thái Tông cho lập Giảng Võ đường để tạo điều kiện cho các võ quan tập trung đến đây học hỏi biĩnh pháp, rn luyện võ nghệ. Giảng Võ đường được xem là trường cao cấp quân sự đào tạo võ quan. Đây là một bước tiến trong nền giáo dục thời Trần, chứng tỏ sự quan tâm của nhà nước trên ca hai phương diện: văn - võ.",
       "evidence": [
         {
           "chunk_id": "019e5668-5c43-7736-9bed-fd42d23e7fd7",
-          "score": null,
+          "score": 0.43464544,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             382
@@ -3867,7 +3868,7 @@
         },
         {
           "chunk_id": "019e5665-4ba3-7cb2-b1d3-141efc07e82b",
-          "score": null,
+          "score": 0.42947,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             253
@@ -3877,7 +3878,7 @@
         },
         {
           "chunk_id": "019e5669-29ec-765a-9cae-52cfe1ad3e68",
-          "score": null,
+          "score": 0.4169287,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             451
@@ -3887,7 +3888,7 @@
         },
         {
           "chunk_id": "019e5657-7f77-7806-89db-c7d1bc4cdf1a",
-          "score": null,
+          "score": 0.4108215,
           "book_name": "Đại Việt Sử Ký Toàn Thư",
           "pages": [
             239
@@ -3897,7 +3898,7 @@
         },
         {
           "chunk_id": "019e5668-f41f-7dab-9e83-660b6de89df2",
-          "score": null,
+          "score": 0.4005732,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             429
@@ -3914,18 +3915,18 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng không đề cập đến việc Nhà Trần tổ chức các cuộc thám hiểm hàng hải tới quần đảo Philippines.",
+      "explanation": "Chưa có thông tin cụ thể về các cuộc thám hiểm hàng hải đến quần đảo Philippines của nhà Trần.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         427
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.4924747,
       "top_evidence_text": " những thành tựu rực rố của nền nghệ thuật ấy đã góp phần đưa thời đại nhà Trần đạt đến đỉnh cao hưng thịnh của nó.\n",
       "evidence": [
         {
           "chunk_id": "019e5668-e9bf-77e5-8fa4-de248f6a4397",
-          "score": null,
+          "score": 0.4924747,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             427
@@ -3935,7 +3936,7 @@
         },
         {
           "chunk_id": "019e566a-9256-7ea3-bed7-5b6333632b1c",
-          "score": null,
+          "score": 0.48783913,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             542
@@ -3945,7 +3946,7 @@
         },
         {
           "chunk_id": "019e566e-f47c-7d5e-ab92-a8c62783824a",
-          "score": null,
+          "score": 0.47216585,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             736
@@ -3955,7 +3956,7 @@
         },
         {
           "chunk_id": "019e5665-e044-7852-b050-6e581f5ae30a",
-          "score": null,
+          "score": 0.46424007,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             290
@@ -3965,7 +3966,7 @@
         },
         {
           "chunk_id": "019e566a-5a3e-7e72-8458-b7a75c41a679",
-          "score": null,
+          "score": 0.4635468,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             527
@@ -3982,19 +3983,19 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng không trực tiếp liên quan đến việc Trần Quốc Tuấn có chức vụ về thiên văn học.",
+      "explanation": "Chưa có thông tin xác nhận Trần Quốc Tuấn giữ chức quan phụ trách thiên văn học.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         431,
         432
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.49509364,
       "top_evidence_text": "Bên cạnh quân sự, fhiên uăn học cũng là một lĩnh vực khoa học mà nhà Trần đạt được nhiều thành tựu rực rỡ. Trong số những nhà thiên văn học thời kỳ này, tiêu biểu nhất là Đặng Lộ và Trần Nguyên Tân Bấy giờ, dưới thời Trần Minh Tông, Đặng Lộ được phong làm Hậu nghị Lang thái sử cục lệnh, chuyên trách công việc ở đài quan sáất Thiên văn Hậu nghi, đặt trong khu Khâm Thiên. Đó là thiên văn đầài ngày xưa. Thực chất, việc quan sát thiên văn đã có từ trước đó và nhà Khâm Thiên cũng đã ra đời từ thời Lý. Song, phải đến thời của Đặng Lộ thì công việc này mới triển khai theo hướng khoa học với độ chínhxác cao.",
       "evidence": [
         {
           "chunk_id": "019e5668-f470-75a0-829a-c188b9378b7d",
-          "score": null,
+          "score": 0.49509364,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             431,
@@ -4005,7 +4006,7 @@
         },
         {
           "chunk_id": "019e5665-e02c-76c0-b863-879fc8a0aaff",
-          "score": null,
+          "score": 0.47062403,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             289
@@ -4015,7 +4016,7 @@
         },
         {
           "chunk_id": "019e565c-83db-7231-baf8-c70ea8b2ed98",
-          "score": null,
+          "score": 0.44787145,
           "book_name": "Khâm Định Việt Sử Thông Giám Cương Mục",
           "pages": [
             278
@@ -4025,7 +4026,7 @@
         },
         {
           "chunk_id": "019e5661-c9d2-7daf-88b2-e26301458086",
-          "score": null,
+          "score": 0.4427117,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             45
@@ -4035,7 +4036,7 @@
         },
         {
           "chunk_id": "019e566e-b911-7513-afa3-96b5e76ef82b",
-          "score": null,
+          "score": 0.4339927,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             731
@@ -4052,19 +4053,19 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng không đề cập đến hệ thống báo hiệu bằng đèn dọc bờ biển, chỉ đề cập đến việc xây dựng và tu bổ các công trình thủy lợi như đê và đồn điền.",
+      "explanation": "Chưa có thông tin cụ thể về việc xây dựng hệ thống báo hiệu bằng đèn dọc bờ biển.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         587,
         588
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.44945258,
       "top_evidence_text": " hàngnăm được tu bổ. Ngoài đê sông, vào đời Trần, hệ thống đê biển cũng được xây dựng.\nNăm 1344 triều Trần đặt thêm chức Đồn điền sứ ở Ty Khuyến nông để lo việc tổ chức khẩn hoang. Những công trình khai hoang của nhà nước dưới hình thức đồn điền, của quý tộc dưới hình thức điền trang, của địa chủ dưới hình thức trang trại và của nông dân dưới hình thức lập làng, đều được đẩy mạnh và đưa lại nhiều kết quả tích cực.\n",
       "evidence": [
         {
           "chunk_id": "019e566b-b4a3-7a77-927d-debb0ddbec18",
-          "score": null,
+          "score": 0.44945258,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             587,
@@ -4075,7 +4076,7 @@
         },
         {
           "chunk_id": "019e566e-f47c-7d5e-ab92-a8c62783824a",
-          "score": null,
+          "score": 0.43883276,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             736
@@ -4085,7 +4086,7 @@
         },
         {
           "chunk_id": "019e5664-3507-7ac4-a617-b877d2669a20",
-          "score": null,
+          "score": 0.43323168,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             205
@@ -4097,7 +4098,7 @@
         },
         {
           "chunk_id": "019e5668-cee9-7a7b-828b-0b2f3d9aad74",
-          "score": null,
+          "score": 0.42745936,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             413
@@ -4107,7 +4108,7 @@
         },
         {
           "chunk_id": "019e566b-b47b-7112-879c-56b802e10485",
-          "score": null,
+          "score": 0.42518955,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             586,
@@ -4125,18 +4126,18 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng chỉ ra việc nhà Trần ban hành các quy định pháp luật, nhưng không xác nhận có cơ quan chuyên trách quản lý hoạt động xuất bản sách.",
+      "explanation": "Chưa có thông tin cụ thể về cơ quan chuyên trách quản lý hoạt động xuất bản sách trong triều đình nhà Trần.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         731
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.51971775,
       "top_evidence_text": " Từ khi giành được độc lập (thế kỷ X) cho đến đời Trần, trong bộ máy chính quyền nhà nước, đầu tiên đã xuất hiện một cơ quan có tính chất chuyên trách về nông nghiệp.\n",
       "evidence": [
         {
           "chunk_id": "019e566e-b911-7513-afa3-96b5e76ef82b",
-          "score": null,
+          "score": 0.51971775,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             731
@@ -4146,7 +4147,7 @@
         },
         {
           "chunk_id": "019e566b-b474-7668-b0b9-69e71e2798d2",
-          "score": null,
+          "score": 0.48799244,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             586
@@ -4156,7 +4157,7 @@
         },
         {
           "chunk_id": "019e566e-b92f-7239-8de6-1df837f6e95e",
-          "score": null,
+          "score": 0.4846762,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             731,
@@ -4169,7 +4170,7 @@
         },
         {
           "chunk_id": "019e566e-b941-7c0c-96d9-512e6fed5129",
-          "score": null,
+          "score": 0.48346502,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             732
@@ -4179,7 +4180,7 @@
         },
         {
           "chunk_id": "019e5666-2061-779d-8cb7-23167d3343b5",
-          "score": null,
+          "score": 0.48125932,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             297,
@@ -4197,18 +4198,18 @@
       "gold_label": "NOT_ENOUGH_EVIDENCE",
       "pred_label": "NOT_ENOUGH_EVIDENCE",
       "is_correct": true,
-      "explanation": "Bằng chứng không đề cập trực tiếp đến việc Nhà Trần ban hành bộ luật riêng dành cho thương nhân nước ngoài.",
+      "explanation": "Chưa có thông tin cụ thể về việc nhà Trần ban hành bộ luật riêng cho thương nhân nước ngoài.",
       "evidence_count": 5,
       "top_evidence_book": "Vương Triều Trần (1226-1400)",
       "top_evidence_pages": [
         313
       ],
-      "top_evidence_score": null,
+      "top_evidence_score": 0.47176665,
       "top_evidence_text": " Tiếp theo là các quy định liên quan đến lĩnh vực thuế khóa - kinh tế và dân luật. Các quy định về quân sự - quốc phòng chiếm số lượng ít nhất, chỉ 4/56 quy định được ban hành.\nThứ ba, xét về phạm vi điều tiết, pháp luật thời Trần áp dụng cho mọi đối tượng (trừ hoàng đế) và mọi khu vực địa lý.",
       "evidence": [
         {
           "chunk_id": "019e5666-445c-77b7-9dad-0b6928247bad",
-          "score": null,
+          "score": 0.47176665,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             313
@@ -4218,7 +4219,7 @@
         },
         {
           "chunk_id": "019e565d-822a-73ba-baff-e98c377936b1",
-          "score": null,
+          "score": 0.45994037,
           "book_name": "Khâm Định Việt Sử Thông Giám Cương Mục",
           "pages": [
             329
@@ -4230,7 +4231,7 @@
         },
         {
           "chunk_id": "019e5666-4463-7a7d-8b61-36f00bc31421",
-          "score": null,
+          "score": 0.4557591,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             313
@@ -4240,7 +4241,7 @@
         },
         {
           "chunk_id": "019e5666-7f02-73df-a62c-0c126be6a1ad",
-          "score": null,
+          "score": 0.4481033,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             320
@@ -4250,7 +4251,7 @@
         },
         {
           "chunk_id": "019e5668-5014-7560-bfe3-84d0d939a70d",
-          "score": null,
+          "score": 0.44325286,
           "book_name": "Vương Triều Trần (1226-1400)",
           "pages": [
             377

@@ -42,5 +42,5 @@ class ClaimResult(BaseModel):
 class FactCheckResponse(BaseModel):
     post_id: str | None = None
     # quality_score: float        # 0.0 – 1.0
-    post_label: str             # SUPPORTED | REFUTED | NOT_ENOUGH_EVIDENCE
+    # post_label: str             # SUPPORTED | REFUTED | NOT_ENOUGH_EVIDENCE
     claims: list[ClaimResult] = Field(default_factory=list)
