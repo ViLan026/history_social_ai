@@ -2,7 +2,12 @@ from fastapi import APIRouter, HTTPException
 
 from src.schemas.hate_speech_schema import HateSpeechRequest, HateSpeechResponse
 from src.config import settings
-from src.schemas.fact_check_schema import FactCheckRequest, FactCheckResponse
+from src.schemas.fact_check_schema import (
+    FactCheckRequest,
+    FactCheckResponse,
+    RetrievalRequest,
+    RetrievalResponse,
+)
 from src.services.embedding_service import EmbeddingService
 from src.services.qdrant_service import QdrantService
 from src.services.fact_check_service import FactCheckService
@@ -47,6 +52,49 @@ def detect_hate_speech(request: HateSpeechRequest):
         raise HTTPException(status_code=503, detail="Service not ready.")
 
     return _hate_speech_service.detect(request.text)
+
+
+@router.post("/retrieval", response_model=RetrievalResponse)
+async def retrieve_evidence(request: RetrievalRequest):
+    """
+    Retrieval API endpoint
+    - Nhận vào: claim hoặc content (post_id tùy chọn)
+    - Trả về: danh sách kết quả retrieval (evidence) từ Qdrant
+    
+    Example request:
+    {
+        "post_id": "test-001",
+        "content": "Vào tháng 3 năm 1217, nhà vua không còn khả năng quyết đoán chính sự"
+    }
+    
+    Or:
+    {
+        "claim": "Trần Hưng Đạo lãnh đạo đánh bại quân Nguyên"
+    }
+    """
+    if _embedding_service is None or _qdrant_service is None:
+        raise HTTPException(status_code=503, detail="Service not ready.")
+
+    try:
+        # Lấy text từ claim hoặc content
+        text = request.get_text()
+        
+        # Bước 1: Embed text thành vector
+        vector = _embedding_service.embed_text(text)
+        
+        # Bước 2: Tìm kiếm trong Qdrant và lấy kết quả
+        results = _qdrant_service.search(vector=vector)
+        
+        # Bước 3: Trả về response
+        return RetrievalResponse(
+            post_id=request.post_id,
+            query_text=text,
+            results=results,
+        )
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Retrieval failed: {str(e)}")
 
 
 
@@ -192,3 +240,12 @@ def detect_hate_speech(request: HateSpeechRequest):
 
 # với quality_score =   penalty_score của từng claim * hệ số phạt
 # với hệ số phạt là 1.0 cho REFUTED, 0.25 cho NOT_ENOUGH_EVIDENCE, 0.0 cho SUPPORTED
+
+
+
+
+
+
+
+
+

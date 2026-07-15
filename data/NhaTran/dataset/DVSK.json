@@ -1,72 +1,49 @@
-[
-    [
+{
+    "post_id": "test-001",
+    "query_text": "Vào mùa xuân năm 1210, Đỗ Quảng nhận chỉ thị dẫn quân đến đón Hoàng thái tử từ nhà Tô Trung Từ về kinh thành.",
+    "results": [
         {
-            "chunk_id": "019e5658-0be5-7226-81d2-c789b91960ee",
-            "book_name": "Đại Việt Sử Ký Toàn Thư",
-            "pages": [256],
-            "raw_text": "Tân Sửu, [Đại Trị], năm thứ 4[1361], Nguyên Chí Chính năm thứ 21). Mùa xuân, tháng giêng, sao Chổi mọc ở phương đông bắc. Vua tránh không ngự ở chính điện.\nTháng 2, Minh Thái Tổ đánh Giang Châu. Trần Hữu Lượng lưu giữ Vũ Xương, sai người sang ta xin quân [cứu viện]. [ Vua] không cho.\nTháng 3, giặc cỏ Chiêm Thành vượt biển đến cướp dân ở cửa biển Dĩ Lý [5]. Quân của phủ ấy đánh tan bọn chúng.\nMùa hạ, tháng 5, lấy Phạm A Song làm tri phủ phủ Lâm Bình (Tức là Dĩ Lý) [6].\nMùa thu, tháng 7, Tạ Lai có tội bị giết.\nBấy giờ vua ngủ ngày ở Long Phương đường. Ngự thư hỏa Tạ Lai đứng hầu, chung quanh không có ai. Lai rút gươm ra xem. Vua thức dậy, sai đem chém.\n",
-            "embed_input": "Tân Sửu, [Đại Trị], năm thứ 4[1361], Nguyên Chí Chính năm thứ 21). Mùa xuân, tháng giêng, sao Chổi mọc ở phương đông bắc. Vua tránh không ngự ở chính điện.\nTháng 2, Minh Thái Tổ đánh Giang Châu. Trần Hữu Lượng lưu giữ Vũ Xương, sai người sang ta xin quân [cứu viện]. [ Vua] không cho.\nTháng 3, giặc cỏ Chiêm Thành vượt biển đến cướp dân ở cửa biển Dĩ Lý  . Quân của phủ ấy đánh tan bọn chúng.\nMùa hạ, tháng 5, lấy Phạm A Song làm tri phủ phủ Lâm Bình (Tức là Dĩ Lý)  .\nMùa thu, tháng 7, Tạ Lai có tội bị giết.\nBấy giờ vua ngủ ngày ở Long Phương đường. Ngự thư hỏa Tạ Lai đứng hầu, chung quanh không có ai. Lai rút gươm ra xem. Vua thức dậy, sai đem chém.\n Nhâm Dần, [Đại Trị], năm thứ 5 [1362]. (Nguyến Chí Chính năm thứ 22).",
-            "segmented_text": "Tân_Sửu , [ Đại_Trị_] , năm thứ 4 [ 1361 ] , Nguyên_Chí_Chính năm thứ 21 ) . Mùa xuân , tháng_giêng , sao Chổi mọc ở phương đông bắc . Vua tránh không ngự ở chính điện . Tháng 2 , Minh_Thái_Tổ đánh_Giang_Châu . Trần_Hữu_Lượng lưu_giữ Vũ_Xương , sai người sang ta xin quân_[ cứu_viện ] . [ Vua ] không cho . Tháng 3 , giặc cỏ Chiêm_Thành vượt biển đến cướp dân ở cửa_biển Dĩ_Lý . Quân của phủ ấy đánh tan bọn chúng . Mùa_hạ , tháng 5 , lấy Phạm_A_Song làm tri_phủ phủ Lâm_Bình ( Tức_là Dĩ_Lý ) . Mùa thu , tháng 7 , Tạ_Lai có tội bị giết . Bấy_giờ vua ngủ ngày ở Long_Phương đường . Ngự thư_hỏa Tạ_Lai đứng hầu , chung_quanh không có ai . Lai rút gươm ra xem . Vua thức dậy , sai đem chém . Nhâm_Dần , [ Đại_Trị_] , năm thứ 5 [ 1362 ] . ( Nguyến_Chí_Chính năm thứ 22 ) .",
-            "footnotes": {
-                "5": "Cửa biển Dĩ Lý ở xã Lý Hoà, huyện Bố Trạch, nay thuộc tỉnh Quảng Bình.",
-                "6": "Ở đây, Toàn thư chú thích phủ Lâm Bình là Dĩ Lý, nhưng chắc là nhầm. Phủ Lâm Bình nói ở đây hẳn gồm cả đất châu Lâm Bình đời Lý. Năm 1075, Lý Nhân Tông đã đổi châu Địa Lý thành châu Lâm Bình (Toàn thư BK3, 9a). Có lẽ chữ Dĩ Lý ở đây nhầm từ chữ Địa lý."
-            },
-            "token_count": 210
+            "chunk_id": "019e5661-4a3f-73fd-962d-88e4a4712ac6",
+            "score": 0.6186255,
+            "book_name": "Vương Triều Trần (1226-1400)",
+            "pages": [28],
+            "text": "Năm sau (năm 1210), Tô Trung Từ (em vợ Trần Lý) đánh bại Quách Bốc ở Khoái Châu (Hưng Yên), rồi đến Hải ấp bắt hoàng tử Sâm định đưa về kinh sư nộp cho vua Cao Tông. Từ đây, Tô Trung Từ trở thành người có công giúp vua Lý Cao Tông giành lại quyền bính, nên rất được tin dùng.",
+            "footnotes": {}
         },
         {
-            "chunk_id": "019e566a-4b16-79bb-a326-d8c9239e27ea",
-            "book_name": "Vương Triều Trần (1226-1400)",
-            "pages": [518],
-            "raw_text": "Năm 1355, Chu Nguyên Chương xưng hoàng đế (tức Minh Thái Tổ), sau đổi là Nguyên Chương. Năm 1359, Trần Hữu Lượng dấy quân đến lúc này đã được 4 năm, khiến nhà Minh tìm mọi cách đối phó, trong đó có cử sứ đoàn sang Đại Việt. Vua Trần cũng cử phái đoàn sang thông hiếu. Đạợi Việt sử bý toàn thư chép: “Kỷ Hợi năm thứ 2 (1359) (Nguyên Chí Chính năm thứ 19).",
-            "embed_input": "Năm 1355, Chu Nguyên Chương xưng hoàng đế (tức Minh Thái Tổ), sau đổi là Nguyên Chương. Năm 1359, Trần Hữu Lượng dấy quân đến lúc này đã được 4 năm, khiến nhà Minh tìm mọi cách đối phó, trong đó có cử sứ đoàn sang Đại Việt. Vua Trần cũng cử phái đoàn sang thông hiếu. Đạợi Việt sử bý toàn thư chép: “Kỷ Hợi năm thứ 2 (1359) (Nguyên Chí Chính năm thứ 19).  Mùa Xuân, tháng Gêng, nhà Minh sai sứ sang thông hiếu. Bấy giờ vua",
-            "segmented_text": "Năm 1355 , Chu_Nguyên_Chương xưng hoàng_đế ( tức_Minh Thái_Tổ ) , sau đổi là Nguyên_Chương . Năm 1359 , Trần_Hữu_Lượng dấy_quân đến lúc này đã được 4 năm , khiến nhà_Minh tìm mọi cách đối_phó , trong đó có cử sứ_đoàn sang Đại_Việt . Vua Trần cũng cử phái_đoàn sang thông_hiếu . Đạợi Việt sử_bý toàn thư_chép : “ Kỷ_Hợi năm thứ 2 ( 1359 ) ( Nguyên_Chí_Chính năm thứ 19 ) . Mùa_Xuân , tháng Gêng , nhà_Minh sai sứ sang thông_hiếu . Bấy_giờ vua",
-            "footnotes": {},
-            "token_count": 111
-        }
-    ],
-    [
-        {
-            "chunk_id": "019e5654-bd32-78d6-a7ce-52a5b4d56ed3",
-            "book_name": "Đại Việt Sử Ký Toàn Thư",
-            "pages": [159],
-            "raw_text": "Trước kia, tổ tiên vua là người đất Mân (có người nói là người Quế Lâm), có người tên là Kinh đến ở hương Tức Mặc [1], phủ Thiên Trường, sinh ra Hấp, Hấp sinh ra Lý, Lý sinh ra Thừa, đời đời làm nghề đánh cá. Vua là con thứ của Thừa, mẹ họ Lê, sinh ngày 16 tháng 6 năm Mậu Dần, Kiến Gia thứ 8 triều Lý [2]. Vua mũi cao, mặt rộng, giống như Hán Cao Tổ. Khi mới 8 tuổi, làm Chi hậu chính chi ứng cục triều Lý. Vì có chú họ là Trần Thủ Độ làm Điện Tiền Chỉ Huy Sứ, nên vua được vào hầu trong cung.\nChiêu Hoàng thấy vua thì ưa.\n",
-            "embed_input": "Trước kia, tổ tiên vua là người đất Mân (có người nói là người Quế Lâm), có người tên là Kinh đến ở hương Tức Mặc  , phủ Thiên Trường, sinh ra Hấp, Hấp sinh ra Lý, Lý sinh ra Thừa, đời đời làm nghề đánh cá. Vua là con thứ của Thừa, mẹ họ Lê, sinh ngày 16 tháng 6 năm Mậu Dần, Kiến Gia thứ 8 triều Lý  . Vua mũi cao, mặt rộng, giống như Hán Cao Tổ. Khi mới 8 tuổi, làm Chi hậu chính chi ứng cục triều Lý. Vì có chú họ là Trần Thủ Độ làm Điện Tiền Chỉ Huy Sứ, nên vua được vào hầu trong cung.\nChiêu Hoàng thấy vua thì ưa.\n Năm Ất Dậu [1225], mùa đông, tháng 12, ngày 12 Mậu Dần, nhận thiền",
-            "segmented_text": "Trước_kia , tổ_tiên vua là người đất Mân ( có người nói là người Quế_Lâm ) , có người tên là Kinh đến ở hương Tức_Mặc , phủ Thiên_Trường , sinh ra Hấp , Hấp_sinh ra Lý , Lý_sinh ra Thừa , đời_đời làm nghề đánh_cá . Vua là con thứ của Thừa , mẹ họ Lê , sinh ngày 16 tháng 6 năm Mậu_Dần , Kiến_Gia_thứ 8 triều_Lý . Vua mũi cao , mặt rộng , giống như Hán Cao_Tổ . Khi mới 8 tuổi , làm Chi_hậu chính chi ứng_cục triều_Lý . Vì có chú họ là Trần_Thủ_Độ làm Điện_Tiền Chỉ_Huy Sứ , nên vua được vào hầu trong cung . Chiêu_Hoàng thấy vua thì ưa . Năm Ất_Dậu [ 1225 ] , mùa đông , tháng 12 , ngày 12 Mậu_Dần , nhận thiền",
-            "footnotes": {
-                "1": "Sau là xã Tức Mặc, huyện Mỹ Lộc, tỉnh Nam Định cũ, nay thuộc tỉnh Nam Hà.",
-                "2": "Tức năm 1218"
-            },
-            "token_count": 158
+            "chunk_id": "019e5659-e6e5-7e50-888d-e85da298bf1e",
+            "score": 0.5905193,
+            "book_name": "Khâm Định Việt Sử Thông Giám Cương Mục",
+            "pages": [192],
+            "text": "Nhà vua đã được nhà Lý truyền ngôi cho, nên mới sai sứ sang báo cáo với nhà Tống và xin phong tước.\nCanh Dần, năm thứ 6 (1230). (Tống, năm Thiệu Định thứ 3).\n",
+            "footnotes": {}
         },
         {
-            "chunk_id": "019e5661-ae1a-7859-b4e5-dea5c65b8d67",
+            "chunk_id": "019e5661-4a65-7d40-9041-98520fcef31f",
+            "score": 0.5789885,
             "book_name": "Vương Triều Trần (1226-1400)",
-            "pages": [39, 40],
-            "raw_text": " Do vậy, nhà Trần thay thế triều Lý là một sự thay đổi có tính tất yếu, hợp quy luật phát triển của lịch sử Việt Nam.Chương 2 NHỮNG NĂM THÁNG HÀO HÙNG 1. TRẦN THÁI TÔNG (1226 - 1258) [1] 1, Quá trình lên ngôi - những cuộc hôn nhân chính triị - từ hoàng để đến thái thượng hoàng Trần Thái Tông, tên huý là Trần Cảnh, quê ở hương Tức Mặc, phủ Thiên Trường (nay thuộc thành phố Nam Định, tỉnh Nam Định), là con của Trần Thừa và bà Lê Thị Phong, sinh ngày 16 tháng 6 năm Mạậu Dần (10-7-1218), mất năm Định Sửu (1277), thọ 60 tuổi.\n",
-            "embed_input": " Do vậy, nhà Trần thay thế triều Lý là một sự thay đổi có tính tất yếu, hợp quy luật phát triển của lịch sử Việt Nam.Chương 2 NHỮNG NĂM THÁNG HÀO HÙNG 1. TRẦN THÁI TÔNG (1226 - 1258)   1, Quá trình lên ngôi - những cuộc hôn nhân chính triị - từ hoàng để đến thái thượng hoàng Trần Thái Tông, tên huý là Trần Cảnh, quê ở hương Tức Mặc, phủ Thiên Trường (nay thuộc thành phố Nam Định, tỉnh Nam Định), là con của Trần Thừa và bà Lê Thị Phong, sinh ngày 16 tháng 6 năm Mạậu Dần (10-7-1218), mất năm Định Sửu (1277), thọ 60 tuổi.\n Tháng 6 năm Ất Dậu (1225), vua Lý Huệ Tông nhường ngôi cho con gái thứ là Chiêu Hoàng, lên làm Thái Thượng hoàng. Chiêu Thánh lên ngôi vua (tức Lý Chiêu",
-            "segmented_text": "Do_vậy , nhà Trần_thay_thế triều_Lý là một sự thay_đổi có tính tất_yếu , hợp_quy_luật phát_triển của lịch_sử Việt_Nam . Chương 2 NHỮNG NĂM_THÁNG HÀO_HÙNG 1 . TRẦN_THÁI_TÔNG ( 1226 - 1258 ) 1 , Quá_trình lên_ngôi - những cuộc hôn_nhân chính triị - từ hoàng để đến thái_thượng_hoàng Trần_Thái_Tông , tên húy là Trần_Cảnh , quê ở hương Tức_Mặc , phủ Thiên_Trường ( nay thuộc thành_phố Nam_Định , tỉnh Nam_Định ) , là con của Trần_Thừa và bà Lê_Thị_Phong , sinh ngày 16 tháng 6 năm Mạậu_Dần ( 10-7-1218 ) , mất năm Định_Sửu ( 1277 ) , thọ 60 tuổi . Tháng 6 năm Ất_Dậu ( 1225 ) , vua Lý_Huệ_Tông nhường_ngôi cho con gái thứ là Chiêu_Hoàng , lên làm Thái_Thượng_hoàng . Chiêu_Thánh lên_ngôi vua ( tức Lý_Chiêu",
-            "footnotes": {
-                "1": "Niên đại làm vua (dưới đây cũng thế). 2_ Vào cuối thời Lý, đầu năm 1224, Trần Thừa làm Phụ quốc Thái úy thay Trần Tự Khánh,"
-            },
-            "token_count": 179
-        }
-    ],
-    [
+            "pages": [28, 29],
+            "text": " âm mưu lật đổ Huệ Tôngđể đưa hoàng tử Thầm lên ngôi. Việc bị phát giác, Tô Trung Từ đem quân đánh bại Đỗ Thế Quy, nhưng quân lính của Đỗ Quảng còn đông, trước khi trốn thoát còn giết được một tướng của Trung Từ là Đỗ Lợi.\nHuệ Tông liền cử Tô Trung Từ làm Chiêu Thảo sứ, Đàm Dĩ Mông làm Thái úy, đem quân đánh dẹp Đỗ Quảng. Đến tháng 4, quân của Đỗ Quảng đại bại, bị bắt và bị giết rất nhiều. Tô Trung Từ được phong chức Thái úy phụ chính, đứng đầu triều thần và thống lĩnh quân đội nhà Lý.",
+            "footnotes": {}
+        },
         {
-            "chunk_id": "019e5655-f7d0-7f1e-9ec1-abf044e9cddb",
+            "chunk_id": "019e5661-4a5e-7aaa-bbe6-d003be3af2b3",
+            "score": 0.5676312,
+            "book_name": "Vương Triều Trần (1226-1400)",
+            "pages": [28],
+            "text": "Quyền hành trong triều đình nhà Lý bấy giờ nằm cả trong tay Tô Trung Từ. Trung Từ tìm cách loại trừ dần những quan lại thân tín của vua Lý. Thái úy Đỗ Kính Tu bị ghép tội mưu giết Trung Từ, bị đem dìm chết ở bến Đại Thông. Đầu năm 1211, trong triều có phe đảng của Quan nội hầu Đỗ Thế Quy, Chi hậu phụng ngự Đỗ Quảng, Tiểu thị vệ nhân hỏa đầu Phí Lệ, Liệt hầu Cao Kha...",
+            "footnotes": {}
+        },
+        {
+            "chunk_id": "019e5654-af19-7f00-a59c-f57514c853f7",
+            "score": 0.5568704,
             "book_name": "Đại Việt Sử Ký Toàn Thư",
-            "pages": [191, 192],
-            "raw_text": " Nay lại bức nhau, người ta nói thú cùng thì chống lại, chim cùng thì mổ lại, huống chi là người\".\nÔ Mã Nhi nói:\"Đại quân mượn đường để đi đánh Chiêm Thành, Quốc Vương ngươi nếu đến hội kiến thì trong cõi yên ổn, không bị xâm phạm mảy may. Nếu cứ chấp nê thì trong khoảnh khắc núi sông sẽ thành đất bằng, vua tôi sẽ thành cỏ nát\".\nKhắc Chung về rồi, Ô Mã Nhi bảo các tướng rằng:\n\"Người này ở vào lúc bị uy hiếp mà lời lẽ tự nhiên, không hạ chủ nó xướng là Chích [1], không nịnh ta lên là Nghiêu [2], mà chỉ nói \"Chó nhà cắn người\"; giỏi ứng đối. Có thể nói là không nhục mệnh vua. Nước nó còn có người giỏi, chưa dễ mưu tính được\".\nSai người đuổi theo Khắc Chung nhưng không kịp.\n",
-            "embed_input": " Nay lại bức nhau, người ta nói thú cùng thì chống lại, chim cùng thì mổ lại, huống chi là người\".\nÔ Mã Nhi nói:\"Đại quân mượn đường để đi đánh Chiêm Thành, Quốc Vương ngươi nếu đến hội kiến thì trong cõi yên ổn, không bị xâm phạm mảy may. Nếu cứ chấp nê thì trong khoảnh khắc núi sông sẽ thành đất bằng, vua tôi sẽ thành cỏ nát\".\nKhắc Chung về rồi, Ô Mã Nhi bảo các tướng rằng:\n\"Người này ở vào lúc bị uy hiếp mà lời lẽ tự nhiên, không hạ chủ nó xướng là Chích  , không nịnh ta lên là Nghiêu  , mà chỉ nói \"Chó nhà cắn người\"; giỏi ứng đối. Có thể nói là không nhục mệnh vua. Nước nó còn có người giỏi, chưa dễ mưu tính được\".\nSai người đuổi theo Khắc Chung nhưng không kịp.\n Ngày 13, giờ mão, Khắc Chung từ chỗ quân Nguyên trở về. Giặc đuổi đến, đánh nhau với quan quân.\nNgày 28, Hưng Đạo Vương bàn xin Thượng tướng",
-            "segmented_text": "Nay lại bức nhau , người ta nói_thú cùng thì chống lại , chim cùng thì mổ lại , huống_chi là người \" . Ô_Mã_Nhi nói : \" Đại_quân mượn đường để đi đánh Chiêm_Thành , Quốc_Vương_ngươi nếu đến hội_kiến thì trong cõi yên_ổn , không bị xâm_phạm mảy_may . Nếu cứ chấp_nê thì trong khoảnh_khắc núi sông sẽ thành đất bằng , vua tôi sẽ thành cỏ nát \" . Khắc_Chung về rồi , Ô_Mã_Nhi bảo các tướng rằng : \" Người này ở vào lúc bị uy_hiếp mà lời_lẽ tự_nhiên , không hạ_chủ nó xướng là Chích , không nịnh ta lên là Nghiêu , mà chỉ nói \" Chó nhà cắn người \" ; giỏi ứng_đối . Có_thể nói là không nhục mệnh_vua . Nước nó còn có người giỏi , chưa dễ_mưu_tính được \" . Sai người đuổi theo Khắc_Chung nhưng không kịp . Ngày 13 , giờ mão , Khắc_Chung từ chỗ quân_Nguyên trở về . Giặc đuổi đến , đánh nhau với quan_quân . Ngày 28 , Hưng_Đạo Vương_bàn xin Thượng_tướng",
+            "pages": [154],
+            "text": "Tân Mùi, [Kiến Gia] năm thứ 1 [1211], (Tống Gia Định năm thứ 4). Mùa xuân, tháng giêng, đổi niên hiệu.\nTháng 2,, vua lại sai Phụng ngự là Phạm Bố đi đón Trần thị. Tự Khánh bèn sai bọn Phùng Tá Chu đưa Trần thị đi. Gặp khi Tô Trung Từ và Đỗ Quảng đang đánh nhau ở [bến] Triều Đông [2], Tá Chu bèn đỗ thuyền ở bến Đại Thông. Đến khi Đỗ Quang bị thua, vua sai Bố và Trung Từ đón Trần thị vào cung, lập làm nguyên phi cho Trung Từ làm Thái uý phụ chính; phong Thuận Lưu bá Trần Tự Khánh làm Chương Thành hầu [3].\n",
             "footnotes": {
-                "1": "Bắc Giang: tức là vùng đất tỉnh Bắc Ninh cũ, nay thuộc tỉnh Hà Bắc.",
-                "2": "Ô Mã Nhi: phiên âm từ tên Hồi giáo Omar."
-            },
-            "token_count": 206
+                "2": "Bến Triều Đông: bến sông Hồng ở phía đông Thăng Long. cương mục chép là Đông Bộ Đầu và chú là bến Đông Tân sông Nhị Hà.",
+                "3": "Nguyên văn: \"dĩ Trung Từ vi Thái uý phụ chính, phong Thuận Lưu bá Trần Tự Khánh vi Chương Thành Hầu\". Về việc này, Cương mục chép: \"Vua bèn phong cho Tự Khánh tước hầu, cho Tô Trung Từ làm Thái uý, phong tước Thuận Lưu bá\" (CMCB5, 35b). Đúng ra Lưu Thuận bá là tước của Trần Tự Khánh (như Toàn thư đã chép ở BK4, 26b) và theo Đại Việt sử lược đến năm này (Nhâm Thân 1212), ngày Canh Tuất tháng giêng \"vua cho Tự Khánh lên tước hầu, tước hiệu là Chương Thành hầu\" (ĐVSL3, 24a). Như vậy có thể nhận thấy rằng ở câu của Toàn thư (đã dẫn), soạn giả Cương mục đã đặt nhầm một dấu ngắt đoạn ở sau chữ \"bá\", cho nên mới chép Thuận Lưu bá là tước của Tô Trung Từ."
+            }
         }
-    ],
-    [{}],
-    [{}],
-    [{}]
-]
+    ]
+}

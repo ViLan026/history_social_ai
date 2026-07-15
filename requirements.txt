@@ -5,7 +5,6 @@ pydantic-settings
 python-dotenv
 sentence-transformers
 transformers
-torch
 numpy
 scikit-learn
 qdrant-client
