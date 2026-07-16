@@ -2,16 +2,17 @@ from __future__ import annotations
 
 from functools import lru_cache
 from transformers import pipeline
+from src.config import settings
 
-MODEL_NAME = "tarudesu/ViSoBERT-HSD"
+model_name = settings.HATE_SPEECH_MODEL
 
 
 class HateSpeechService:
     def __init__(self) -> None:
         self.classifier = pipeline(
             "text-classification",
-            model=MODEL_NAME,
-            tokenizer=MODEL_NAME,
+            model=model_name,
+            tokenizer=model_name,
             return_all_scores=True,
         )
 

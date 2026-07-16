@@ -3,18 +3,26 @@ __pycache__
 *.pyc
 *.pyo
 *.pyd
+
 .git
 .gitignore
+
 .env
 .env.*
 !.env.example
+
 .idea
 .vscode
+
 notebooks
 experiments
+
 *.ipynb
 *.log
 .test
+
 data
 
 
+*.ipynb
+*.log

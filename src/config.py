@@ -9,6 +9,7 @@ class Settings(BaseSettings):
         env_file=".env",
         env_file_encoding="utf-8",
         case_sensitive=False,
+        extra="ignore",
     )
 
     # Hugging Face
@@ -18,16 +19,21 @@ class Settings(BaseSettings):
     APP_NAME: str = "history_social"
     APP_ENV: str = "local"
     APP_HOST: str = "0.0.0.0"
-    APP_PORT: int = Field(default=8000, ge=1, le=65535)    # ge=1 (Greater than or equal)  # le=65535 (Less than or equal)
+    
+# Cloud Run injects the PORT variable automatically.
+    PORT: int = Field(default=8000, ge=1, le=65535)    # ge=1 (Greater than or equal)  # le=65535 (Less than or equal)
 
     # Qdrant
-    QDRANT_URL: str = "http://localhost:6333"
+    QDRANT_URL: str 
     QDRANT_API_KEY: str
     QDRANT_COLLECTION_NAME: str = "history_aiteamvn_chunk_256"
     QDRANT_TIMEOUT_SECONDS: float = Field(default=60.0, gt=0)
 
     # Embedding
     EMBEDDING_MODEL: str = "AITeamVN/Vietnamese_Embedding"
+
+    # Hate-speech model
+    HATE_SPEECH_MODEL: str = "tarudesu/ViSoBERT-HSD"
 
     # Gemini
     GEMINI_API_KEY: str
