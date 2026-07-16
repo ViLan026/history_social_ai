@@ -8,11 +8,14 @@ transformers
 numpy
 scikit-learn
 qdrant-client
-requests
+google-genai
+
 sentencepiece
 tiktoken
 protobuf
 accelerate
+
+
 
 # python -m pip install -r requirements.txt
 # pip freeze > requirements.lock.txt

@@ -1,11 +1,7 @@
-
 from __future__ import annotations
 
-import json
 import logging
 import re
-
-import requests
 
 from src.config import settings
 from src.prompts.fact_check_prompt import (
@@ -15,241 +11,212 @@ from src.prompts.fact_check_prompt import (
 from src.schemas.fact_check_schema import (
     ClaimResult,
     EvidenceItem,
+    FactCheckLabel,
     FactCheckResponse,
 )
-from src.services.embedding_service import EmbeddingService
-from src.services.qdrant_service import QdrantService
+from src.services.gemini_service import GeminiService
+from src.services.retrieval_service import RetrievalService
 
 logger = logging.getLogger(__name__)
 
-VALID_LABELS = {"SUPPORTED", "REFUTED", "NOT_ENOUGH_EVIDENCE"}
-
-# PENALTY_MAP: dict[str, float] = {
-#     "SUPPORTED": 0.0,
-#     "NOT_ENOUGH_EVIDENCE": 0.25,
-#     "REFUTED": 1.0,
-# }
+_WHITESPACE_PATTERN = re.compile(r"\s+")
+_END_PUNCTUATION_PATTERN = re.compile(r"[.!?…]+$")
 
 
 class FactCheckService:
-    """Orchestrates the full RAG fact-checking pipeline for a single post."""
+    """
+    Điều phối toàn bộ pipeline fact-checking:
+
+    post content
+        -> claim extraction
+        -> evidence retrieval
+        -> claim verification
+        -> FactCheckResponse
+    """
 
     def __init__(
         self,
-        embedding_service: EmbeddingService,
-        qdrant_service: QdrantService,
+        gemini_service: GeminiService,
+        retrieval_service: RetrievalService,
     ) -> None:
-        self._emb = embedding_service
-        self._qdrant = qdrant_service
+        self._gemini_service = gemini_service
+        self._retrieval_service = retrieval_service
 
+    @staticmethod
+    def _normalize_claim_key(claim: str) -> str:
+        """
+        Chuẩn hóa claim để phát hiện các claim trùng nhau.
 
-    def _call_ollama(self, prompt: str) -> dict:
+        Không thay đổi claim được trả về cho người dùng.
+        """
 
-        url = f"{settings.OLLAMA_URL.rstrip('/')}/api/generate"
-        payload = {
-            "model": settings.OLLAMA_MODEL,
-            "prompt": prompt,
-            "stream": False,
-            "format": "json",
-            "options": {
-                "temperature": 0.0,
-                "seed": 42,
-            },
-        }
-
-        logger.debug("Calling Ollama model=%s", settings.OLLAMA_MODEL)
-        response = requests.post(
-            url,
-            json=payload,
-            timeout=settings.REQUEST_TIMEOUT,
-        )
-        response.raise_for_status()
-
-        raw_body = response.json()
-        # Ollama wraps the model output in the "response" key
-        model_output: str = raw_body.get("response", "")
-
-        # --- Primary parse attempt ---
-        try:
-            return json.loads(model_output)
-        except json.JSONDecodeError:
-            pass
-
-        # --- Recovery: extract first {...} block via regex ---
-        match = re.search(r"\{.*\}", model_output, re.DOTALL)
-        if match:
-            try:
-                return json.loads(match.group())
-            except json.JSONDecodeError:
-                pass
-
-        raise ValueError(
-            f"Ollama returned a response that could not be parsed as JSON: "
-            f"{model_output[:300]!r}"
+        normalized = _WHITESPACE_PATTERN.sub(
+            " ",
+            claim.strip(),
         )
 
-# gọi ollama để trích xuất claim từ nội dung bài post. Nếu có lỗi, trả về list rỗng.
+        normalized = _END_PUNCTUATION_PATTERN.sub("",normalized)
+
+        return normalized.casefold()
+
     def extract_claims(self, content: str) -> list[str]:
+        """
+        Trích xuất claim bằng Gemini.
+
+        Trả về [] chỉ khi Gemini gọi thành công và xác định
+        bài viết không có claim lịch sử phù hợp.
+
+        GeminiServiceError không bị bắt tại đây.
+        """
 
         prompt = build_claim_extraction_prompt(content)
 
-        try:
-            result = self._call_ollama(prompt)
-        except Exception as exc:
-            logger.warning("Claim extraction failed: %s", exc)
-            return []
-        print(f"clams: {result} \n\n")
-        raw_claims: list = result.get("claims", [])
-        if not isinstance(raw_claims, list):   # nếu không phải list thì return []
-            logger.warning("'claims' field is not a list: %r", raw_claims)
-            return []
+        output = self._gemini_service.extract_claims(prompt)
 
         seen: set[str] = set()
         claims: list[str] = []
-        for item in raw_claims:
-            if not isinstance(item, str):     # nếu không phải str thì bỏ qua
+
+        for raw_claim in output.claims:
+            claim = _WHITESPACE_PATTERN.sub( " ", raw_claim.strip())
+
+            if not claim:
                 continue
-            item = item.strip()
-            if not item:                      # str rỗng thì bỏ qua 
+
+            normalized_key = self._normalize_claim_key(claim)
+
+            if not normalized_key:
                 continue
-            if item in seen:                  # nếu trùng lặp thì bỏ qua
+
+            if normalized_key in seen:
                 continue
-            seen.add(item)
-            claims.append(item)
+
+            seen.add(normalized_key)
+            claims.append(claim)
+
             if len(claims) >= settings.MAX_CLAIMS_PER_POST:
                 break
 
-        logger.info("Extracted %d claim(s) from post.", len(claims))
+        logger.info("Extracted %d claim(s) from post.",len(claims))
+
         return claims
 
-# truy vấn Qdrant để lấy bằng chứng cho claim. Áp dụng threshold nếu cần. Trả về list EvidenceItem.
-    def retrieve_evidence(self, claim: str) -> list[EvidenceItem]:
+    @staticmethod
+    def _format_evidence_for_prompt(
+        evidence: list[EvidenceItem],
+    ) -> str:
+        """
+        Định dạng evidence để đưa vào prompt verification.
 
-        vector = self._emb.embed_text(claim)
-        items = self._qdrant.search(vector, top_k=settings.TOP_K)
+        Footnote chỉ được giữ trong response cho frontend,
+        không được đưa vào prompt Gemini.
+        """
 
-        threshold = settings.MIN_EVIDENCE_SCORE
-        if threshold > 0.0:
-            items = [e for e in items if (e.score or 0.0) >= threshold]
+        sections: list[str] = []
 
-        return items
+        for index, item in enumerate(evidence, start=1):
+            text = item.text.strip()
 
+            if not text:
+                continue
 
-# Định dạng evidence thành một chuỗi có cấu trúc để chèn vào prompt fact-checking.
-    def _format_evidence_for_prompt(self, evidence: list[EvidenceItem]) -> str:
+            book_name = item.book_name or "Không rõ tên sách"
 
-        if not evidence:
-            return ""
-
-        parts: list[str] = []
-        for i, item in enumerate(evidence, start=1):
-            book = item.book_name or "Không rõ nguồn"
-            pages_str = (
-                ", ".join(str(p) for p in item.pages) if item.pages else "N/A"
-            )
-            text = item.text[: settings.MAX_EVIDENCE_CHARS]
-            parts.append(
-                f"[{i}] Sách: {book} | Trang: {pages_str}\n{text}"
+            pages = (
+                ", ".join(str(page) for page in item.pages)
+                if item.pages
+                else "Không xác định"
             )
 
-        return "\n\n".join(parts)
+            sections.append(
+                "\n".join(
+                    [
+                        f"<EVIDENCE_{index}>",
+                        f"Sách: {book_name}",
+                        f"Trang: {pages}",
+                        "Nội dung:",
+                        text,
+                        f"</EVIDENCE_{index}>",
+                    ]
+                )
+            )
 
-# Check a single claim: retrieve evidence, call Qwen, and build a ClaimResult.
+        return "\n\n".join(sections)
+
     def check_claim(self, claim: str) -> ClaimResult:
+        """
+        Kiểm chứng một claim.
+        Ba trường hợp được phân biệt:
+        1. Retrieval thành công nhưng không có evidence:trả NOT_ENOUGH_EVIDENCE.
+        2. Retrieval gặp lỗi: RetrievalServiceError được đưa lên endpoint.
+        3. Gemini verification gặp lỗi: GeminiServiceError được đưa lên endpoint.
+        """
 
-        evidence = self.retrieve_evidence(claim)
+        evidence = self._retrieval_service.retrieve(claim)
 
-        # --- No evidence: skip Qwen ---
         if not evidence:
             return ClaimResult(
                 claim=claim,
-                label="NOT_ENOUGH_EVIDENCE",
-                # penalty_score=PENALTY_MAP["NOT_ENOUGH_EVIDENCE"],
-                explanation="Không tìm thấy bằng chứng phù hợp trong cơ sở tri thức.",
+                label=FactCheckLabel.NOT_ENOUGH_EVIDENCE,
+                explanation=("Chưa có đủ thông tin trong cơ sở tri thức để xác nhận hoặc bác bỏ nội dung này."),
                 evidence=[],
             )
 
-        # --- Fact-check with Qwen ---
-        evidence_text = self._format_evidence_for_prompt(evidence)
-        print("DEBUG: Evidence text for claim:", claim)
-        print("\n\n\n")
-        print("DEBUG: Formatted evidence text:", evidence_text)
-        prompt = build_fact_check_prompt(claim, evidence_text)
+        evidence_text = self._format_evidence_for_prompt(
+            evidence
+        )
 
-        label = "NOT_ENOUGH_EVIDENCE"
-        explanation = "Không thể xác định kết quả từ bằng chứng hiện có."
+        # RetrievalService đã loại evidence text rỗng,
+        # nhưng vẫn kiểm tra phòng trường hợp dữ liệu bất thường.
+        if not evidence_text:
+            return ClaimResult(
+                claim=claim,
+                label=FactCheckLabel.NOT_ENOUGH_EVIDENCE,
+                explanation=("Chưa có đủ thông tin trong cơ sở tri thức để xác nhận hoặc bác bỏ nội dung này."),
+                evidence=[],
+            )
 
-        try:
-            result = self._call_ollama(prompt)
-            raw_label: str = str(result.get("label", "")).strip().upper()
-            raw_explanation: str = str(result.get("explanation", "")).strip()
+        prompt = build_fact_check_prompt(claim=claim,evidence_text=evidence_text)
 
-            if raw_label in VALID_LABELS:
-                label = raw_label
-            else:
-                logger.warning(
-                    "Invalid label %r from Qwen; defaulting to NOT_ENOUGH_EVIDENCE.",
-                    raw_label,
-                )
+        verification = self._gemini_service.verify_claim(prompt)
 
-            if raw_explanation:
-                explanation = raw_explanation
+        explanation = verification.explanation.strip()
 
-        except Exception as exc:
-            logger.error("Fact-check Qwen call failed for claim %r: %s", claim, exc)
-            # Keep safe defaults set above
+        if not explanation:
+            # Bình thường schema đã ngăn trường hợp này.
+            # Nếu vẫn xảy ra thì đây là output LLM không hợp lệ,
+            # không phải NOT_ENOUGH_EVIDENCE.
+            from src.exceptions import GeminiServiceError
 
-        # penalty_score = PENALTY_MAP.get(label, PENALTY_MAP["NOT_ENOUGH_EVIDENCE"])
+            raise GeminiServiceError("Gemini returned an empty explanation.",operation="claim_verification",)
 
         return ClaimResult(
             claim=claim,
-            label=label,
-            # penalty_score=penalty_score,
+            label=verification.label,
             explanation=explanation,
             evidence=evidence,
         )
 
-# Full pipeline: extract claims → check each claim → aggregate scores.
     def check_post(
         self,
         post_id: str | None,
         content: str,
     ) -> FactCheckResponse:
+        """
+        Chạy toàn bộ pipeline cho một bài viết.
+        Chưa xử lý song song để tránh tạo nhiều request Gemini đồng thời và khó kiểm soát quota.
+        """
 
         claims = self.extract_claims(content)
 
-        # No claims found
         if not claims:
-            return FactCheckResponse(
-                post_id=post_id,
-                # quality_score=0.5,
-                # post_label="NOT_ENOUGH_EVIDENCE",
-                claims=[],
-            )
+            return FactCheckResponse(post_id=post_id, claims=[],)
 
-        # Check each claim
         results: list[ClaimResult] = []
+
         for claim in claims:
-            logger.info("Checking claim: %s", claim[:80])
+            logger.info( "Checking claim: %s", claim[:100],)
+
             result = self.check_claim(claim)
             results.append(result)
 
-        # Aggregate
-        # avg_penalty = sum(r.penalty_score for r in results) / len(results)
-        # quality_score = max(0.0, min(1.0, 1.0 - avg_penalty))
-
-        # Determine post-level label
-        # labels = {r.label for r in results}
-        # if "REFUTED" in labels:
-        #     post_label = "REFUTED"
-        # elif labels == {"SUPPORTED"}:
-        #     post_label = "SUPPORTED"
-        # else:
-        #     post_label = "NOT_ENOUGH_EVIDENCE"
-
-        return FactCheckResponse(
-            post_id=post_id,
-            # quality_score=round(quality_score, 4),
-            # post_label=post_label,
-            claims=results,
-        )
+        return FactCheckResponse(post_id=post_id, claims=results,)

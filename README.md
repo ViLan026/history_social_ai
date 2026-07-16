@@ -47,16 +47,28 @@ history_social_project/
 │   ├── requirements.txt
 │   ├── README.md
 │   └── src/
-│       ├── main.py           # FastAPI app, endpoints
-│       ├── config.py         # Settings (pydantic-settings)
-│       ├── schemas/
-│       │   └── fact_check_schema.py   # Request / Response models
-│       ├── services/
-│       │   ├── embedding_service.py   # AITeamVN/Vietnamese_Embedding
-│       │   ├── qdrant_service.py      # Qdrant Cloud search
-│       │   └── fact_check_service.py  # Pipeline orchestrator
-│       └── prompts/
-└──         └── fact_check_prompt.py   # Qwen prompt builders
+|       ├── api
+|       │   ├── __init__.py
+|       │   └── routes.py
+|       ├── prompts
+|       │   ├── __init__.py
+|       │   └── fact_check_prompt.py
+|       ├── schemas
+|       │   ├── __init__.py
+|       │   ├── fact_check_schema.py
+|       │   └── hate_speech_schema.py
+|       ├── services
+|       │   ├── __init__.py
+|       │   ├── embedding_service.py       # text → embedding vector 
+|       │   ├── qdrant_service.py          # vector → query Qdrant → danh sách EvidenceItem
+|       │   ├── retrieval_service.py       # 
+|       │   ├── gemini_service.py          # 
+|       │   ├── fact_check_service.py
+|       │   └── hate_speech_service.py
+|       ├── __init__.py
+|       ├── exceptions.py                  # 
+|       ├── config.py
+|       └── main.py
 ```
 
 ## Link google colab 

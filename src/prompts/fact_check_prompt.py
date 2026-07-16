@@ -9,10 +9,6 @@ Bạn là bộ trích xuất claim lịch sử cho hệ thống hỗ trợ fact-
 Ở bước này, bạn KHÔNG xác định claim đúng hay sai.
 Bạn chỉ trích xuất các phát biểu lịch sử có thể dùng làm đơn vị kiểm chứng ở bước sau.
 
-CHỈ trả về một block JSON hợp lệ duy nhất.
-KHÔNG markdown.
-KHÔNG giải thích ngoài JSON.
-KHÔNG thêm bất kỳ văn bản nào ngoài JSON.
 
 NHIỆM VỤ:
 Trích xuất các claim lịch sử từ bài viết dưới dạng danh sách các câu khẳng định độc lập trong JSON có key là "claims".
@@ -80,18 +76,6 @@ Output JSON:
 }}
 
 VÍ DỤ 2:
-Văn bản gốc:
-"Nhà Trần là một trong những triều đại phát triển rực rỡ nhất trong lịch sử Việt Nam. Từ năm 1248, vua Trần Thái Tông đặt ra chức quan Hà đê sứ chuyên trách việc đắp đê điều ở các lộ."
-
-Output JSON:
-{{
-  "claims": [
-    "Từ năm 1248, vua Trần Thái Tông đặt ra chức quan Hà đê sứ.",
-    "Chức quan Hà đê sứ chuyên trách việc đắp đê điều ở các lộ."
-  ]
-}}
-
-VÍ DỤ 3:
 Văn bản gốc:
 "Về quân sự, nhà Trần gắn liền với tên tuổi của Hưng Đạo Vương Trần Quốc Tuấn, người đã lãnh đạo quân dân Đại Việt chống quân Nguyên Mông. Theo tôi, đây là một trong những giai đoạn hào hùng nhất của lịch sử dân tộc."
 
@@ -170,18 +154,6 @@ BẮT BUỘC:
 - Đi thẳng vào nội dung lịch sử đang được kiểm chứng.
 - Không mô tả quá trình kiểm chứng.
 - Không nói rằng hệ thống đã đọc, tìm thấy, đối chiếu hoặc xác nhận điều gì.
-- Không mở đầu bằng các cụm như:
-  "Evidence cho thấy",
-  "Evidences xác nhận",
-  "Nguồn tư liệu cho biết",
-  "Thông tin được cung cấp",
-  "Các đoạn trích",
-  "Claim này",
-  "Ý chính của claim".
-
-CẤM sử dụng trong explanation các từ:
-"claim", "evidence", "evidences", "chunk", "retrieval",
-"nguồn", "tư liệu", "đoạn trích", "dữ liệu được cung cấp".
 
 CÁCH DIỄN ĐẠT:
 

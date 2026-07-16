@@ -1,104 +1,180 @@
-from fastapi import APIRouter, HTTPException
+from __future__ import annotations
 
-from src.schemas.hate_speech_schema import HateSpeechRequest, HateSpeechResponse
+import logging
+
+from fastapi import APIRouter, HTTPException, status
+
 from src.config import settings
+from src.exceptions import (
+    GeminiServiceError,
+    RetrievalServiceError,
+)
 from src.schemas.fact_check_schema import (
     FactCheckRequest,
     FactCheckResponse,
     RetrievalRequest,
     RetrievalResponse,
 )
+from src.schemas.hate_speech_schema import (
+    HateSpeechRequest,
+    HateSpeechResponse,
+)
 from src.services.embedding_service import EmbeddingService
-from src.services.qdrant_service import QdrantService
 from src.services.fact_check_service import FactCheckService
+from src.services.gemini_service import GeminiService
 from src.services.hate_speech_service import HateSpeechService
+from src.services.qdrant_service import QdrantService
+from src.services.retrieval_service import RetrievalService
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
-_embedding_service = None
-_qdrant_service = None
-_fact_check_service = None
-_hate_speech_service = None
+_embedding_service: EmbeddingService | None = None
+_qdrant_service: QdrantService | None = None
+_retrieval_service: RetrievalService | None = None
+_gemini_service: GeminiService | None = None
+_fact_check_service: FactCheckService | None = None
+_hate_speech_service: HateSpeechService | None = None
 
 
 def init_services():
-    global _embedding_service, _qdrant_service, _fact_check_service, _hate_speech_service
+    global _embedding_service, _qdrant_service,_gemini_service, _retrieval_service, _fact_check_service, _hate_speech_service
+    
+    gemini_service: GeminiService | None = None
+    
+    try:
+        embedding_service = EmbeddingService()
+        qdrant_service = QdrantService()
+        retrieval_service = RetrievalService(embedding_service=embedding_service, qdrant_service=qdrant_service)
+        gemini_service = GeminiService()
+        fact_check_service = FactCheckService(gemini_service=gemini_service, retrieval_service=retrieval_service)
 
-    _embedding_service = EmbeddingService()
-    _qdrant_service = QdrantService()
-    _fact_check_service = FactCheckService(_embedding_service, _qdrant_service)
-    _hate_speech_service = HateSpeechService()
+        hate_speech_service = HateSpeechService()
+
+        # Chỉ gán global sau khi toàn bộ service khởi tạo thành công.
+        _embedding_service = embedding_service
+        _qdrant_service = qdrant_service
+        _retrieval_service = retrieval_service
+        _gemini_service = gemini_service
+        _fact_check_service = fact_check_service
+
+        _hate_speech_service = hate_speech_service
+
+        logger.info("AI services initialized successfully.")
+
+    except Exception:
+        logger.exception("Failed to initialize AI services.")
+
+        if gemini_service is not None:
+            gemini_service.close()
+
+        raise
+
+def close_services() -> None:
+    """
+    Đóng các client cần giải phóng tài nguyên khi ứng dụng shutdown.
+    """
+
+    global _embedding_service
+    global _qdrant_service
+    global _retrieval_service
+    global _gemini_service
+    global _fact_check_service
+    global _hate_speech_service
+
+    logger.info("Closing AI services.")
+
+    if _gemini_service is not None:
+        _gemini_service.close()
+
+    _fact_check_service = None
+    _gemini_service = None
+    _retrieval_service = None
+    _qdrant_service = None
+    _embedding_service = None
+    _hate_speech_service = None
+
+    logger.info("AI services closed.")
 
 
 @router.get("/health")
-async def health_check():
+def health_check() -> dict[str, str]:
     return {"status": "ok", "service": settings.APP_NAME}
 
 
 @router.post("/fact-check", response_model=FactCheckResponse)
-async def fact_check(request: FactCheckRequest):
+async def fact_check(request: FactCheckRequest) -> FactCheckResponse:
     if _fact_check_service is None:
-        raise HTTPException(status_code=503, detail="Service not ready.")
+        raise HTTPException( status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="AI service is not ready.", )
 
-    return _fact_check_service.check_post(
-        post_id=request.post_id,
-        content=request.content,
-    )
+    try:
+        return _fact_check_service.check_post(
+            post_id=request.post_id,
+            content=request.content,
+        )
+
+    except GeminiServiceError as exc:
+        logger.exception( "Gemini operation failed. operation=%s", exc.operation,)
+
+        raise HTTPException( status_code=status.HTTP_502_BAD_GATEWAY,detail=("Dịch vụ phân tích và kiểm chứng nội dung " "tạm thời không khả dụng."),) from exc
+    
+    except RetrievalServiceError as exc:
+        logger.exception( "Evidence retrieval failed during fact-check.")
+
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=("Dịch vụ truy xuất bằng chứng " "tạm thời không khả dụng." ),) from exc
+
+    except Exception as exc:
+        logger.exception("Unexpected fact-check pipeline error.")
+
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Đã xảy ra lỗi nội bộ khi kiểm chứng bài viết.",) from exc
 
 
 @router.post("/hate-speech/detect", response_model=HateSpeechResponse)
-def detect_hate_speech(request: HateSpeechRequest):
+def detect_hate_speech(request: HateSpeechRequest)-> HateSpeechResponse:
     if _hate_speech_service is None:
-        raise HTTPException(status_code=503, detail="Service not ready.")
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="Hate-speech service is not ready.",)
 
     return _hate_speech_service.detect(request.text)
 
 
 @router.post("/retrieval", response_model=RetrievalResponse)
-async def retrieve_evidence(request: RetrievalRequest):
-    """
-    Retrieval API endpoint
-    - Nhận vào: claim hoặc content (post_id tùy chọn)
-    - Trả về: danh sách kết quả retrieval (evidence) từ Qdrant
+async def retrieve_evidence(request: RetrievalRequest) -> RetrievalResponse:
     
-    Example request:
-    {
-        "post_id": "test-001",
-        "content": "Vào tháng 3 năm 1217, nhà vua không còn khả năng quyết đoán chính sự"
-    }
-    
-    Or:
-    {
-        "claim": "Trần Hưng Đạo lãnh đạo đánh bại quân Nguyên"
-    }
     """
+    Endpoint kiểm tra retrieval độc lập.
+
+    Nhận chính xác một trong hai trường:
+    - claim;
+    - content.
+    """
+ 
     if _embedding_service is None or _qdrant_service is None:
-        raise HTTPException(status_code=503, detail="Service not ready.")
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="Service not ready.")
 
     try:
-        # Lấy text từ claim hoặc content
-        text = request.get_text()
-        
-        # Bước 1: Embed text thành vector
-        vector = _embedding_service.embed_text(text)
-        
-        # Bước 2: Tìm kiếm trong Qdrant và lấy kết quả
-        results = _qdrant_service.search(vector=vector)
-        
-        # Bước 3: Trả về response
-        return RetrievalResponse(
-            post_id=request.post_id,
-            query_text=text,
-            results=results,
-        )
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e))
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Retrieval failed: {str(e)}")
+        query_text = request.get_text()
 
+        results = _retrieval_service.retrieve( query_text )
 
+        return RetrievalResponse( post_id=request.post_id, query_text=query_text, results=results)
 
+    except ValueError as exc:
+        raise HTTPException( status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc),) from exc
 
+    except RetrievalServiceError as exc:
+        logger.exception("Standalone evidence retrieval failed.")
+
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=("Dịch vụ truy xuất bằng chứng tạm thời không khả dụng."),) from exc
+
+    except Exception as exc:
+        logger.exception( "Unexpected standalone retrieval error.")
+
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Đã xảy ra lỗi nội bộ khi truy xuất bằng chứng.",) from exc
 
 
 
